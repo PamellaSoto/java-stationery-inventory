@@ -14,20 +14,6 @@
     <title>Moon Stationery | 月の文房具 | Inventory Database Management</title>
   </head>
   <body>
-    <header class="header--dashboard">
-      <img th:src="@{/images/logo.png}" alt="Moon Stationery's logo" />
-      <div>
-        <button class="button button--pink orders__button" data-toggle-modal="button-admin-orders" >
-            <i class="fa-solid fa-list"></i>
-            Orders  (0)
-            <!-- th:classappend="${product.stock < 0} ? ' negative'" -->
-            <!-- (<span th:text="${orders-total}"></span>) -->
-        </button>
-        <a class="header__leave button underline" th:href="@{/}">
-            <i class="icon fa-solid fa-door-open"></i>Back to home
-        </a>
-      </div>
-    </header>
     <div class="messages--container">
       <div class="message message--error" th:if="${addProductError}">
         <span th:text="${addProductError}"></span>
@@ -48,114 +34,137 @@
         <span th:text="${categorySuccess}"></span>
       </div>
     </div>
-    <main class="dashboard">
-        <aside>
-            <!-- Search/Filter -->
-            <h2>Search by</h2>
-            <ul>
-            <li>Lorem, ipsum.</li>
-            <li>Lorem, ipsum.</li>
-            <li>Lorem, ipsum.</li>
-            <li>Lorem, ipsum.</li>
-            <li>Lorem, ipsum.</li>
-            </ul>
-        </aside>
-        <section>
-        <nav class="dashboard--nav">
-          <div>
-            <h1 class="dashboard__inventory">Products</h1>
-            <p class="dashboard__counter"><span>0</span> registered itens</p>
-          </div>
+    <div class="dashboard--wrapper">
+      <header class="header--dashboard">
+        <img th:src="@{/images/logo.png}" alt="Moon Stationery's logo" />
+        <ul>
+          <li class="underline" data-toggle-modal="button-admin-orders">
+            New orders(0)
+            <!-- th:classappend="${product.stock < 0} ? ' negative'" -->
+            <!-- (<span th:text="${orders-total}"></span>) --></li>
+           | <li><a class="underline" th:href="@{/}">Go back</a></li>
+           | <li class="underline"><a class="underline" th:href="@{/project-info}">About this project</a></li>
+        </ul>
+      </header>
+      <main class="dashboard">
+          <aside>
+              <!-- Search/Filter -->
+              <h2>Search by</h2>
+              <ul>
+              <li>Lorem, ipsum.</li>
+              <li>Lorem, ipsum.</li>
+              <li>Lorem, ipsum.</li>
+              <li>Lorem, ipsum.</li>
+              <li>Lorem, ipsum.</li>
+              </ul>
+          </aside>
+          <section>
+            <nav class="dashboard--nav">
+              <div>
+                <h1 class="dashboard__inventory">Products</h1>
+                <p class="dashboard__counter"><span>0</span> registered itens</p>
+              </div>
 
-          <div>
-            <button class="underline button" data-toggle-modal="categories-menu" >
-              <i class="icon fa-solid fa-tag"></i>Categories
-            </button>
-            <div class="hidden" id="categories-menu">
-              <!-- Anime -->
-              <button class="button--small button--light-pink button--fwidth margintop--small" data-toggle-modal="anime-title-form" >
-                Insert new anime title
-              </button>
-              <form class="form--small hidden" id="anime-title-form" th:action="@{/new-anime}" method="post" th:object="${anime}" >
-                <input class="form__input--small" type="text" th:field="*{name}" placeholder="Anime title..." required />
-                <input class="button--small button--gray" type="submit" value="Add" />
-              </form>
-              <!-- Product type -->
-              <button class="button--small button--light-pink button--fwidth margintop--small" data-toggle-modal="category-type-form" >
-                Insert new category type
-              </button>
-              <form class="form--small hidden" id="category-type-form" th:action="@{/new-category}" method="post" th:object="${category}">
-                <input class="form__input--small" type="text" th:field="*{name}" placeholder="Category name..." required />
-                <input class="button--small button--gray" type="submit" value="Add" />
-              </form>
-              <div class="categories__anime">
-                <h2 class="categories__title">Anime Titles</h2>
-                <ul>
-                  <li
-                    class="categories__item"
-                    th:each="anime : ${animes}"
-                    th:text="${anime.name}"
-                    th:attr="data-id=${anime.id}">
-                </li>
-                </ul>
+              <div class="dashboard__actions">
+                  <!-- Category -->
+                  <button class="underline" data-toggle-modal="categories-menu" >
+                    <i class="icon fa-solid fa-tag"></i>Categories
+                  </button>
+                  <!-- Category Forms -->
+                  <div class="hidden" id="categories-menu">
+
+                    <!-- Anime -->
+                    <button class="categories__button button button--small button--light-pink" data-toggle-modal="anime-title-form" >
+                      create anime title
+                    </button>
+                    <form class="form--small hidden" id="anime-title-form" th:action="@{/new-anime}" method="post" th:object="${anime}" >
+                      <input class="form__input--small" type="text" th:field="*{name}" placeholder="Anime title..." required />
+                      <input class="categories__button--submit button--small button--gray" type="submit" value="Add" />
+                    </form>
+
+                    <!-- Product type -->
+                    <button class="categories__button button button--small button--light-pink" data-toggle-modal="category-type-form" >
+                      create category
+                    </button>
+                    <form class="form--small hidden" id="category-type-form" th:action="@{/new-category}" method="post" th:object="${category}">
+                      <input class="form__input--small" type="text" th:field="*{name}" placeholder="Category name..." required />
+                      <input class="categories__button--submit button--small button--gray" type="submit" value="Add" />
+                    </form>
+                    <div class="categories__anime">
+                      <h2 class="categories__title">Anime Titles</h2>
+                      <ul>
+                        <li
+                          class="categories__item"
+                          th:each="anime : ${animes}"
+                          th:text="${anime.name}"
+                          th:attr="data-id=${anime.id}">
+                      </li>
+                      </ul>
+                    </div>
+                    <div class="categories__type">
+                      <h2 class="categories__title">Product Types</h2>
+                      <ul>
+                        <li
+                          class="categories__item"
+                          th:each="type : ${productTypes}"
+                          th:text="${type.name}"
+                          th:attr="data-id=${type.id}">
+                      </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <!-- New Products -->
+                  <button class="button button--base button--pink" data-toggle-modal="product-form" >
+                    <i class="icon fa-solid fa-plus"></i>Add new Product
+                  </button>
+                  <div th:replace="~{fragments/product-form :: product-form}">Product form</div>
               </div>
-              <div class="categories__type">
-                <h2 class="categories__title">Product Types</h2>
-                <ul>
-                  <li
-                    class="categories__item"
-                    th:each="type : ${productTypes}"
-                    th:text="${type.name}"
-                    th:attr="data-id=${type.id}">
-                </li>
-                </ul>
-              </div>
-            </div>
-            <button class="button button--pink" data-toggle-modal="product-form" >
-              <i class="icon fa-solid fa-plus"></i>New Product
-            </button>
-            <div th:replace="~{fragments/product-form :: product-form}">Product form</div>
-          </div>
-        </nav>
-        <table class="dashboard--table">
-          <thead>
-            <tr class="table--title table--row">
-              <th>Id</th>
-              <th></th> <!-- Img miniature -->
-              <th>Product name</th>
-              <th>Categories</th>
-              <th>Stock</th>
-              <th>Price</th>
-              <th>Catalog</th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="table--row" th:each="product : ${products}">
-              <td th:text="${product.id}"></td>
-              <td><img class="row--img" th:src="${product.image_url}" /></td>
-              <td class="row--title" th:text="${product.product_name}"></td>
-              <td class="row--category" th:text="|${product.anime_id}/${product.product_type_id}|" ></td>
-              <td class="row--stock" th:classappend="${product.stock < 0} ? ' negative'" th:text="${product.stock}" ></td>
-              <td class="row--price" th:text="|$${product.price}|"></td>
-              <td class="row--switch">
-                <label class="switch">
-                  <input
-                    type="checkbox"
-                    th:attr="data-id=${product.id}"
-                    th:checked="${product.is_available}"/>
-                  <span class="slider"></span>
-                </label>
-              </td>
-              <td><i class="fa-solid fa-pen-to-square"></i></td>
-              <td><i class="fa-solid fa-trash"></i></td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-    </main>
-    <div th:replace="~{fragments/footer :: footer}">Footer</div>
+            </nav>
+            <table class="dashboard--table">
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Product name</th>
+                  <th>Categories</th>
+                  <th>Stock</th>
+                  <th>Price</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table--row" th:each="product : ${products}">
+                  <td th:text="${product.id}"></td>
+                  <td>
+                    <div class="row--title">
+                      <img class="row--img" th:src="${product.image_url}" />
+                      <span th:text="${product.product_name}"></span>
+                    </div>
+                  </td>
+                  <td class="row--category" >
+                    <span th:text="${product.anime_name}"></span><br><span th:text="${product.product_type_name}"></span>
+                  </td>
+                  <td class="row--stock"><span th:classappend="${product.stock < 0} ? ' negative'" th:text="${product.stock}"></span> units</td>
+                  <td>$ <span th:text="${product.price}"></span></td>
+                  <td class="row--switch">
+                    <label class="switch">
+                      <input
+                        type="checkbox"
+                        th:attr="data-id=${product.id}"
+                        th:checked="${product.is_available}"/>
+                      <span class="slider"></span>
+                    </label>
+                  </td>
+                  <td class="row-actions">
+                    <button><i class="fa-solid fa-pen-to-square"></i></button>
+                    <button><i class="fa-solid fa-trash"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+        </section>
+      </main>
+    </div>
     <script th:src="@{js/utilities.js}"></script>
   </body>
 </html>

@@ -17,12 +17,12 @@
                     <img th:src="@{/images/logo.png}" alt="Moon Stationery's logo">
                 </a>
                 <p>Discover official anime-inspired stationery that brings magic to your everyday moments. From stickers to pens, we've got your desk covered!</p>
-                <a class="button button--pink margintop--medium" href="#product-content"><i class="icon fa-solid fa-moon"></i>Order Now!</a>
+                <a class="button button--base button--pink" href="#product-content"><i class="icon fa-solid fa-moon"></i>Order Now!</a>
             </div>
             <img class="banner--img" th:src="@{/images/bunny-right.png}">
         </div>
     </header>
-    <main>
+    <main class="home">
         <aside>
             <!-- Search/Filter -->
             <h2>Search by</h2>
@@ -37,11 +37,8 @@
         <section id="#product-content" class="products--grid">
             <article class="product" th:each="product : ${products}">
                 <img class="product__image" th:src="${product.image_url}" />
-                <div class="product__info">                    
-                    <h3 class="product__title" th:text="${product.product_name}"></h3>
-                    <p class="product__description" th:text="${product.product_description}"></p>
-                </div>
-                <span>On Stock</span>
+                <h3 class="product__title underline" th:text="${product.product_name}"></h3>
+                <span class="product__stock">On Stock</span>
                 <!-- <div th:if="${productAvailable}">
                     <span th:text="${productInStock}"></span>
                 </div>
@@ -49,9 +46,10 @@
                     <span th:text="${productNotInStock}"></span>
                 </div>
                 <div> -->
-                    <span class="product__price"></span>
+                <div>
+                    <p class="product__price">$ <span th:text="${product.price}"></span></p>
                     <button class="button--small button--pink">
-                        <i class="icon fa-solid fa-basket-shopping"></i></button>
+                        <i class="fa-solid fa-basket-shopping"></i></button>
                     </button>
                 </div>
             </article>

@@ -1,79 +1,106 @@
 .dashboard--table {
+  margin-top: var(--space-4);
+  table-layout: auto;
   width: 100%;
   border-collapse: collapse;
-  margin: var(--space-3) 0px;
-}
-.dashboard--table th,
-.dashboard--table td {
-  padding: var(--space-1) var(--space-2);
-  vertical-align: middle;
   text-align: left;
+  border-spacing: 0 var(--space-2);
 }
-.table--title {
-  text-align: left;
-  font-size: var(--font-xs);
-  color: var(--color-gray);
+  .dashboard--table thead {
+    font-size: var(--font-xs);
+    color: var(--color-gray);
 }
-
-.table--row {
-  font-size: var(--font-sm);  
-  color: var(--color-dark-gray);
-  border-bottom: 1px solid var(--color-light-gray);
+  .dashboard--table th {
+    padding: 0 var(--space-1);
+    height: 60px;
+    vertical-align: middle; 
+    border-top: 1px solid var(--color-light-gray);
+    border-bottom: 1px solid var(--color-light-gray);
+  }
+  .dashboard--table td {
+    padding: var(--space-1);
+    height: 60px;
+    vertical-align: middle;
+    font-weight: 600; 
+    border-top: 1px solid var(--color-light-gray);
+    border-bottom: 1px solid var(--color-light-gray);
+}
+  .table--row {
+    overflow: hidden;
+    font-size: var(--font-sm);
+    color: var(--color-dark-gray);
+    transition: background 0.2s ease;
+}
+    .table--row:hover {
+      background-color: #eeeeee97;
 }
 .row--img {
-  width: 50px;
-  height: 50px;
-  border-radius: 0.5rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
   object-fit: cover;
-  border: 1px solid var(--color-light-gray);
+  border: 1px solid #e5e7eb;
+  margin-right: var(--space-2);
+}
+.row--title { 
+  display: flex;
+  align-items: center;
+}
+.row--stock.negative { color: var(--color-dark-pink); }
+
+.row--switch {
+  text-align: center;
+}
+  .row--switch .switch {
+    position: relative;
+    display: inline-block;
+    width: 39px;
+    height: 13px;
+    transform: translateY(7px);
+}
+  .row--switch .switch input {
+    opacity: 0; width: 0; height: 0;
+}
+  .row--switch .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; right: 0;
+    bottom: 0; left: 0;
+    background-color: var(--color-light-gray);
+    transition: 0.3s;
+    border-radius: 34px;
+}
+  .row--switch .slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: -1px;
+    bottom: -2px;
+    background-color: var(--color-gray);
+    transition: 0.3s;
+    border-radius: 50%;
+}
+    .row--switch .switch input:checked + .slider {
+      background-color: var(--color-light-pink);
+}
+    .row--switch .switch input:checked + .slider:before {
+      transform: translateX(23px);
+      background-color: var(--color-dark-pink);
 }
 
-.row--title {
-  width: 350px;
-  font-weight: 600;
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 2;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
-}
-.row--stock.negative {
-  color: var(--color-dark-pink);
-}
-.row--switch .switch {
-  position: relative;
-  display: inline-block;
-  width: 39px;
-  height: 13px;
-}
-.row--switch .switch input {
-  opacity: 0; width: 0; height: 0;
-}
-.row--switch .slider {
-  position: absolute;
+.dashboard--table i {
+  color: var(--color-gray);
   cursor: pointer;
-  background-color: var(--color-light-gray);
-  border-radius: 34px;
-  top: 0; left: 0;
-  bottom: 0; right: 0;
-  transition: 0.3s;
+  font-size: 1rem;
+  padding: 6px;
+  transition: color 0.2s ease;
 }
-.row--switch .slider:before {
-  position: absolute;
-  content: "";
-  height: 18px;
-  width: 18px;
-  left: -1px;
-  bottom: -2px;
-  background-color: var(--color-gray);
-  transition: 0.2s;
-  border-radius: 50%;
+  .dashboard--table i:hover {
+    color: var(--color-dark-pink);
 }
-.row--switch .switch input:checked + .slider {
-  background-color: var(--color-light-pink);
+.dashboard--table th:nth-child(2),
+.dashboard--table td:nth-child(2) {
+  width: 700px; /* Image miniature and product name column */
 }
-.row--switch .switch input:checked + .slider:before {
-  transform: translateX(23px);
-  background-color: var(--color-dark-pink);
-}
+
