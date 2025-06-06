@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" th:href="@{/main.css}" />
+    <link rel="icon" th:href="@{/images/favicon.png}"/>
+    <title>Moon Stationery | 月の文房具 | Kawaii & Anime-Inspired Supplies | Order Now!</title>
+</head>
+<body>
+    <header class="header header--home">
+        <div class="header--banner">
+            <img class="banner--img" th:src="@{/images/bunny-left.png}">
+            <div class="banner--intro">
+                <a th:href="@{/dashboard}">
+                    <img th:src="@{/images/logo.png}" alt="Moon Stationery's logo">
+                </a>
+                <p>Discover official anime-inspired stationery that brings magic to your everyday moments. From stickers to pens, we've got your desk covered!</p>
+                <a class="button button--pink margintop--medium" href="#product-content"><i class="icon fa-solid fa-moon"></i>Order Now!</a>
+            </div>
+            <img class="banner--img" th:src="@{/images/bunny-right.png}">
+        </div>
+    </header>
+    <main>
+        <aside>
+            <!-- Search/Filter -->
+            <h2>Search by</h2>
+            <ul>
+            <li>Lorem, ipsum.</li>
+            <li>Lorem, ipsum.</li>
+            <li>Lorem, ipsum.</li>
+            <li>Lorem, ipsum.</li>
+            <li>Lorem, ipsum.</li>
+            </ul>
+      </aside>
+        <section id="#product-content" class="products--grid">
+            <article class="product" th:each="product : ${products}">
+                <img class="product__image" th:src="${product.image_url}" />
+                <div class="product__info">                    
+                    <h3 class="product__title" th:text="${product.product_name}"></h3>
+                    <p class="product__description" th:text="${product.product_description}"></p>
+                </div>
+                <span>On Stock</span>
+                <!-- <div th:if="${productAvailable}">
+                    <span th:text="${productInStock}"></span>
+                </div>
+                <div th:if="${productNotAvailable}">
+                    <span th:text="${productNotInStock}"></span>
+                </div>
+                <div> -->
+                    <span class="product__price"></span>
+                    <button class="button--small button--pink">
+                        <i class="icon fa-solid fa-basket-shopping"></i></button>
+                    </button>
+                </div>
+            </article>
+        </section>
+    </main>
+    <div th:replace="~{fragments/footer :: footer}">Footer</div>
+    <script th:src="@{js/utilities.js}"></script>
+</body>
+</html>
