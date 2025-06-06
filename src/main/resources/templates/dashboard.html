@@ -14,25 +14,33 @@
     <title>Moon Stationery | 月の文房具 | Inventory Database Management</title>
   </head>
   <body>
-    <div class="messages--container">
-      <div class="message message--error" th:if="${addProductError}">
-        <span th:text="${addProductError}"></span>
-      </div>
-      <div class="message message--error" th:if="${animeError}">
-        <span th:text="${animeError}"></span>
-      </div>
-      <div class="message message--error" th:if="${categoryError}">
-        <span th:text="${categoryError}"></span>
-      </div>
-      <div class="message message--success" th:if="${addProductSuccess}">
-        <span th:text="${addProductSuccess}"></span>
-      </div>
-      <div class="message message--success" th:if="${animeSuccess}">
-        <span th:text="${animeSuccess}"></span>
-      </div>
-      <div class="message message--success" th:if="${categorySuccess}">
-        <span th:text="${categorySuccess}"></span>
-      </div>
+    <div class="message message--error" th:if="${addProductError}">
+      <p class="message--intro">System update: Action failed. Please try again!</p>
+      <p class="message--text" th:text="${addProductError}"></p>
+    </div>
+    <div class="message message--error" th:if="${animeError}">
+      <p class="message--intro">System update: Action failed. Please try again!</p>
+      <p class="message--text" th:text="${animeError}"></p>
+    </div>
+    <div class="message message--error" th:if="${categoryError}">
+      <p class="message--intro">System update: Action failed. Please try again!</p>
+      <p class="message--text" th:text="${categoryError}"></p>
+    </div>
+    <div class="message message--success" th:if="${addProductSuccess}">
+      <p class="message--intro">System update: Action succeed!</p>
+      <p class="message--text" th:text="${addProductSuccess}"></p>
+    </div>
+    <div class="message message--success" th:if="${animeSuccess}">
+      <p class="message--intro">System update: Action succeed!</p>
+      <p class="message--text" th:text="${animeSuccess}"></p>
+    </div>
+    <div class="message message--success" th:if="${categorySuccess}">
+      <p class="message--intro">System update: Action succeed!</p>
+      <p class="message--text" th:text="${categorySuccess}"></p>
+    </div>
+    <div class="message message--success" th:if="${deleteProductSuccess}">
+      <p class="message--intro">System update: Action succeed!</p>
+      <p class="message--text" th:text="${deleteProductSuccess}"></p>
     </div>
     <div class="dashboard--wrapper">
       <header class="header--dashboard">
@@ -43,7 +51,7 @@
             <!-- th:classappend="${product.stock < 0} ? ' negative'" -->
             <!-- (<span th:text="${orders-total}"></span>) --></li>
            | <li><a class="underline" th:href="@{/}">Go back</a></li>
-           | <li class="underline"><a class="underline" th:href="@{/project-info}">About this project</a></li>
+           | <li class="underline"><a class="underline" th:href="@{/about}">About this project</a></li>
         </ul>
       </header>
       <main class="dashboard">
@@ -70,101 +78,20 @@
                   <button class="underline" data-toggle-modal="categories-menu" >
                     <i class="icon fa-solid fa-tag"></i>Categories
                   </button>
+                  
                   <!-- Category Forms -->
-                  <div class="hidden" id="categories-menu">
+                  <div th:replace="~{fragments/modal-category :: categories-menu}"></div>
 
-                    <!-- Anime -->
-                    <button class="categories__button button button--small button--light-pink" data-toggle-modal="anime-title-form" >
-                      create anime title
-                    </button>
-                    <form class="form--small hidden" id="anime-title-form" th:action="@{/new-anime}" method="post" th:object="${anime}" >
-                      <input class="form__input--small" type="text" th:field="*{name}" placeholder="Anime title..." required />
-                      <input class="categories__button--submit button--small button--gray" type="submit" value="Add" />
-                    </form>
-
-                    <!-- Product type -->
-                    <button class="categories__button button button--small button--light-pink" data-toggle-modal="category-type-form" >
-                      create category
-                    </button>
-                    <form class="form--small hidden" id="category-type-form" th:action="@{/new-category}" method="post" th:object="${category}">
-                      <input class="form__input--small" type="text" th:field="*{name}" placeholder="Category name..." required />
-                      <input class="categories__button--submit button--small button--gray" type="submit" value="Add" />
-                    </form>
-                    <div class="categories__anime">
-                      <h2 class="categories__title">Anime Titles</h2>
-                      <ul>
-                        <li
-                          class="categories__item"
-                          th:each="anime : ${animes}"
-                          th:text="${anime.name}"
-                          th:attr="data-id=${anime.id}">
-                      </li>
-                      </ul>
-                    </div>
-                    <div class="categories__type">
-                      <h2 class="categories__title">Product Types</h2>
-                      <ul>
-                        <li
-                          class="categories__item"
-                          th:each="type : ${productTypes}"
-                          th:text="${type.name}"
-                          th:attr="data-id=${type.id}">
-                      </li>
-                      </ul>
-                    </div>
-                  </div>
                   <!-- New Products -->
-                  <button class="button button--base button--pink" data-toggle-modal="product-form" >
+                  <a class="button button--base button--pink" th:href="@{/product/new}">
                     <i class="icon fa-solid fa-plus"></i>Add new Product
-                  </button>
-                  <div th:replace="~{fragments/product-form :: product-form}">Product form</div>
+                  </a>
               </div>
             </nav>
-            <table class="dashboard--table">
-              <thead>
-                <tr>
-                  <th>Id</th>
-                  <th>Product name</th>
-                  <th>Categories</th>
-                  <th>Stock</th>
-                  <th>Price</th>
-                  <th>Status</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="table--row" th:each="product : ${products}">
-                  <td th:text="${product.id}"></td>
-                  <td>
-                    <div class="row--title">
-                      <img class="row--img" th:src="${product.image_url}" />
-                      <span th:text="${product.product_name}"></span>
-                    </div>
-                  </td>
-                  <td class="row--category" >
-                    <span th:text="${product.anime_name}"></span><br><span th:text="${product.product_type_name}"></span>
-                  </td>
-                  <td class="row--stock"><span th:classappend="${product.stock < 0} ? ' negative'" th:text="${product.stock}"></span> units</td>
-                  <td>$ <span th:text="${product.price}"></span></td>
-                  <td class="row--switch">
-                    <label class="switch">
-                      <input
-                        type="checkbox"
-                        th:attr="data-id=${product.id}"
-                        th:checked="${product.is_available}"/>
-                      <span class="slider"></span>
-                    </label>
-                  </td>
-                  <td class="row-actions">
-                    <button><i class="fa-solid fa-pen-to-square"></i></button>
-                    <button><i class="fa-solid fa-trash"></i></button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            <div th:replace="~{fragments/products-table :: products-table}">Content</div>
         </section>
       </main>
     </div>
-    <script th:src="@{js/utilities.js}"></script>
+    <script th:src="@{/js/utilities.js}"></script>
   </body>
 </html>

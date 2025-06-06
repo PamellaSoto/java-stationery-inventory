@@ -14,11 +14,17 @@ public class ProductService {
     public void insertProduct(Product product) {
         productDAO.insertProduct(product);
     }
+    
     public void editProduct(Product product) {
         productDAO.editProduct(product);
     }
+
     public void deleteProduct(Integer id) {
         productDAO.deleteProduct(id);
+    }
+
+    public Product getProductById(Integer id) {
+        return productDAO.getProductById(id);
     }
 
     //For admin-side view only

@@ -33,29 +33,24 @@
             <li>Lorem, ipsum.</li>
             <li>Lorem, ipsum.</li>
             </ul>
-      </aside>
-        <section id="#product-content" class="products--grid">
-            <article class="product" th:each="product : ${products}">
-                <img class="product__image" th:src="${product.image_url}" />
-                <h3 class="product__title underline" th:text="${product.product_name}"></h3>
-                <span class="product__stock">On Stock</span>
-                <!-- <div th:if="${productAvailable}">
-                    <span th:text="${productInStock}"></span>
+        </aside>
+        <section id="product-content">
+            <nav>
+                <button data-toggle-modal="button-client-order">Your order</button>
+                <div id="button-client-order">
+
                 </div>
-                <div th:if="${productNotAvailable}">
-                    <span th:text="${productNotInStock}"></span>
-                </div>
-                <div> -->
-                <div>
-                    <p class="product__price">$ <span th:text="${product.price}"></span></p>
-                    <button class="button--small button--pink">
-                        <i class="fa-solid fa-basket-shopping"></i></button>
-                    </button>
-                </div>
-            </article>
+                <form action="">
+                    <input type="text" placeholder="Search...">
+                </form>
+            </nav>
+            <div class="products--grid">
+                <div th:replace="~{fragments/products-card :: products-card}">Products</div>
+            </div>
+            
         </section>
     </main>
     <div th:replace="~{fragments/footer :: footer}">Footer</div>
-    <script th:src="@{js/utilities.js}"></script>
+    <script th:src="@{/js/utilities.js}"></script>
 </body>
 </html>

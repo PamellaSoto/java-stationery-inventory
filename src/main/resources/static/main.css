@@ -1,5 +1,5 @@
 /* ===== Import and variables ===== */
-@import url("https://fonts.googleapis.com/css2?family=Yomogi&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New&display=swap');
 @import url("./css-templates/headers.css");
 @import url("./css-templates/product-grid.css");
 @import url("./css-templates/products-table.css");
@@ -18,8 +18,8 @@
   --color-black: #09090b;
 
   /* Typography */
-  --ff: "Yomogi", sans-serif;
-  --font-xs: 0.75em;
+  --ff: "Zen Kaku Gothic New", sans-serif;
+  --font-xs: 0.65em;
   --font-sm: 0.8em;
   --font-base: 0.95em;
   --font-md: 1.2em;
@@ -60,8 +60,6 @@ section {
 .hidden {
   display: none !important;
 }
-
-/* Base Styles */
 a:hover {
   color: var(--color-pink);
 }
@@ -75,6 +73,18 @@ a:hover {
   cursor: pointer;
 }
 
+.flex--column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.flex--row {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Base Styles */
 body {
   scroll-behavior: smooth;
   margin: 0 auto;
@@ -102,21 +112,20 @@ main {
 /* Buttons */
 .button {
   cursor: pointer;
-  text-transform: uppercase;
+  text-transform: capitalize;
   letter-spacing: 2px;
   font-weight: 600;
   transition: all ease 0.3s;
+  font-size: var(--font-xs);
 }
 /* Buttons sizes */
 .button--base {
   padding: var(--space-2) 0.8rem;
   border-radius: var(--space-2);
-  font-size: var(--font-xs);
 }
 .button--small {
   padding: var(--space-1) var(--space-3);
   border-radius: var(--space-1);
-  font-size: var(--font-xs);
 }
 /* Buttons Colors */
 .button--gray {
@@ -150,11 +159,50 @@ main {
   justify-content: space-between;
   font-size: var(--font-base);
 }
-.form__input--small {
+.form__input {
   padding: 0px var(--space-2);
   width: -webkit-fill-available;
   border-radius: var(--space-1);
   border: 1px solid var(--color-light-gray);
+}
+
+/* Product form Page */
+.form__header {
+  display: flex;
+}
+.form--container {
+  max-width: 600px;
+  background-color: var(--color-lighter-gray);
+  margin: 0px auto;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.14);
+  border-radius: var(--space-2);
+  padding: var(--space-4);
+}
+.form--container h1, .form--container p {
+  text-align: center;
+}
+#product-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+#product-form select {
+  padding: 0px var(--space-2);
+  border-radius: var(--space-1);
+  border: 1px solid var(--color-light-gray);
+  width: 200px;
+}
+.form--two {
+  display: flex; 
+  justify-content: space-between;
+}
+#product-form input[type="checkbox"] {
+  margin-left: var(--space-3);
+  border-radius: 10px;
+}
+#product-form input[type="checkbox"]:checked {
+  background-color: var(--color-pink);
 }
 
 /* Home */
@@ -191,18 +239,20 @@ main {
   gap: var(--space-4);
 }
 #categories-menu {
-  z-index: 9;
+  z-index: 8;
   position: absolute;
-  top: 70px;
-  right: 200px;
+  top: 85px;
+  right: 215px;
   min-width: 300px;
   max-width: 300px;
   background-color: var(--color-white);
   padding: var(--space-3);
+  border: 2px solid var(--color-light-gray);
   box-shadow: 1px 1px 4px #00000021;
   border-radius: var(--space-1);
 }
   .categories__button {
+    font-size: var(--font-sm);
     width: -webkit-fill-available;
     margin: var(--space-2) 0px var(--space-1);
 }
@@ -232,6 +282,8 @@ main {
     padding: var(--space-1);
 }
 
+
+
 /* Footer */
 footer {
   padding: var(--space-1);
@@ -239,10 +291,54 @@ footer {
   font-weight: 300;
   text-align: center;
 }
+
 .footer--copyright {
   font-size: var(--font-xs);
 }
+
 footer a {
   color: var(--color-black);
   text-decoration: underline;
+}
+
+/* System messages */
+.messages--container {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+}
+
+.message {
+  z-index: 10;
+  position: absolute;
+  bottom: 10%; right: 3%;
+  padding: var(--space-3);
+  background-color: var(--color-white);
+  border: 2px solid var(--color-light-gray);
+  border-radius: var(--space-2);
+  box-shadow: 0px 2px 5px #00000050;
+  font-weight: 600;
+  transform: translateX(1000px);
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+  opacity: 0;
+}
+  .message--intro {
+    font-weight: 300;
+    color: var(--color-gray);
+    font-size: var(--font-sm);
+  }
+  .message--text {
+    font-weight: 600;
+    font-size: var(--font-lg);
+  }
+  .message--success {
+    color: var(--color-pink);
+  }
+  .message--error {
+    color: var(--color-dark-gray);
+  }
+  .message.show {
+    transform: translateX(0);
+    opacity: 1;
 }

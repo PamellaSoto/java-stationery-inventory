@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="|${product.product_name} | Moon Stationery | 月の文房具 |">Product Detail</title>
+</head>
+<body>
+    <h1 th:text="${product.product_name}">Product Name</h1>
+    <img th:src="${product.image_url}" alt="Image" width="200" />
+    <p th:text="${product.product_description}">Description</p>
+    <p>Price: <span th:text="${product.price}">$0.00</span></p>
+    <p>Stock: <span th:text="${product.stock}">0</span></p>
+    <p>Anime: <span th:text="${product.anime_name}">Anime</span></p>
+    <p>Category: <span th:text="${product.product_type_name}">Type</span></p>
+</body>
+</html>

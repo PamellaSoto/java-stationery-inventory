@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" th:href="@{/main.css}" />
+    <link rel="icon" th:href="@{/images/favicon.png}"/>
+    <title>Create New Product | Moon Stationery | 月の文房具</title>
+</head>
+<body>
+    <header class="form__header">
+        <img th:src="@{/images/logo.png}">
+        <a class="underline" th:href="@{/}">Go to home</a>
+    </header>
+    <div class="form--container">
+        <h1>Create a New Product</h1>
+        <p>Fill out the form below to add a item to the catalog.</p>
+        <form id="product-form" th:action="@{/product/new}" th:object="${product}" method="post">
+            <div>
+                <label for="product_name">Product Name:</label> 
+                <input class="form__input" type="text" id="product_name" th:field="*{product_name}" required maxlength="255"/>
+            </div>
+            <div>
+                <label for="image_url">Product Image (URL):</label>
+                <input class="form__input" type="text" id="image_url" th:field="*{image_url}" maxlength="255"/>
+            </div>
+            <div>
+                <label for="product_description">Description:</label>
+                <textarea class="form__input" rows="4" cols="70" id="product_description" th:field="*{product_description}"></textarea>
+            </div>
+            <div>
+                <div>
+                    <label for="price">Price (USD):</label>
+                    <input class="form__input" type="number" id="price" th:field="*{price}" step="0.01" min="0" required placeholder="0,00"/>
+                </div>
+                <div>
+                    <label for="stock">Stock:</label>
+                    <input class="form__input" type="number" id="stock" th:field="*{stock}" min="0" required placeholder="0"/>
+                </div>
+            </div>
+            <div class="form--two">
+                    <label for="anime_id">Select an anime title:</label><br>
+                    <select id="anime_id" th:field="*{anime_id}" required>
+                        <option th:each="anime : ${animes}" 
+                                th:value="${anime.id}" 
+                                th:text="${anime.name}">
+                        </option>
+                    </select>
+                </div>
+                <div class="form--two">
+                    <label for="product_type_id">Select a product type:</label><br>
+                    <select id="product_type_id" th:field="*{product_type_id}" required>
+                        <option th:each="type : ${productTypes}" 
+                                th:value="${type.id}" 
+                                th:text="${type.name}">
+                        </option>
+                    </select>
+                </div>
+            <div class="form--two">
+                <label>Display product to customers?<input type="checkbox" th:field="*{is_available}" checked/></label>
+                <button class="button button--base button--pink" type="submit">Add product</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -9,10 +9,14 @@ document.querySelectorAll(`[data-toggle-modal]`).forEach((button) => {
 });
 
 function systemMessages() {
-    let successes = document.querySelectorAll('.message--success');
-    let errors = document.querySelectorAll('.message--error');
+    let messages = document.querySelectorAll('.message');
     
-    let allMessages = Array.from(successes).concat(Array.from(errors));
-    allMessages.forEach(message => message.style.display = "none");
+    messages.forEach(message => {
+        message.classList.add("show");
+        setTimeout(() => {
+            message.classList.remove("show");
+            message.style.display = "none";
+        }, 5000);
+    });
 }
-setTimeout(systemMessages, 3000);
+window.addEventListener('DOMContentLoaded', systemMessages);

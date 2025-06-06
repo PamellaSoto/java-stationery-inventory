@@ -35,7 +35,6 @@
     justify-content: space-between;
 }
 .product__price {
-    font-size: var(--font-xs);
     font-weight: 600;
     color: var(--color-pink);
 }

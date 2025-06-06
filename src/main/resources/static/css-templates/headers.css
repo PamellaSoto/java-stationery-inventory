@@ -42,7 +42,7 @@
   display: flex;
   justify-content: space-between;
   border-bottom: 2px solid var(--color-gray);
-  align-items: center;
+  align-items: flex-end;
   padding: var(--space-4) 0px;
 }
 .header--dashboard img {
@@ -54,9 +54,9 @@
   gap: var(--space-4);
 }
 .header--dashboard ul li {
-  font-size: var(--font-sm);
+  font-size: 0.7em;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 2px;
 }
 .header--dashboard a, .header--dashboard a:visited {
