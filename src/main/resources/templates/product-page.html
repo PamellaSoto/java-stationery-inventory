@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title th:text="|${product.product_name} | Moon Stationery | 月の文房具 |">Product Detail</title>
+    <title th:text="${product.product_name} + ' | Moon Stationery | 月の文房具'">Product Name</title>
 </head>
 <body>
     <h1 th:text="${product.product_name}">Product Name</h1>

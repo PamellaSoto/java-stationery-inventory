@@ -30,17 +30,24 @@ public class MainController {
     private ProductService productServ;
 
     @GetMapping("/")
-    public String index(Model model) {
+    public String home(Model model) {
         List<Map<String,Object>> products = productServ.listAllAvailable();
         model.addAttribute("products", products);
-        return "index";
+
+        List<Map<String,Object>> animes = animeServ.listAll();
+        model.addAttribute("animes", animes);
+
+        List<Map<String,Object>> productTypes = categoryServ.listAll();
+        model.addAttribute("productTypes", productTypes);
+
+        return "home";
     }
 
     @GetMapping("/product/{id}")
     public String productPage(@PathVariable Integer id, Model model) {
         Product product = productServ.getProductById(id);
         model.addAttribute("product", product);
-        return "product";
+        return "product-page";
     }
 
     @GetMapping("/dashboard")

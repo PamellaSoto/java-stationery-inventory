@@ -124,6 +124,8 @@ public class ProductDAO {
                 p.stock,
                 p.image_url,
                 p.is_available,
+                p.product_type_id,
+                p.anime_id,
                 a.name AS anime_name,
                 pt.name AS product_type_name
             FROM product p
@@ -144,6 +146,8 @@ public class ProductDAO {
                 p.stock,
                 p.image_url,
                 p.is_available,
+                p.product_type_id,
+                p.anime_id,
                 a.name AS anime_name,
                 pt.name AS product_type_name
             FROM product p

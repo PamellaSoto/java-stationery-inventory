@@ -1,3 +1,101 @@
+/* Header */
+.header--dashboard {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--color-gray);
+  align-items: flex-end;
+  padding: var(--space-4) 0px;
+}
+.header--dashboard img {
+  width: 400px;
+}
+.header--dashboard ul {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+.header--dashboard ul li {
+  font-size: 0.7em;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+.header--dashboard a, .header--dashboard a:visited {
+  color: var(--color-black);
+}
+
+.header--dashboard ul li:hover, .header--dashboard a:hover {
+  color: var(--color-pink);
+}
+
+
+/* Dashboard */
+.dashboard--wrapper {
+  padding: 0px var(--space-4);
+  margin: var(--space-5);
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.14);
+  border-radius: 8px;
+  background-color: var(--color-white);
+}
+.dashboard--nav { align-items: center; }
+.dashboard__inventory { 
+  display:inline; 
+  font-size: calc(var(--font-lg) * 1.2); 
+}
+.dashboard__counter { 
+  display:inline; 
+  font-size: var(--font-base); 
+}
+
+.dashboard__actions {
+  gap: var(--space-4);
+}
+
+#category-type-form, #anime-title-form { font-size: var(--font-base); }
+
+#categories-menu {
+  z-index: 8;
+  position: absolute;
+  top: 85px;
+  right: 215px;
+  min-width: 300px;
+  max-width: 300px;
+  background-color: var(--color-white);
+  padding: var(--space-3);
+  border: var(--border-default);
+  box-shadow: 1px 1px 4px #00000021;
+  border-radius: var(--space-1);
+}
+  .categories__button {
+    font-size: var(--font-sm);
+    width: -webkit-fill-available;
+    margin: var(--space-2) 0px var(--space-1);
+}
+  .categories__button--submit {
+    margin-left: var(--space-2);
+}
+
+.categories__anime ul, .categories__type ul {
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-light-pink);
+  max-height: 100px;
+}
+  .categories__title {
+    font-size: var(--font-sm);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: var(--space-3);
+    border-top: 1px solid var(--color-light-gray);
+    padding-top: var(--space-1);
+    color: var(--color-pink);
+}
+  .categories__item {
+    font-size: var(--font-xs);
+    padding: var(--space-1);
+}
+
+/* Table */
 .dashboard--table {
   margin-top: var(--space-4);
   table-layout: auto;

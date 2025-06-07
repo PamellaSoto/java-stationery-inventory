@@ -3,7 +3,7 @@
     <button class="categories__button button button--small button--light-pink" data-toggle-modal="anime-title-form" >
         Create Anime Title
     </button>
-    <form class="form--small hidden" id="anime-title-form" th:action="@{/category/anime/new}" method="post" th:object="${anime}" >
+    <form class="hidden" id="anime-title-form" th:action="@{/category/anime/new}" method="post" th:object="${anime}" >
         <input class="form__input" type="text" th:field="*{name}" placeholder="Anime title..." required />
         <input class="categories__button--submit button button--small button--gray" type="submit" value="Add" />
     </form>
@@ -12,7 +12,7 @@
     <button class="categories__button button button--small button--light-pink" data-toggle-modal="category-type-form" >
         Create Category
     </button>
-    <form class="form--small hidden" id="category-type-form" th:action="@{/category/type/new}" method="post" th:object="${category}">
+    <form class="hidden" id="category-type-form" th:action="@{/category/type/new}" method="post" th:object="${category}">
         <input class="form__input" type="text" th:field="*{name}" placeholder="Category name..." required />
         <input class="categories__button--submit button button--small button--gray" type="submit" value="Add" />
     </form>
@@ -22,7 +22,7 @@
         <h2 class="categories__title">Anime Titles</h2>
         <ul>
         <li
-            class="categories__item"
+            class="categories__item flex--row"
             th:each="anime : ${animes}"
             th:text="${anime.name}"
             th:attr="data-id=${anime.id}">
@@ -33,7 +33,7 @@
         <h2 class="categories__title">Product Types</h2>
         <ul>
         <li
-            class="categories__item"
+            class="categories__item flex--row"
             th:each="type : ${productTypes}"
             th:text="${type.name}"
             th:attr="data-id=${type.id}">
