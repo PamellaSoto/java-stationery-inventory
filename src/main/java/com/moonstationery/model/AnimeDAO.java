@@ -13,32 +13,51 @@ import jakarta.annotation.PostConstruct;
 
 @Repository
 public class AnimeDAO {
-    
+
     @Autowired
-    DataSource dataSource;
-	JdbcTemplate jdbc;
+    private DataSource dataSource;
+    private JdbcTemplate jdbc;
 
     @PostConstruct
-	private void initialize() {
-		jdbc = new JdbcTemplate(dataSource);
-	}
+    private void initialize() {
+        jdbc = new JdbcTemplate(dataSource);
+    }
 
-    //Verify if name attribute already exists
-    public boolean existsByName(String anime) {
+    public boolean existsByName(String name) {
         String query = "SELECT COUNT(*) FROM anime WHERE name = ?";
-        Integer result = jdbc.queryForObject(query, Integer.class, anime);
-        //Return a number (1 or 0) if the name exists on the table
-        return result != null && result > 0;
+        Integer count = jdbc.queryForObject(query, Integer.class, name);
+        return count != null && count > 0;
     }
 
-    //Post data into the table
     public void insertAnime(Anime anime) {
-        String query = "INSERT INTO anime (name) VALUES (?);";
-        jdbc.update(query, anime.getName());
+        String slug = SlugUrl.createSlug(anime.getName());
+        String query = "INSERT INTO anime (name, slug) VALUES (?, ?)";
+        jdbc.update(query, anime.getName(), slug);
     }
 
-    public List<Map<String,Object>> listAll(){
-        String query = "SELECT id, name FROM anime;";
-        return jdbc.queryForList(query);
+    public Anime getAnimeById(Integer id) {
+        String query = "SELECT * FROM anime WHERE id = ?";
+        List<Anime> animes = jdbc.query(query, (rs, rowNum) -> {
+            Anime a = new Anime();
+            a.setId(rs.getInt("id"));
+            a.setName(rs.getString("name"));
+            return a;
+        }, id);
+        return animes.isEmpty() ? null : animes.get(0);
+    }
+
+    public Anime getAnimeBySlug(String slug) {
+        String query = "SELECT * FROM anime WHERE slug = ?";
+        List<Anime> animes = jdbc.query(query, (rs, rowNum) -> {
+            Anime a = new Anime();
+            a.setId(rs.getInt("id"));
+            a.setName(rs.getString("name"));
+            return a;
+        }, slug);
+        return animes.isEmpty() ? null : animes.get(0);
+    }
+
+    public List<Map<String, Object>> listAll() {
+        return jdbc.queryForList("SELECT id, name FROM anime");
     }
 }

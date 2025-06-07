@@ -113,6 +113,49 @@ public class ProductDAO {
             return product;
         }, id);
     }
+    
+    public List<Map<String, Object>> getProductsByCategory(Integer categoryId) {
+        String query = """
+            SELECT 
+                p.id,
+                p.product_name,
+                p.product_description,
+                p.price,
+                p.stock,
+                p.image_url,
+                p.is_available,
+                p.product_type_id,
+                p.anime_id,
+                a.name AS anime_name,
+                pt.name AS product_type_name
+            FROM product p
+            JOIN anime a ON p.anime_id = a.id
+            JOIN product_type pt ON p.product_type_id = pt.id
+            WHERE p.product_type_id = ? AND p.is_available = true
+        """;
+        return jdbc.queryForList(query, categoryId);
+    }
+    public List<Map<String, Object>> getProductsByAnime(Integer animeId) {
+        String query = """
+            SELECT 
+                p.id,
+                p.product_name,
+                p.product_description,
+                p.price,
+                p.stock,
+                p.image_url,
+                p.is_available,
+                p.product_type_id,
+                p.anime_id,
+                a.name AS anime_name,
+                pt.name AS product_type_name
+            FROM product p
+            JOIN anime a ON p.anime_id = a.id
+            JOIN product_type pt ON p.product_type_id = pt.id
+            WHERE p.anime_id = ? AND p.is_available = true
+        """;
+        return jdbc.queryForList(query, animeId);
+    }
 
     public List<Map<String,Object>> listAllAvailable() {
         String query = """

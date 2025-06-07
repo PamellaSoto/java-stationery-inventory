@@ -27,6 +27,14 @@ public class ProductService {
         return productDAO.getProductById(id);
     }
 
+    public List<Map<String, Object>> getProductsByCategory(Integer categoryId) {
+        return productDAO.getProductsByCategory(categoryId);
+    }
+
+    public List<Map<String, Object>> getProductsByAnime(Integer animeId) {
+        return productDAO.getProductsByAnime(animeId);
+    }
+
     //For admin-side view only
     public List<Map<String,Object>> listAll(){
         return productDAO.listAll();

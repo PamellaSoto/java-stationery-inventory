@@ -8,143 +8,77 @@
     <link rel="icon" th:href="@{/images/favicon.png}"/>
     <title>Moon Stationery | 月の文房具 | Kawaii & Anime-Inspired Supplies | Order Now!</title>
 </head>
-<body>
-    <div class="home__layout">
-        <header>
-            <div class="home__header flex--row">
-                <p>いらっしゃいませ！Cute stationery for everyone</p>
-                <nav>
-                    <ul class="nav flex--row">
-                        <li class="nav__item"><i class="icon fa-regular fa-circle-question"></i>FAQ</li>
-                        <li class="nav__item" data-toggle-modal="login-form"><i class="icon fa-regular fa-user"></i>Login</li>
-                        <li class="nav__item"><i class="icon fa-solid fa-cart-shopping"></i>Cart</li>
-                        <li><a class="nav__item" th:href="@{/}"><i class="icon fa-solid fa-house"></i>Home</a></li>
+<body>  
+    
+    <main class="flex--row">
+        <aside th:replace="~{fragments/filter :: filter}">Filter menu</aside>
+        <section class="home__content flex--column">
+            <div class="home--banner">
+                <img class="banner" th:src="@{/images/home-banner.jpg}" alt="">
+                <div class="banner--layout flex--column">
+                    <img class="banner__logo" th:src="@{/images/logo.png}" alt="Moon Stationery's logo">
+                    <p>Discover official anime-inspired stationery that brings magic to your everyday moments. From stickers to pens, we've got your desk covered!</p>
+                    <a class="button button--base button--pink" href="#product-content"><i class="icon fa-solid fa-moon"></i>Order Now!</a>
+                </div>
+            </div>
+
+            <!-- Search by Anime Series -->
+            <div class="flex--row carousel--wrapper">
+                <button id="carousel--prev"><i class="fa-solid fa-angle-left"></i></button>
+
+                <div class="carousel--overflow">
+                    <ul class="flex--row featured-categories">
+                        <li th:each="anime : ${animes}">
+                            <button class="featured-categories__item button button-base" 
+                                    th:text="${anime.name}"
+                                    th:attr="data-anime-filter-id=${anime.id}"
+                                    ></button>
+                        </li>
                     </ul>
-                </nav>
-                <form class="hidden flex--column" id="login-form">
-                    <div>
-                        <label for="login-email">E-mail:*</label>
-                        <div class="flex--row login__input form__input">
-                            <i class="icon fas fa-envelope"></i>
-                            <input id="login-email" type="text" value="admin@moonstationery.com" required/>
-                        </div>
-                    </div>
-                    <div>
-                        <label for="login-password">Password:*</label>
-                        <div class="flex--row login__input form__input">
-                            <i class="icon fas fa-lock"></i>
-                            <input id="login-password" type="password" value="123456" required/>
-                        </div>
-                    </div>
-                    <div class="login__submit flex--row">
-                        <a class="button button--base button--pink" th:href="@{/dashboard}">Login</a>
-                        <a class="form__link" href="#">Forgot your password?</a>
-                    </div>
-                </form>
+                </div>
+            
+                <button id="carousel--next"><i class="fa-solid fa-angle-right"></i></button>
             </div>
-            <div class="home__header flex--row">
-                <img th:src="@{/images/logo.png}" alt="Moon Stationery's logo">
-                <form class="searchbar flex--row" action="post">
-                    <input class="form__input" type="text" placeholder="Search..."><button class="button button--base button--pink searchbar__button" type="submit"><i class="fas fa-search"></i></button>
-                </form>
-                <!-- ADD <form th:action="@{}" method="post" th:object="${}"></form> -->
-            </div>
-        </header>
-        <main class="flex--row">
-            <aside th:replace="~{fragments/filter :: filter}">Filter menu</aside>
-            <section class="home__content flex--column">
-                <div class="home--banner">
-                    <img class="banner" th:src="@{/images/home-banner.jpg}" alt="">
-                    <div class="banner--layout flex--column">
-                        <img class="banner__logo" th:src="@{/images/logo.png}" alt="Moon Stationery's logo">
-                        <p>Discover official anime-inspired stationery that brings magic to your everyday moments. From stickers to pens, we've got your desk covered!</p>
-                        <a class="button button--base button--pink" href="#product-content"><i class="icon fa-solid fa-moon"></i>Order Now!</a>
+            
+
+            <!-- All available products -->
+            <section class="products--grid" id="product-content">
+                <article class="product"
+                            th:each="product : ${products}" 
+                            th:attr="data-product-id=${product.id},
+                            data-type-id=${product.product_type_id}, data-anime-id=${product.anime_id}">
+                    <a th:href="@{/product/{id}(id=${product.id})}">
+                        <img class="product__image" th:src="${product.image_url}" />
+                        <div class="flex--row product__categories">
+                            <p th:text="${product.anime_name}"></p>
+                            <p th:text="${product.product_type_name}"></p>
+                        </div>
+                        <h3 class="product__title underline" th:text="${product.product_name}"></h3>
+                    </a>
+                    <div>
+                        <p>In stock</p>
+                        <div class="flex--row">
+                        <p class="product__price">$ <span th:text="${product.price}"></span></p>
+                        <button class="product__button button button--small button--pink">
+                            <i class="fa-solid fa-basket-shopping"></i></button>
+                        </button>
                     </div>
-                </div>
-
-                <!-- Search by Anime Series -->
-                <div class="flex--row carousel--wrapper">
-                    <button id="carousel--prev"><i class="fa-solid fa-angle-left"></i></button>
-
-                    <div class="carousel--overflow">
-                        <ul class="flex--row featured-categories">
-                            <li th:each="anime : ${animes}">
-                                <button class="featured-categories__item button button-base" 
-                                        th:text="${anime.name}"
-                                        th:attr="data-anime-filter-id=${anime.id}"
-                                        ></button>
-                            </li>
-                        </ul>
                     </div>
-                
-                    <button id="carousel--next"><i class="fa-solid fa-angle-right"></i></button>
-                </div>
-                
-
-                <!-- All available products -->
-                <section class="products--grid" id="product-content">
-                    <article class="product"
-                             th:each="product : ${products}" 
-                             th:attr="data-product-id=${product.id},
-                             data-type-id=${product.product_type_id}, data-anime-id=${product.anime_id}">
-                        <a th:href="@{/product/{id}(id=${product.id})}">
-                            <img class="product__image" th:src="${product.image_url}" />
-                            <h3 class="product__title underline" th:text="${product.product_name}"></h3>
-                        </a>
-                        <p th:text="${product.stock <= 0} ? 'Out of stock' : 'In stock'"></p>
-                        <div>
-                            <p class="product__price">$ <span th:text="${product.price}"></span></p>
-                            <button class="button button--small button--pink">
-                                <i class="fa-solid fa-basket-shopping"></i></button>
-                            </button>
-                        </div>
-                    </article>
-                    <article class="product"
-                             th:each="product : ${products}" 
-                             th:attr="data-product-id=${product.id},
-                             data-type-id=${product.product_type_id}, data-anime-id=${product.anime_id}">
-                        <a th:href="@{/product/{id}(id=${product.id})}">
-                            <img class="product__image" th:src="${product.image_url}" />
-                            <h3 class="product__title underline" th:text="${product.product_name}"></h3>
-                        </a>
-                        <p th:text="${product.stock <= 0} ? 'Out of stock' : 'In stock'"></p>
-                        <div>
-                            <p class="product__price">$ <span th:text="${product.price}"></span></p>
-                            <button class="button button--small button--pink">
-                                <i class="fa-solid fa-basket-shopping"></i></button>
-                            </button>
-                        </div>
-                    </article>
-                    <article class="product"
-                             th:each="product : ${products}" 
-                             th:attr="data-product-id=${product.id},
-                             data-type-id=${product.product_type_id}, data-anime-id=${product.anime_id}">
-                        <a th:href="@{/product/{id}(id=${product.id})}">
-                            <img class="product__image" th:src="${product.image_url}" />
-                            <h3 class="product__title underline" th:text="${product.product_name}"></h3>
-                        </a>
-                        <p th:text="${product.stock <= 0} ? 'Out of stock' : 'In stock'"></p>
-                        <div>
-                            <p class="product__price">$ <span th:text="${product.price}"></span></p>
-                            <button class="button button--small button--pink">
-                                <i class="fa-solid fa-basket-shopping"></i></button>
-                            </button>
-                        </div>
-                    </article>
-                </section>
-                <div id="message--noresult" class="hidden">
-                    <p>No products matches your search. :(</p>
-                    <button class="underline" onclick="window.location.reload()">CLEAR FILTERS</button>
-                </div>
-                <div id="message--result" class="hidden">
-                    <button class="underline" onclick="window.location.reload()">CLEAR FILTERS</button>
-                </div>
+                    
+                </article>
             </section>
-            
-            
-        </main>
-        <div th:replace="~{fragments/footer :: footer}">Footer</div>
-    </div>
+            <div id="message--noresult" class="hidden">
+                <p>No products matches your search. :(</p>
+                <button class="underline" onclick="window.location.reload()">CLEAR FILTERS</button>
+            </div>
+            <div id="message--result" class="hidden">
+                <button class="underline" onclick="window.location.reload()">CLEAR FILTERS</button>
+            </div>
+        </section>
+        
+        
+    </main>
+    <div th:replace="~{fragments/footer :: footer}">Footer</div>
     <script th:src="@{/js/utilities.js}"></script>
     <script th:src="@{/js/carousel.js}"></script>
     <script th:src="@{/js/filter.js}"></script>

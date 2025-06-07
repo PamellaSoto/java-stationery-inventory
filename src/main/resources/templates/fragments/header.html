@@ -1,0 +1,40 @@
+<header th:fragment="header">
+    <div class="header flex--row">
+        <p>いらっしゃいませ！Cute stationery for everyone</p>
+        <nav>
+            <ul class="nav flex--row">
+                <li class="nav__item"><i class="icon fa-regular fa-circle-question"></i>FAQ</li>
+                <li class="nav__item" data-toggle-modal="login-form"><i class="icon fa-regular fa-user"></i>Login</li>
+                <li class="nav__item"><i class="icon fa-solid fa-cart-shopping"></i>Cart</li>
+                <li><a class="nav__item" th:href="@{/}"><i class="icon fa-solid fa-house"></i>Home</a></li>
+            </ul>
+        </nav>
+        <form class="hidden flex--column" id="login-form">
+            <div>
+                <label for="login-email">E-mail:*</label>
+                <div class="flex--row login__input form__input">
+                    <i class="icon fas fa-envelope"></i>
+                    <input id="login-email" type="text" value="admin@moonstationery.com" required/>
+                </div>
+            </div>
+            <div>
+                <label for="login-password">Password:*</label>
+                <div class="flex--row login__input form__input">
+                    <i class="icon fas fa-lock"></i>
+                    <input id="login-password" type="password" value="123456" required/>
+                </div>
+            </div>
+            <div class="login__submit flex--row">
+                <a class="button button--base button--pink" th:href="@{/dashboard}">Login</a>
+                <a class="form__link" href="#">Forgot your password?</a>
+            </div>
+        </form>
+    </div>
+    <div class="home__header flex--row">
+        <img th:src="@{/images/logo.png}" alt="Moon Stationery's logo">
+        <form class="searchbar flex--row" action="post">
+            <input class="form__input" type="text" placeholder="Search..."><button class="button button--base button--pink searchbar__button" type="submit"><i class="fas fa-search"></i></button>
+        </form>
+        <!-- ADD <form th:action="@{}" method="post" th:object="${}"></form> -->
+    </div>
+    </header>

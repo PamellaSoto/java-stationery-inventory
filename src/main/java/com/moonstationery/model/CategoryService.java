@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CategoryService {
-    @Autowired
-    CategoryDAO categoryDAO;
 
-     // All category names must be written in capitalize formatting
-    public boolean insertCategory(Category category){
+    @Autowired
+    private CategoryDAO categoryDAO;
+
+    public boolean insertCategory(Category category) {
         if (categoryDAO.existsByName(category.getName())) {
             return false;
         }
@@ -20,7 +20,15 @@ public class CategoryService {
         return true;
     }
 
-    public List<Map<String,Object>> listAll(){
+    public Category getCategoryById(Integer id) {
+        return categoryDAO.getCategoryById(id);
+    }
+
+    public Category getCategoryBySlug(String slug) {
+        return categoryDAO.getCategoryBySlug(slug);
+    }
+
+    public List<Map<String, Object>> listAll() {
         return categoryDAO.listAll();
     }
 }

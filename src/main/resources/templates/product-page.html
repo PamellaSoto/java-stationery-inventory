@@ -1,15 +1,81 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" th:href="@{/main.css}" />
+    <link rel="icon" th:href="@{/images/favicon.png}"/>
     <title th:text="${product.product_name} + ' | Moon Stationery | 月の文房具'">Product Name</title>
 </head>
 <body>
-    <h1 th:text="${product.product_name}">Product Name</h1>
-    <img th:src="${product.image_url}" alt="Image" width="200" />
-    <p th:text="${product.product_description}">Description</p>
-    <p>Price: <span th:text="${product.price}">$0.00</span></p>
-    <p>Stock: <span th:text="${product.stock}">0</span></p>
-    <p>Anime: <span th:text="${product.anime_name}">Anime</span></p>
-    <p>Category: <span th:text="${product.product_type_name}">Type</span></p>
+    <div th:replace="~{fragments/header :: header}">Header</div>
+    
+    <main class="product-page border--top--pink">
+        <nav class="breadcrumbs">
+            <a th:href="@{/}">Home</a> &#47;
+            <a th:href="@{'/anime/' + ${product.anime_id}}"
+               th:text="${product.anime_name}">Anime</a> &#47;
+            <a th:href="@{'/category/' + ${product.product_type_id}}"
+               th:text="${product.product_type_name}">Category</a> &#47;
+            <span th:text="${product.product_name}">Product</span>
+        </nav>
+
+        <section class="product-page--layout">
+            <div class="flex--row">
+                <img class="info__img" th:src="${product.image_url}" alt="Product Image"/>
+                <div class="product-info">
+                    <div class="flex--row info__categories">
+                        <a th:href="@{'/anime/' + ${product.anime_id}}" th:text="${product.anime_name}"></a>
+                        <a th:href="@{'/category/' + ${product.product_type_id}}" th:text="${product.product_type_name}"></a>
+                    </div>
+                    <h1 class="info__title" th:text="${product.product_name}">Product Name</h1>
+                    <p class="info__price" th:text="|$ ${product.price}|">$0.00</p>
+                    <p class="info__description" th:text="${product.product_description}">Description</p>
+                    <div>
+                        <button class="info__button button button--base button--pink"><i class="icon fa-solid fa-basket-shopping"></i>Add to Cart</button>
+                        <p class="info__stock">Product available in stock</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section th:if="${#lists.size(relatedProducts) > 0}"> 
+            <div class="flex--row category__products">
+                <h2 class="category__title">Related Products</h2>
+                <a class="category__link" th:href="@{/category/{id}(id=${product.product_type_id})}">See more</a>
+            </div>
+
+            <section class="border--top--pink related-products__grid">
+                <article class="product"
+                        th:each="related : ${relatedProducts}" 
+                        th:attr="data-product-id=${related.id},
+                                data-type-id=${related.product_type_id},
+                                data-anime-id=${related.anime_id}">
+                    <a th:href="@{/product/{id}(id=${related.id})}">
+                        <img class="product__image" th:src="${related.image_url}" />
+                        <div class="flex--row product__categories">
+                            <p th:text="${product.anime_name}"></p>
+                            <p th:text="${product.product_type_name}"></p>
+                        </div>
+                        <h3 class="product__title underline" th:text="${related.product_name}"></h3>
+                    </a>
+                    <div>
+                        <p>In stock</p>
+                        <div class="flex--row">
+                            <p class="product__price">$ <span th:text="${related.price}"></span></p>
+                            <button class="product__button button button--small button--pink">
+                                <i class="fa-solid fa-basket-shopping"></i>
+                            </button>
+                        </div>
+                    </div>
+                </article> 
+            </section>
+        </section>
+    </main>
+
+    <div th:replace="~{fragments/footer :: footer}">Footer</div>
+    <script th:src="@{/js/utilities.js}"></script>
+    <script th:src="@{/js/filter.js}"></script>
 </body>
 </html>
