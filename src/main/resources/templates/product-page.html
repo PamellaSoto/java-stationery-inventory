@@ -14,27 +14,28 @@
     <main class="product-page border--top--pink">
         <nav class="breadcrumbs">
             <a th:href="@{/}">Home</a> &#47;
-            <a th:href="@{'/anime/' + ${product.anime_id}}"
+            <a th:href="@{'/anime/' + ${product.anime_slug}}"
                th:text="${product.anime_name}">Anime</a> &#47;
-            <a th:href="@{'/category/' + ${product.product_type_id}}"
+            <a th:href="@{'/category/' + ${product.product_type_slug}}"
                th:text="${product.product_type_name}">Category</a> &#47;
             <span th:text="${product.product_name}">Product</span>
         </nav>
 
-        <section class="product-page--layout">
+        <section class="layout">
             <div class="flex--row">
                 <img class="info__img" th:src="${product.image_url}" alt="Product Image"/>
                 <div class="product-info">
                     <div class="flex--row info__categories">
-                        <a th:href="@{'/anime/' + ${product.anime_id}}" th:text="${product.anime_name}"></a>
-                        <a th:href="@{'/category/' + ${product.product_type_id}}" th:text="${product.product_type_name}"></a>
+                        <a th:href="@{'/anime/' + ${product.anime_slug}}" th:text="${product.anime_name}"></a>
+                        <a th:href="@{'/category/' + ${product.product_type_slug}}" th:text="${product.product_type_name}"></a>
                     </div>
                     <h1 class="info__title" th:text="${product.product_name}">Product Name</h1>
+                    <p class="info__rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half"></i> (4.5/5) <span>21 votes</span></p>
                     <p class="info__price" th:text="|$ ${product.price}|">$0.00</p>
                     <p class="info__description" th:text="${product.product_description}">Description</p>
-                    <div>
+                    <div class="info__buttons flex--row">
                         <button class="info__button button button--base button--pink"><i class="icon fa-solid fa-basket-shopping"></i>Add to Cart</button>
-                        <p class="info__stock">Product available in stock</p>
+                        <button class="info__button button button--base button--gray"><i class="icon fa-regular fa-heart"></i>Save to Wishlist</button>
                     </div>
                 </div>
             </div>
@@ -43,15 +44,15 @@
         <section th:if="${#lists.size(relatedProducts) > 0}"> 
             <div class="flex--row category__products">
                 <h2 class="category__title">Related Products</h2>
-                <a class="category__link" th:href="@{/category/{id}(id=${product.product_type_id})}">See more</a>
+                <a class="category__link" th:href="@{'/category/' + ${product.product_type_slug}}"><i class="icon fa-solid fa-angle-right"></i>See more</a>
             </div>
 
             <section class="border--top--pink related-products__grid">
                 <article class="product"
                         th:each="related : ${relatedProducts}" 
                         th:attr="data-product-id=${related.id},
-                                data-type-id=${related.product_type_id},
-                                data-anime-id=${related.anime_id}">
+                                 data-type-id=${related.product_type_id},
+                                 data-anime-id=${related.anime_id}">
                     <a th:href="@{/product/{id}(id=${related.id})}">
                         <img class="product__image" th:src="${related.image_url}" />
                         <div class="flex--row product__categories">

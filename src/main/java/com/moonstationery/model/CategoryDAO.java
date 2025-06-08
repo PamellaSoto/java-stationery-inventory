@@ -18,7 +18,8 @@ public class CategoryDAO {
     private DataSource dataSource;
     private JdbcTemplate jdbc;
 
-    @PostConstruct
+    @PostConstruct    
+    @SuppressWarnings("unused")
     private void initialize() {
         jdbc = new JdbcTemplate(dataSource);
     }
@@ -58,6 +59,6 @@ public class CategoryDAO {
     }
 
     public List<Map<String, Object>> listAll() {
-        return jdbc.queryForList("SELECT id, name FROM product_type");
+        return jdbc.queryForList("SELECT id, name, slug FROM product_type");
     }
 }

@@ -19,6 +19,7 @@ public class AnimeDAO {
     private JdbcTemplate jdbc;
 
     @PostConstruct
+    @SuppressWarnings("unused")
     private void initialize() {
         jdbc = new JdbcTemplate(dataSource);
     }
@@ -58,6 +59,6 @@ public class AnimeDAO {
     }
 
     public List<Map<String, Object>> listAll() {
-        return jdbc.queryForList("SELECT id, name FROM anime");
+        return jdbc.queryForList("SELECT id, name, slug FROM anime");
     }
 }

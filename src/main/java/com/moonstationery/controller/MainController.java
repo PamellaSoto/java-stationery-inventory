@@ -57,6 +57,9 @@ public class MainController {
 
         model.addAttribute("category", category);
         model.addAttribute("products", productServ.getProductsByCategory(category.getId()));
+        
+        model.addAttribute("animes", animeServ.listAll());
+        model.addAttribute("productTypes", categoryServ.listAll());
         return "category-page";
     }
 
@@ -67,8 +70,13 @@ public class MainController {
 
         model.addAttribute("anime", anime);
         model.addAttribute("products", productServ.getProductsByAnime(anime.getId()));
+
+        
+        model.addAttribute("animes", animeServ.listAll());
+        model.addAttribute("productTypes", categoryServ.listAll());
         return "anime-page";
     }
+
 
     @GetMapping("/dashboard")
     public String dashboard(Model model) {

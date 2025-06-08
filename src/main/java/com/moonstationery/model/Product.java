@@ -12,13 +12,16 @@ public class Product {
                    product_description,
                    image_url,
                    anime_name,
-                   product_type_name;
+                   product_type_name,
+                   anime_slug, 
+                   product_type_slug;
+
     private Boolean is_available;
 
     public Product() {}
 
     //With id
-    public Product(Integer id, Integer anime_id, String anime_name, String image_url, Boolean is_available, BigDecimal price, String product_description, String product_name, Integer product_type_id, String product_type_name, Integer stock) {
+    public Product(Integer id, Integer anime_id, String anime_name, String image_url, Boolean is_available, BigDecimal price, String product_description, String product_name, Integer product_type_id, String product_type_name, Integer stock, String anime_slug, String product_type_slug) {
         this.id = id;
         this.anime_id = anime_id;
         this.anime_name = anime_name;
@@ -30,10 +33,12 @@ public class Product {
         this.product_type_id = product_type_id;
         this.product_type_name = product_type_name;
         this.stock = stock;
+        this.anime_slug = anime_slug;
+        this.product_type_slug = product_type_slug;
     }
     
     //Without id
-    public Product(Integer anime_id, String anime_name, String image_url, Boolean is_available, BigDecimal price, String product_description, String product_name, Integer product_type_id, String product_type_name, Integer stock) {
+    public Product(Integer anime_id, String anime_name, String image_url, Boolean is_available, BigDecimal price, String product_description, String product_name, Integer product_type_id, String product_type_name, Integer stock, String anime_slug, String product_type_slug) {
         this.anime_id = anime_id;
         this.anime_name = anime_name;
         this.image_url = image_url;
@@ -44,6 +49,8 @@ public class Product {
         this.product_type_id = product_type_id;
         this.product_type_name = product_type_name;
         this.stock = stock;
+        this.anime_slug = anime_slug;
+        this.product_type_slug = product_type_slug;
     }
     
     public Product(Integer id, Boolean is_available) {
@@ -95,6 +102,14 @@ public class Product {
     public String getProduct_type_name() {
         return product_type_name;
     }
+    
+    public String getAnime_slug() {
+        return anime_slug;
+    }
+    
+    public String getProduct_type_slug() {
+        return product_type_slug;
+    }
 
     // Setters
     public void setId(Integer id) {
@@ -141,7 +156,12 @@ public class Product {
         this.product_type_name = product_type_name;
     }
 
+    public void setAnime_slug(String anime_slug) {
+        this.anime_slug = anime_slug;
+    }
 
 
-
+    public void setProduct_type_slug(String product_type_slug) {
+        this.product_type_slug = product_type_slug;
+    }
 }

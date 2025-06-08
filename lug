@@ -1,0 +1,29 @@
+[33mcommit 81db187967d08b3514dcf6713479486ecb0ffffe[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: Pamella Lopes <114709755+pamesss@users.noreply.github.com>
+Date:   Sat Jun 7 20:57:31 2025 -0300
+
+    feat: created code to build pages for each anime/type category
+
+[33mcommit e175fad543a21b601360db763de86abbd850910c[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Pamella Lopes <114709755+pamesss@users.noreply.github.com>
+Date:   Sat Jun 7 15:14:26 2025 -0300
+
+    feat: navigate categories by filter
+
+[33mcommit 36f31145e51155656e0b1f690d4e8c6ccd36dc61[m
+Author: Pamella Lopes <114709755+pamesss@users.noreply.github.com>
+Date:   Fri Jun 6 19:14:19 2025 -0300
+
+    feat: add form to create new product
+
+[33mcommit 25da0813eee309131ded79c05f1a3c810f4953ab[m
+Author: Pamella Lopes <114709755+pamesss@users.noreply.github.com>
+Date:   Fri Jun 6 15:07:24 2025 -0300
+
+    Updated project CSS
+
+[33mcommit 1ba774cea008e83df5be2f31789e01eeb4561d1a[m
+Author: Pamella Lopes <114709755+pamesss@users.noreply.github.com>
+Date:   Fri Jun 6 10:50:33 2025 -0300
+
+    Created 'Add new products' and 'Add new categories' methods

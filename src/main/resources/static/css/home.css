@@ -84,7 +84,9 @@
         border-radius: 0px var(--space-1) var(--space-1) 0px !important;
         font-size: var(--font-base) !important;
 }
-
+.home {
+    padding-top: var(--space-5);
+}
 .home__content {
     padding-bottom: var(--space-5);
 }
@@ -157,7 +159,6 @@
   grid-template-columns: repeat(5, 1fr);
   grid-gap: var(--space-3);
   justify-items: center;
-  margin-top: var(--space-4);
 }
 .product { 
     cursor: pointer;

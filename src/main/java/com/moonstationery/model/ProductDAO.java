@@ -14,70 +14,73 @@ import jakarta.annotation.PostConstruct;
 @Repository
 public class ProductDAO {
     @Autowired
-    DataSource dataSource;
-	JdbcTemplate jdbc;
+    private DataSource dataSource;
+    private JdbcTemplate jdbc;
 
     @PostConstruct
-	private void initialize() {
-		jdbc = new JdbcTemplate(dataSource);
-	}
+    @SuppressWarnings("unused")
+    private void initialize() {
+        jdbc = new JdbcTemplate(dataSource);
+    }
 
     public void insertProduct(Product product) {
         String query = """
             INSERT INTO product(
-                            product_name, 
-                            product_description, 
-                            price, 
-                            stock, 
-                            image_url, 
-                            anime_id, 
-                            product_type_id, 
-                            is_available)
+                product_name, 
+                product_description, 
+                price, 
+                stock, 
+                image_url, 
+                anime_id, 
+                product_type_id, 
+                is_available)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?);
         """;
-        Object[] values = new Object[8];
-            values[0] = product.getProduct_name();
-            values[1] = product.getProduct_description();
-            values[2] = product.getPrice();
-            values[3] = product.getStock();
-            values[4] = product.getImage_url();
-            values[5] = product.getAnime_id();
-            values[6] = product.getProduct_type_id();
-            values[7] = product.getIs_available();
+        Object[] values = {
+            product.getProduct_name(),
+            product.getProduct_description(),
+            product.getPrice(),
+            product.getStock(),
+            product.getImage_url(),
+            product.getAnime_id(),
+            product.getProduct_type_id(),
+            product.getIs_available()
+        };
         jdbc.update(query, values);
     }
 
     public void editProduct(Product product) {
-       String query = """
+        String query = """
             UPDATE product 
-                SET product_name = ?, 
-                    product_description = ?, 
-                    price = ?, 
-                    stock = ?, 
-                    image_url = ?, 
-                    anime_id = ?, 
-                    product_type_id = ?, 
-                    is_available = ? 
+            SET product_name = ?, 
+                product_description = ?, 
+                price = ?, 
+                stock = ?, 
+                image_url = ?, 
+                anime_id = ?, 
+                product_type_id = ?, 
+                is_available = ? 
             WHERE id = ?;
         """;
-       Object[] values = new Object[9];
-        values[0] = product.getProduct_name();
-        values[1] = product.getProduct_description();
-        values[2] = product.getPrice();
-        values[3] = product.getStock();
-        values[4] = product.getImage_url();
-        values[5] = product.getAnime_id();
-        values[6] = product.getProduct_type_id();
-        values[7] = product.getIs_available();
-        values[8] = product.getId();
+        Object[] values = {
+            product.getProduct_name(),
+            product.getProduct_description(),
+            product.getPrice(),
+            product.getStock(),
+            product.getImage_url(),
+            product.getAnime_id(),
+            product.getProduct_type_id(),
+            product.getIs_available(),
+            product.getId()
+        };
         jdbc.update(query, values);
     }
 
     public void deleteProduct(Integer id) {
-        String query = "DELETE FROM product where id = ?;";
+        String query = "DELETE FROM product WHERE id = ?";
         jdbc.update(query, id);
     }
-    
+
     public Product getProductById(Integer id) {
         String query = """
             SELECT 
@@ -91,7 +94,9 @@ public class ProductDAO {
                 p.anime_id,
                 p.product_type_id,
                 a.name AS anime_name,
-                pt.name AS product_type_name
+                a.slug AS anime_slug,
+                pt.name AS product_type_name,
+                pt.slug AS product_type_slug
             FROM product p
             JOIN anime a ON p.anime_id = a.id
             JOIN product_type pt ON p.product_type_id = pt.id
@@ -106,14 +111,16 @@ public class ProductDAO {
             product.setStock(rs.getInt("stock"));
             product.setImage_url(rs.getString("image_url"));
             product.setIs_available(rs.getBoolean("is_available"));
-            product.setAnime_id(rs.getInt("anime_id")); 
+            product.setAnime_id(rs.getInt("anime_id"));
             product.setProduct_type_id(rs.getInt("product_type_id"));
             product.setAnime_name(rs.getString("anime_name"));
             product.setProduct_type_name(rs.getString("product_type_name"));
+            product.setAnime_slug(rs.getString("anime_slug"));
+            product.setProduct_type_slug(rs.getString("product_type_slug"));
             return product;
         }, id);
     }
-    
+
     public List<Map<String, Object>> getProductsByCategory(Integer categoryId) {
         String query = """
             SELECT 
@@ -127,7 +134,9 @@ public class ProductDAO {
                 p.product_type_id,
                 p.anime_id,
                 a.name AS anime_name,
-                pt.name AS product_type_name
+                a.slug AS anime_slug,
+                pt.name AS product_type_name,
+                pt.slug AS product_type_slug
             FROM product p
             JOIN anime a ON p.anime_id = a.id
             JOIN product_type pt ON p.product_type_id = pt.id
@@ -135,6 +144,7 @@ public class ProductDAO {
         """;
         return jdbc.queryForList(query, categoryId);
     }
+
     public List<Map<String, Object>> getProductsByAnime(Integer animeId) {
         String query = """
             SELECT 
@@ -148,7 +158,9 @@ public class ProductDAO {
                 p.product_type_id,
                 p.anime_id,
                 a.name AS anime_name,
-                pt.name AS product_type_name
+                a.slug AS anime_slug,
+                pt.name AS product_type_name,
+                pt.slug AS product_type_slug
             FROM product p
             JOIN anime a ON p.anime_id = a.id
             JOIN product_type pt ON p.product_type_id = pt.id
@@ -157,7 +169,7 @@ public class ProductDAO {
         return jdbc.queryForList(query, animeId);
     }
 
-    public List<Map<String,Object>> listAllAvailable() {
+    public List<Map<String, Object>> listAllAvailable() {
         String query = """
             SELECT 
                 p.id,
@@ -170,16 +182,18 @@ public class ProductDAO {
                 p.product_type_id,
                 p.anime_id,
                 a.name AS anime_name,
-                pt.name AS product_type_name
+                a.slug AS anime_slug,
+                pt.name AS product_type_name,
+                pt.slug AS product_type_slug
             FROM product p
             JOIN anime a ON p.anime_id = a.id
             JOIN product_type pt ON p.product_type_id = pt.id
-            WHERE p.is_available = true;
+            WHERE p.is_available = true
         """;
         return jdbc.queryForList(query);
     }
 
-    public List<Map<String,Object>> listAll() {
+    public List<Map<String, Object>> listAll() {
         String query = """
             SELECT 
                 p.id,
@@ -192,10 +206,12 @@ public class ProductDAO {
                 p.product_type_id,
                 p.anime_id,
                 a.name AS anime_name,
-                pt.name AS product_type_name
+                a.slug AS anime_slug,
+                pt.name AS product_type_name,
+                pt.slug AS product_type_slug
             FROM product p
             JOIN anime a ON p.anime_id = a.id
-            JOIN product_type pt ON p.product_type_id = pt.id;
+            JOIN product_type pt ON p.product_type_id = pt.id
         """;
         return jdbc.queryForList(query);
     }

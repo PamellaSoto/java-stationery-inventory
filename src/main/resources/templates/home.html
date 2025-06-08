@@ -9,8 +9,8 @@
     <title>Moon Stationery | 月の文房具 | Kawaii & Anime-Inspired Supplies | Order Now!</title>
 </head>
 <body>  
-    
-    <main class="flex--row">
+    <div th:replace="~{fragments/header :: header}">Header</div>
+    <main class="home flex--row">
         <aside th:replace="~{fragments/filter :: filter}">Filter menu</aside>
         <section class="home__content flex--column">
             <div class="home--banner">
