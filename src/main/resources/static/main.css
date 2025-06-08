@@ -1,10 +1,5 @@
 /*  Imports and variables */
 @import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap');
-@import url("./css/home.css");
-@import url("./css/dashboard.css");
-@import url("./css/product-form.css");
-@import url("./css/product-page.css");
-@import url("./css/project-info.css");
 
 :root {
   /* Color palette */
@@ -111,16 +106,10 @@ main {
     border-top: 2px solid var(--color-pink);
     padding: var(--space-4) 0px 0px;
 }
-
 .layout {
     margin: var(--space-5) 0px var(--space-6);
 }
-.category__page {
-  width: 100%;
-}
-.category__message {
-  position: absolute;
-}
+
 /* Buttons */
 .button {
   cursor: pointer;
@@ -340,4 +329,239 @@ footer {
 text-decoration: underline;
 color: var(--color-dark-gray);
 align-self: flex-end;
+}
+
+/* Header */
+.header--dashboard {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--color-gray);
+  align-items: flex-end;
+  padding: var(--space-4) 0px;
+}
+.header--dashboard img {
+  width: 400px;
+}
+.header--dashboard ul {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+.header--dashboard ul li {
+  font-size: 0.7em;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+.header--dashboard a, .header--dashboard a:visited {
+  color: var(--color-black);
+}
+
+.header--dashboard ul li:hover, .header--dashboard a:hover {
+  color: var(--color-pink);
+}
+
+
+/* Dashboard Page */
+.dashboard--wrapper {
+  padding: 0px var(--space-4);
+  margin: var(--space-5);
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.14);
+  border-radius: 8px;
+  background-color: var(--color-white);
+}
+.dashboard--nav { align-items: center; }
+.dashboard__inventory { 
+  display:inline; 
+  font-size: calc(var(--font-lg) * 1.2); 
+}
+.dashboard__counter { 
+  display:inline; 
+  font-size: var(--font-base); 
+}
+
+.dashboard__actions {
+  gap: var(--space-4);
+}
+
+#category-type-form, #anime-title-form { font-size: var(--font-base); }
+
+#categories-menu {
+  z-index: 8;
+  position: absolute;
+  top: 85px;
+  right: 215px;
+  min-width: 300px;
+  max-width: 300px;
+  background-color: var(--color-white);
+  padding: var(--space-3);
+  border: var(--border-default);
+  box-shadow: 1px 1px 4px #00000021;
+  border-radius: var(--space-1);
+}
+  .categories__button {
+    font-size: var(--font-sm);
+    width: -webkit-fill-available;
+    margin: var(--space-2) 0px var(--space-1);
+}
+  .categories__button--submit {
+    margin-left: var(--space-2);
+}
+
+.categories__anime ul, .categories__type ul {
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-light-pink);
+  max-height: 100px;
+}
+  .categories__title {
+    font-size: var(--font-sm);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: var(--space-3);
+    border-top: 1px solid var(--color-light-gray);
+    padding-top: var(--space-1);
+    color: var(--color-pink);
+}
+  .categories__item {
+    font-size: var(--font-xs);
+    padding: var(--space-1);
+}
+
+/* Dashboard Table */
+.dashboard--table {
+  margin-top: var(--space-4);
+  table-layout: auto;
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  border-spacing: 0 var(--space-2);
+}
+  .dashboard--table thead {
+    font-size: var(--font-sm);
+    color: var(--color-gray);
+}
+  .dashboard--table th {
+    padding: 0 var(--space-1);
+    height: 60px;
+    vertical-align: middle; 
+    border-top: 1px solid var(--color-light-gray);
+    border-bottom: 1px solid var(--color-light-gray);
+  }
+  .dashboard--table td {
+    padding: var(--space-1);
+    height: 60px;
+    vertical-align: middle;
+    font-weight: 600; 
+    border-top: 1px solid var(--color-light-gray);
+    border-bottom: 1px solid var(--color-light-gray);
+}
+  .table--row {
+    overflow: hidden;
+    font-size: var(--font-sm);
+    color: var(--color-dark-gray);
+    transition: background 0.2s ease;
+}
+    .table--row:hover {
+      background-color: #eeeeee97;
+}
+.row--img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #e5e7eb;
+  margin-right: var(--space-2);
+}
+.row--title { 
+  display: flex;
+  align-items: center;
+}
+.row--stock.negative { color: var(--color-dark-pink); }
+
+.row--switch {
+  text-align: center;
+}
+  .row--switch .switch {
+    position: relative;
+    display: inline-block;
+    width: 39px;
+    height: 13px;
+    transform: translateY(7px);
+}
+  .row--switch .switch input {
+    opacity: 0; width: 0; height: 0;
+}
+  .row--switch .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; right: 0;
+    bottom: 0; left: 0;
+    background-color: var(--color-light-gray);
+    transition: 0.3s;
+    border-radius: 34px;
+}
+  .row--switch .slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: -1px;
+    bottom: -2px;
+    background-color: var(--color-gray);
+    transition: 0.3s;
+    border-radius: 50%;
+}
+    .row--switch .switch input:checked + .slider {
+      background-color: var(--color-light-pink);
+}
+    .row--switch .switch input:checked + .slider:before {
+      transform: translateX(23px);
+      background-color: var(--color-dark-pink);
+}
+
+.row--actions { position: relative; }
+  .row--actions i {
+    color: var(--color-gray);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 6px;
+    transition: color 0.2s ease;
+}
+  .row--actions i:hover {
+    color: var(--color-dark-pink);
+}
+
+#edit-product-modal, #delete-product-modal {
+  z-index: 9;
+  position: absolute;
+  right: 50%;
+  width: 330px;
+  padding: var(--space-3);
+  background-color: var(--color-white);
+  border: 2px solid var(--color-light-gray);
+  border-radius: var(--space-2);   
+  text-align: right;
+  box-shadow: 0px 2px 5px #00000050;
+}
+#edit-product-modal form, #delete-product-modal form {
+  margin-top: var(--space-2);
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  font-size: var(--font-md);
+}
+
+.dashboard--table th:nth-child(2),
+.dashboard--table td:nth-child(2) {
+  width: 700px; /* Image miniature and product name column */
+}
+
+
+
+.category__page {
+  width: 100%;
+}
+.category__message {
+  position: absolute;
 }

@@ -16,6 +16,16 @@ public class ProductDAO {
     @Autowired
     private DataSource dataSource;
     private JdbcTemplate jdbc;
+    private String PRODUCT_QUERY = """
+                    p.*,
+                    a.name AS anime_name,
+                    a.slug AS anime_slug,
+                    pt.name AS product_type_name,
+                    pt.slug AS product_type_slug
+                FROM product p
+                JOIN anime a ON p.anime_id = a.id
+                JOIN product_type pt ON p.product_type_id = pt.id
+                """;
 
     @PostConstruct
     @SuppressWarnings("unused")
@@ -83,23 +93,7 @@ public class ProductDAO {
 
     public Product getProductById(Integer id) {
         String query = """
-            SELECT 
-                p.id,
-                p.product_name,
-                p.product_description,
-                p.price,
-                p.stock,
-                p.image_url,
-                p.is_available,
-                p.anime_id,
-                p.product_type_id,
-                a.name AS anime_name,
-                a.slug AS anime_slug,
-                pt.name AS product_type_name,
-                pt.slug AS product_type_slug
-            FROM product p
-            JOIN anime a ON p.anime_id = a.id
-            JOIN product_type pt ON p.product_type_id = pt.id
+            SELECT """ + PRODUCT_QUERY + """
             WHERE p.id = ?
         """;
         return jdbc.queryForObject(query, (rs, rowNum) -> {
@@ -123,71 +117,23 @@ public class ProductDAO {
 
     public List<Map<String, Object>> getProductsByCategory(Integer categoryId) {
         String query = """
-            SELECT 
-                p.id,
-                p.product_name,
-                p.product_description,
-                p.price,
-                p.stock,
-                p.image_url,
-                p.is_available,
-                p.product_type_id,
-                p.anime_id,
-                a.name AS anime_name,
-                a.slug AS anime_slug,
-                pt.name AS product_type_name,
-                pt.slug AS product_type_slug
-            FROM product p
-            JOIN anime a ON p.anime_id = a.id
-            JOIN product_type pt ON p.product_type_id = pt.id
-            WHERE p.product_type_id = ? AND p.is_available = true
+            SELECT """ + PRODUCT_QUERY + """
+            WHERE p.id = ?
         """;
         return jdbc.queryForList(query, categoryId);
     }
 
     public List<Map<String, Object>> getProductsByAnime(Integer animeId) {
         String query = """
-            SELECT 
-                p.id,
-                p.product_name,
-                p.product_description,
-                p.price,
-                p.stock,
-                p.image_url,
-                p.is_available,
-                p.product_type_id,
-                p.anime_id,
-                a.name AS anime_name,
-                a.slug AS anime_slug,
-                pt.name AS product_type_name,
-                pt.slug AS product_type_slug
-            FROM product p
-            JOIN anime a ON p.anime_id = a.id
-            JOIN product_type pt ON p.product_type_id = pt.id
-            WHERE p.anime_id = ? AND p.is_available = true
+            SELECT """ + PRODUCT_QUERY + """
+            WHERE p.id = ?
         """;
         return jdbc.queryForList(query, animeId);
     }
 
     public List<Map<String, Object>> listAllAvailable() {
         String query = """
-            SELECT 
-                p.id,
-                p.product_name,
-                p.product_description,
-                p.price,
-                p.stock,
-                p.image_url,
-                p.is_available,
-                p.product_type_id,
-                p.anime_id,
-                a.name AS anime_name,
-                a.slug AS anime_slug,
-                pt.name AS product_type_name,
-                pt.slug AS product_type_slug
-            FROM product p
-            JOIN anime a ON p.anime_id = a.id
-            JOIN product_type pt ON p.product_type_id = pt.id
+            SELECT """ + PRODUCT_QUERY + """
             WHERE p.is_available = true
         """;
         return jdbc.queryForList(query);
@@ -195,23 +141,8 @@ public class ProductDAO {
 
     public List<Map<String, Object>> listAll() {
         String query = """
-            SELECT 
-                p.id,
-                p.product_name,
-                p.product_description,
-                p.price,
-                p.stock,
-                p.image_url,
-                p.is_available,
-                p.product_type_id,
-                p.anime_id,
-                a.name AS anime_name,
-                a.slug AS anime_slug,
-                pt.name AS product_type_name,
-                pt.slug AS product_type_slug
-            FROM product p
-            JOIN anime a ON p.anime_id = a.id
-            JOIN product_type pt ON p.product_type_id = pt.id
+            SELECT """ + PRODUCT_QUERY + """
+            WHERE p.id = ?
         """;
         return jdbc.queryForList(query);
     }
