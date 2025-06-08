@@ -19,4 +19,17 @@ function systemMessages() {
         }, 5000);
     });
 }
-window.addEventListener('DOMContentLoaded', systemMessages);
+function emptyContent() {
+    const products = document.querySelectorAll('.product');
+    console.log(products)
+    const noResultMsg = document.querySelector('#message--noresult');
+
+    if (products.length === 0) {
+        noResultMsg.classList.remove('hidden');
+    }
+}
+function loadEvents() {
+    systemMessages();
+    emptyContent();
+}
+window.addEventListener('DOMContentLoaded', loadEvents);

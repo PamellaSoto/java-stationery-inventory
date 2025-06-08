@@ -3,19 +3,18 @@
     <ul>
         <li th:each="anime : ${animes}">
             <i class="icon fa-solid fa-caret-right"></i>
-            <a class="underline" 
-            th:href="@{'/anime/' + ${anime['slug']}}"
-            th:text="${anime['name']}"></a>
+            <a class="underline filter--alt__link"
+               th:text="${anime.name}"
+               th:href="@{/anime/{slug}(slug=${anime.slug})}"></a>
         </li>
     </ul>
-
     <h2>Categories</h2>
     <ul>
         <li th:each="type : ${productTypes}">
             <i class="icon fa-solid fa-caret-right"></i>
-            <a class="underline" 
-            th:href="@{'/category/' + ${type['slug']}}" 
-            th:text="${type['name']}"></a>
+            <a class="underline filter--alt__link"
+               th:text="${type.name}"
+               th:href="@{/category/{slug}(slug=${type.slug})}"></a>
         </li>
     </ul>
 </aside>

@@ -113,9 +113,14 @@ main {
 }
 
 .layout {
-    margin: var(--space-4) 0px var(--space-6);
+    margin: var(--space-5) 0px var(--space-6);
 }
-
+.category__page {
+  width: 100%;
+}
+.category__message {
+  position: absolute;
+}
 /* Buttons */
 .button {
   cursor: pointer;
@@ -169,7 +174,7 @@ main {
   height: fit-content;
   max-height: 100vh;
   min-width: 240px;
-  overflow-y: auto;
+  overflow: hidden;
   padding-right: var(--space-4);
   margin-left: var(--space-3);
 }
@@ -183,6 +188,15 @@ main {
 }
 .filter ul {
   margin: var(--space-1) 0px var(--space-4) var(--space-3);
+}
+.filter button, .filter a {
+  font-size: 15px;
+}
+.filter i {
+  font-size: var(--font-xs);
+}
+.filter--alt__link {
+  color: var(--color-black);
 }
 
 
@@ -269,7 +283,7 @@ footer {
         padding: 0px var(--space-1);
         border: var(--border-default);
         color: var(--color-dark-gray);
-        font-size: var(--font-sm);
+        font-size: var(--font-base);
 }
         .info__categories a:hover {
         color: var(--color-pink);

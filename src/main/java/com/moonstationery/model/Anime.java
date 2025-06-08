@@ -33,7 +33,8 @@ public class Anime {
     public void setName(String name) { 
         this.name = name; 
     }
-    public String setSlug() { 
-        return slug; 
+    public void setSlug(String slug) {
+        this.slug = slug;
     }
+
 }

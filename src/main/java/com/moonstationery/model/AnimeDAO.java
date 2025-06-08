@@ -42,10 +42,12 @@ public class AnimeDAO {
             Anime a = new Anime();
             a.setId(rs.getInt("id"));
             a.setName(rs.getString("name"));
+            a.setSlug(rs.getString("slug"));
             return a;
         }, id);
         return animes.isEmpty() ? null : animes.get(0);
     }
+
 
     public Anime getAnimeBySlug(String slug) {
         String query = "SELECT * FROM anime WHERE slug = ?";
@@ -53,10 +55,12 @@ public class AnimeDAO {
             Anime a = new Anime();
             a.setId(rs.getInt("id"));
             a.setName(rs.getString("name"));
+            a.setSlug(rs.getString("slug"));
             return a;
         }, slug);
         return animes.isEmpty() ? null : animes.get(0);
     }
+
 
     public List<Map<String, Object>> listAll() {
         return jdbc.queryForList("SELECT id, name, slug FROM anime");

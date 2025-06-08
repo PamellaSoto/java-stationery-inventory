@@ -1,9 +1,9 @@
 <aside class="filter" th:fragment="filter">
-        <h2>Anime Series</h2>
+    <h2>Anime Series</h2>
     <ul>
         <li th:each="anime : ${animes}">
             <i class="icon fa-solid fa-caret-right"></i>
-            <button class="underline" 
+            <button class="underline filter__item" 
                     th:text="${anime.name}"
                     th:attr="data-anime-filter-id=${anime.id}"
                     ></button>
@@ -13,7 +13,7 @@
     <ul>
         <li th:each="type : ${productTypes}">
             <i class="icon fa-solid fa-caret-right"></i>
-            <button class="underline" 
+            <button class="underline filter__item" 
                     th:text="${type.name}"
                     th:attr="data-category-filter-id=${type.id}"
                     ></button>

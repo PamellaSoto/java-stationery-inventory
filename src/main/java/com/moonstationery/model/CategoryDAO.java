@@ -42,6 +42,7 @@ public class CategoryDAO {
             Category c = new Category();
             c.setId(rs.getInt("id"));
             c.setName(rs.getString("name"));
+            c.setSlug(rs.getString("slug"));
             return c;
         }, id);
         return categories.isEmpty() ? null : categories.get(0);
@@ -53,6 +54,7 @@ public class CategoryDAO {
             Category c = new Category();
             c.setId(rs.getInt("id"));
             c.setName(rs.getString("name"));
+            c.setSlug(rs.getString("slug"));
             return c;
         }, slug);
         return categories.isEmpty() ? null : categories.get(0);

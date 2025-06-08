@@ -17,7 +17,7 @@
 
     <main class="layout flex--row">
         <aside th:replace="~{fragments/filter-alt :: filter-alt}">Filter menu</aside>
-        <div>
+        <div class="category__page">
             <nav class="breadcrumbs">
                 <a th:href="@{/}">Home</a> &#47;
                 <a th:href="@{/anime/{id}(id=${anime.id})}" th:text="${anime.name}">Anime</a>
@@ -47,11 +47,14 @@
                         </div>
                     </div>
                 </article>
+                <div id="message--noresult" class="category__message hidden">
+                    <p>No matching products found. :(</p>
+                    <a class="underline" th:href="@{/}" >GO BACK TO HOME PAGE</a>
+                </div>
             </section>
         </div>
     </main>
     <div th:replace="~{fragments/footer :: footer}">Footer</div>
     <script th:src="@{/js/utilities.js}"></script>
-    <script th:src="@{/js/filter.js}"></script>
 </body>
 </html>
