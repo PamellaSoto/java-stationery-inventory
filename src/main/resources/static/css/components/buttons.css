@@ -1,0 +1,45 @@
+/* Buttons */
+.button {
+    cursor: pointer;
+    text-transform: uppercase;
+    border-radius: var(--space-1);
+    letter-spacing: 0.06em;
+    font-weight: 700;
+    transition: all ease 0.3s;
+    font-size: var(--font-xs);
+}
+
+/* Buttons Padding */
+.button--base { 
+    padding: var(--space-2) 0.8rem;    
+}
+
+.button--small { 
+    padding: var(--space-1) var(--space-3); 
+}
+
+/* Buttons Colors */
+.button--gray {
+    background-color: var(--color-light-gray);
+    color: var(--color-dark-gray);
+}
+    .button--gray:hover {
+        background-color: var(--color-gray);
+}
+
+.button--light-pink {
+    background-color: var(--color-light-pink);
+    color: var(--color-dark-gray);
+}
+    .button--light-pink:hover {
+        filter: grayscale(100%);
+}
+
+.button--pink {
+    background-color: var(--color-pink);
+    color: var(--color-white);
+}
+    .button--pink:hover {
+        background-color: var(--color-dark-pink);
+        color: var(--color-white);
+}

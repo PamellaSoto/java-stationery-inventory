@@ -21,17 +21,33 @@
     <div class="categories__anime">
         <h2 class="categories__title">Anime Titles</h2>
         <ul>
+<<<<<<< HEAD
         <li
             class="categories__item flex--row"
             th:each="anime : ${animes}"
             th:text="${anime.name}"
             th:attr="data-id=${anime.id}">
         </li>
+=======
+            <li class="categories__item flex--row"
+                th:each="anime : ${animes}"
+                th:attr="data-id=${anime.id}">
+                <span th:text="${anime.name}"></span>
+                <form th:action="@{'/anime/' + ${anime.id} + '/delete'}" 
+                    method="post"
+                    th:object="${anime}" class="delete-category__form">
+                    <button type="submit" class="delete-category__button">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </form>
+            </li>
+>>>>>>> cc1b82b (feat: update add category logic and implement delete category feature)
         </ul>
     </div>
     <div class="categories__type">
         <h2 class="categories__title">Product Types</h2>
         <ul>
+<<<<<<< HEAD
         <li
             class="categories__item flex--row"
             th:each="type : ${productTypes}"
@@ -39,5 +55,19 @@
             th:attr="data-id=${type.id}">
         </li>
         </ul>
+=======
+            <li class="categories__item flex--row"
+            th:each="type : ${productTypes}"
+            th:attr="data-id=${type.id}">
+            <span th:text="${type.name}"></span>
+            <form th:action="@{'/category/' + ${type.id} + '/delete'}" 
+                  method="post"
+                  th:object="${category}" class="delete-category__form">
+                <button type="submit" class="delete-category__button">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </form>
+        </li>
+>>>>>>> cc1b82b (feat: update add category logic and implement delete category feature)
     </div>
     </div>

@@ -1,0 +1,86 @@
+.products--grid {
+display: grid;
+grid-template-columns: repeat(5, 1fr);
+grid-gap: var(--space-3);
+justify-items: center;
+}
+
+.product { 
+  cursor: pointer;
+  position: relative;
+  max-width: 230px;
+  background-color: var(--color-white);
+  padding: var(--space-2);
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  border: var(--border-default);
+}
+
+  .product__wishlist {
+    z-index: 99;
+    position: absolute;
+    top: var(--space-2);
+    right: var(--space-2);
+    background-color: var(--color-white);
+    border-radius: 100%;
+    border: var(--border-default);
+    text-align: center;
+    padding: var(--space-2);
+    color: #e1e1e1;
+}
+    .product__wishlist:hover {
+      color: var(--color-pink);
+}
+  .product__image {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      margin-bottom: var(--space-3);
+}
+    .product__image:hover, .product__image.out {
+        filter: opacity(0.6);
+}
+
+  .product__categories {
+      justify-content: flex-start !important;
+      gap: var(--space-1);
+      margin-bottom: var(--space-2);
+  }
+      .product__categories p {
+          padding: 0px var(--space-1);
+          border: var(--border-default);
+          color: var(--color-dark-gray);
+          font-size: var(--space-3);
+}
+
+  .product__title {
+      color: var(--color-dark-gray);
+      font-size: var(--font-base);
+      display: -webkit-box;
+      line-break: anywhere;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+}
+  .product__out-stock {
+    position: absolute;
+    padding: var(--space-2);
+    width: 100%;
+    background-color: var(--color-gray);
+    text-align: center;
+    color: var(--color-white);
+
+}
+  .product .flex--row:last-child {
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--space-3);
+  }
+  .product__price {
+      font-size: var(--font-lg);
+      font-weight: 600;
+      color: var(--color-pink);
+}
+  

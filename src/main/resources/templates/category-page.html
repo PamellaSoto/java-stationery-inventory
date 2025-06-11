@@ -16,14 +16,24 @@
 <body>
     <div th:replace="~{fragments/header :: header}">Header</div>
 
+<<<<<<< HEAD
     <main class="layout flex--row">
         <aside th:replace="~{fragments/filter-alt :: filter-alt}">Filter menu</aside>
         <div class="category__page">
+=======
+    <main class="layout--margin flex--row">
+        <aside th:replace="~{fragments/filter-alt :: filter-alt}">Filter menu</aside>
+        <div class="category-page">
+>>>>>>> cc1b82b (feat: update add category logic and implement delete category feature)
             <nav class="breadcrumbs">
                 <a th:href="@{/}">Home</a> &#47;
                 <a th:href="@{/category/{id}(id=${category.id})}" th:text="${category.name}">Anime</a>
             </nav>
+<<<<<<< HEAD
             <h2 class="category__title" th:text="${category.name}">Category Name</h2>
+=======
+            <h2 class="category-page__title" th:text="${category.name}">Category Name</h2>
+>>>>>>> cc1b82b (feat: update add category logic and implement delete category feature)
             <section class="border--top--pink products--grid" id="product-content">
                 <article class="product"
                     th:each="product : ${products}"

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*  Imports and variables */
 @import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap');
 
@@ -385,6 +386,31 @@ align-self: flex-end;
 }
 
 #category-type-form, #anime-title-form { font-size: var(--font-base); }
+=======
+/* CSS Imports */
+@import url(./css/base.css);
+@import url(./css/utilities.css);
+@import url(./css/variables.css);
+
+/* Components */
+@import url(./css/components/buttons.css);
+@import url(./css/components/dashboard-table.css);
+@import url(./css/components/filters.css);
+@import url(./css/components/footer.css);
+@import url(./css/components/forms.css);
+@import url(./css/components/headers.css);
+@import url(./css/components/modals.css);
+@import url(./css/components/products-grid.css);
+@import url(./css/components/system-messages.css);
+
+/* Pages */
+@import url(./css/pages/about-project.css);
+@import url(./css/pages/category-page.css);
+@import url(./css/pages/dashboard.css);
+@import url(./css/pages/home.css);
+@import url(./css/pages/product-page.css);
+
+>>>>>>> cc1b82b (feat: update add category logic and implement delete category feature)
 
 #categories-menu {
   z-index: 8;
@@ -408,12 +434,17 @@ align-self: flex-end;
     margin-left: var(--space-2);
 }
 
+<<<<<<< HEAD
 .categories__anime ul, .categories__type ul {
+=======
+.category-page ul, .category-page ul {
+>>>>>>> cc1b82b (feat: update add category logic and implement delete category feature)
   overflow-y: scroll;
   scrollbar-width: thin;
   scrollbar-color: var(--color-light-pink);
   max-height: 100px;
 }
+<<<<<<< HEAD
   .categories__title {
     font-size: var(--font-sm);
     text-transform: uppercase;
@@ -427,6 +458,9 @@ align-self: flex-end;
     font-size: var(--font-xs);
     padding: var(--space-1);
 }
+=======
+  
+>>>>>>> cc1b82b (feat: update add category logic and implement delete category feature)
 
 /* Dashboard Table */
 .dashboard--table {
@@ -559,9 +593,12 @@ align-self: flex-end;
 
 
 
+<<<<<<< HEAD
 .category__page {
   width: 100%;
 }
 .category__message {
   position: absolute;
 }
+=======
+>>>>>>> cc1b82b (feat: update add category logic and implement delete category feature)

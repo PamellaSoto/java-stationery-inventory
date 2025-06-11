@@ -1,0 +1,58 @@
+/* Main Header */
+.header {
+    justify-content: space-between;
+    align-items: center; 
+    position: relative;
+    padding-left: var(--space-3);
+}
+.header:last-child { 
+    padding: var(--space-4) 0px;
+}
+.nav {
+    gap: 2px; 
+}
+.nav__item {
+    cursor: pointer;
+    display: inline-block;
+    background-color: var(--color-light-gray);
+    padding: var(--space-1) var(--space-3);
+    color: var(--color-black);
+    text-decoration: none;
+}
+    .nav__item:hover {
+        background-color: var(--color-lighter-gray);
+        color: var(--color-pink);
+}
+
+/* Dashboard Header */
+
+.header--dashboard {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--color-gray);
+    align-items: flex-end;
+    padding: var(--space-4) 0px;
+}
+  
+.header--dashboard ul {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+.header--dashboard ul li {
+    font-size: 0.7em;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.header--dashboard a, .header--dashboard a:visited {
+    color: var(--color-black);
+}
+  
+.header--dashboard ul li:hover, .header--dashboard a:hover {
+    color: var(--color-pink);
+}
+  
+  

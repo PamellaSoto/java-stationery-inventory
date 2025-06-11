@@ -1,0 +1,77 @@
+/* (Default Header) Login */
+#login-form {
+    top: 40px; right: 175px;
+    padding: var(--space-4) var(--space-3);
+    width: 300px;
+}
+
+#login-form.flex--column, #login-form .flex--row {
+    gap: var(--space-3);
+}
+
+.login__input {
+    justify-content: flex-start !important;
+    align-items: center;
+    padding: var(--space-1) var(--space-2) !important;
+}
+
+#login-email, #login-password {
+    width: 230px;
+    font-size: var(--font-base);
+    color: var(--color-dark-gray);
+}
+
+#login-form i {
+    color: var(--color-gray);
+}
+
+.login__submit {
+    align-items: center;
+    justify-content: space-between;
+    font-size: var(--font-lg) !important;
+    width: 100%;
+}
+
+.form__link {
+    font-size: var(--font-xs);
+    color: var(--color-dark-gray);
+}   
+
+
+/* Search bar */
+.searchbar {
+    align-self: flex-end;
+    padding-right: var(--space-3);
+    }
+.searchbar .form__input {
+    border-radius: var(--space-1) 0px 0px var(--space-1) !important;
+    width: 340px !important;
+    min-width: 100px;
+}
+.searchbar__button {
+    border-radius: 0px var(--space-1) var(--space-1) 0px !important;
+    font-size: var(--font-base) !important;
+}
+
+/* (Dashboard) Add Category */
+.product-form__header {
+  align-items: flex-end;
+  gap: var(--space-2);
+  border-bottom: 1px solid var(--color-gray);
+  padding-bottom: var(--space-4);
+}
+  .product-form__header img {
+    width: 350px;
+}
+  .product-form__header a, 
+  .product-form__header a:link,
+  .product-form__header a:visited {
+    color: var(--color-pink);
+    font-weight: 600;
+}
+
+/* (Dashboard) Delete Category */
+
+/* (Dashboard) Add Product */
+
+/* (Dashboard) Edit Product */

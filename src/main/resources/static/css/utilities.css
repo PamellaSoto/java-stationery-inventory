@@ -1,0 +1,50 @@
+/* Utility classes for styles */
+.hidden {
+    display: none !important;
+}
+
+a:hover {
+    color: var(--color-pink);
+}
+
+.icon {
+    margin-right: var(--space-2);
+}
+
+.underline:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.border--top--pink {
+    border-top: 2px solid var(--color-pink);
+    padding: var(--space-4) 0px 0px;
+}
+
+.flex--column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex--row {
+    display: flex;
+    flex-direction: row;
+}
+    main.flex--row {
+        gap: var(--space-4);
+}
+
+.layout--margin {
+    margin: var(--space-5) 0px var(--space-6);
+}
+
+.modal {
+    z-index: 999;
+    position: absolute;
+    border: var(--border-default);
+    background-color: var(--color-white);
+    /* background-color: var(--color-lighter-gray); */
+    border-radius: var(--space-1);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    transition: all 1s ease-in-out;
+}

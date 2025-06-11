@@ -1,0 +1,39 @@
+.filter {
+    align-self: flex-start;
+    position: sticky;
+    top: var(--space-4);
+    height: fit-content;
+    max-height: 100vh;
+    min-width: 240px;
+    overflow: hidden;
+    padding-right: var(--space-4);
+    margin-left: var(--space-3);
+}
+
+.filter h2 {
+    width: 100%;
+    padding: var(--space-2) var(--space-3);
+    background-color: var(--color-dark-gray);
+    font-size: var(--font-base);
+    color: var(--color-lighter-gray);
+    letter-spacing: 1px;
+}
+
+.filter ul {
+    margin: var(--space-2) 0px var(--space-4) var(--space-3);
+}
+.filter li {
+    margin-bottom: var(--space-1);
+}
+
+.filter button, .filter a {
+    font-size: var(--font-base);
+}
+
+.filter i {
+    font-size: var(--font-xs);
+}
+
+.filter--alt__link {
+    color: var(--color-black);
+}

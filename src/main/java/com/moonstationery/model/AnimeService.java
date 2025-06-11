@@ -2,6 +2,7 @@ package com.moonstationery.model;
 
 import java.util.List;
 import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,11 +13,19 @@ public class AnimeService {
     private AnimeDAO animeDAO;
 
     public boolean insertAnime(Anime anime) {
+        // First letter must be always capitalized
+        String animeTitle = anime.getName();
+        animeTitle = animeTitle.substring(0, 1).toUpperCase() + animeTitle.substring(1).toLowerCase();
+        anime.setName(animeTitle);
         if (animeDAO.existsByName(anime.getName())) {
             return false;
         }
         animeDAO.insertAnime(anime);
         return true;
+    }
+
+    public boolean deleteAnime(Integer id) {
+        return animeDAO.deleteAnime(id);
     }
 
     public Anime getAnimeById(Integer id) {

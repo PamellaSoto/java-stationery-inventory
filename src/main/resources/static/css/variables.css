@@ -1,0 +1,32 @@
+/*  Imports and variables */
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap');
+
+:root {
+  /* Color palette */
+  --color-dark-pink: #c00e6a;
+  --color-pink: #e60076;
+  --color-light-pink: #fccee8;
+  --color-baby-blue: #b0eaef;
+  --color-dark-gray: #353539;
+  --color-gray: #8f8f8f;
+  --color-light-gray: #EFEFEF;
+  --color-lighter-gray: #fafbfb;
+  --color-white: #ffffff;
+  --color-black: #09090b;
+  --border-default: 1px solid #e1e1e1;
+  /* Typography */
+  --ff: "Zen Kaku Gothic New", sans-serif;
+  --font-xs: 0.65em;
+  --font-sm: 0.85em;
+  --font-base: 0.95em;
+  --font-md: 1.2em;
+  --font-lg: 1.25em;
+
+  /* Spacing */
+  --space-1: 0.25rem; /* 4px */
+  --space-2: 0.5rem; /* 8px */
+  --space-3: 0.75rem; /* 12px */
+  --space-4: 1.5rem; /* 24px */
+  --space-5: 3rem; /* 48px */
+  --space-6: 6rem; /* 96px */
+}

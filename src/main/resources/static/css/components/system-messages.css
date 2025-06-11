@@ -1,0 +1,63 @@
+/* Search results */
+#message--noresult, #message--result {
+  width: 100%;
+  text-align: center;
+  margin-bottom: var(--space-6);
+}
+#message--noresult button, #message--result button {
+  width: 100%;
+  background-color: var(--color-light-gray);
+  padding: var(--space-1);
+  font-size: var(--font-base);
+}
+#message--noresult p {
+  font-size: var(--font-md);
+  margin-bottom: var(--space-3);
+}
+#message--noresult a {
+    color: var(--color-black);
+}
+
+/* (Dashboard) System Messages */
+.message--container {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70vw;
+    z-index: 998;
+    pointer-events: none;
+}
+
+.message {
+    width: 100%;
+    top: 0; left: 0;
+    padding: 1rem var(--space-3);
+    opacity: 0;
+    transform: translateY(-100%);
+    pointer-events: auto;
+  }
+
+.message__label {
+    font-weight: 500;
+    color: var(--color-pink);
+    font-size: var(--font-sm);
+}
+
+.message__text {
+    font-weight: 600;
+    font-size: var(--font-lg);
+}
+
+.message--success {
+    color: var(--color-pink);
+}
+
+.message--error {
+    color: var(--color-pink);
+}
+
+.message.show {
+    transform: translateY(0);
+    opacity: 1;
+}

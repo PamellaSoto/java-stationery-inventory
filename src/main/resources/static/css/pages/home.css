@@ -1,0 +1,68 @@
+/* Banner */
+.banner {
+  position: relative;
+}
+.banner img {
+  width: 100%;
+}
+.banner--layout {
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  padding: 0px 20%;
+  text-align: center;
+  gap: var(--space-4);
+}
+.banner--layout h1 {    
+    font-size: 1.75rem;
+    font-weight: 800;
+    line-height: 1.3;
+    color: var(--color-pink);
+}
+.banner--layout p {
+  font-size: var(--font-md);
+  margin-bottom: var(--space-3);
+}
+.banner--layout a {
+  font-size: var(--font-base) !important;
+  padding: var(--space-2) var(--space-4) !important;
+}
+
+/* Search by Anime Title */
+.carousel--wrapper {
+  position: relative;
+  gap: var(--space-3);
+  background-color: var(--color-light-gray);
+  margin: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  justify-content: center;
+}
+.carousel--wrapper > button {
+  cursor: pointer;
+  color: var(--color-gray);
+  font-size: var(--font-md);
+}
+.carousel--overflow  {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+.featured-categories {
+  gap: var(--space-4);
+  width: fit-content;
+}
+.featured-categories__item {
+  background-color: var(--color-lighter-gray);
+  font-size: var(--font-sm) !important;
+  text-align: center;
+  width: 250px;
+  padding: 1rem 0px;
+  border-radius: 0px !important;
+  border: 2px solid var(--color-lighter-gray);
+}
+  .featured-categories__item:hover {
+      filter: brightness(105%);
+      border: 2px solid var(--color-pink);
+}

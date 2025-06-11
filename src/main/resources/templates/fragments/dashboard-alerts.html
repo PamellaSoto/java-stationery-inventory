@@ -1,0 +1,56 @@
+<div class="message--container" th:fragment="dashboard-alerts">
+        <div class="message modal" th:if="${addProductError}">
+          <p class="message__label">System update: Action failed. Please try again!</p>
+          <p class="message__text message--error" th:text="${addProductError}"></p>
+        </div>
+
+        <div class="message modal" th:if="${animeError}">
+          <p class="message__label">System update: Action failed. Please try again!</p>
+          <p class="message__text message--error" th:text="${animeError}"></p>
+        </div>
+
+        <div class="message modal" th:if="${categoryError}">
+          <p class="message__label">System update: Action failed. Please try again!</p>
+          <p class="message__text message--error" th:text="${categoryError}"></p>
+        </div>
+
+        <div class="message modal" th:if="${deleteAnimeError}">
+          <p class="message__label">System update: Action failed. Please try again!</p>
+          <p class="message__text message--error" th:text="${deleteAnimeError}"></p>
+        </div>
+
+        <div class="message modal" th:if="${deletedTypeError}">
+          <p class="message__label">System update: Action failed. Please try again!</p>
+          <p class="message__text message--error" th:text="${deletedTypeError}"></p>
+        </div>
+
+        <div class="message modal" th:if="${addProductSuccess}">
+          <p class="message__label">System update: Action succeed!</p>
+          <p class="message__text message--success" th:text="${addProductSuccess}"></p>
+        </div>
+
+        <div class="message modal" th:if="${animeSuccess}">
+          <p class="message__label">System update: Action succeed!</p>
+          <p class="message__text message--success" th:text="${animeSuccess}"></p>
+        </div>
+
+        <div class="message modal" th:if="${categorySuccess}">
+          <p class="message__label">System update: Action succeed!</p>
+          <p class="message__text message--success" th:text="${categorySuccess}"></p>
+        </div>
+
+        <div class="message modal" th:if="${deleteProductSuccess}">
+          <p class="message__label">System update: Action succeed!</p>
+          <p class="message__text message--success" th:text="${deleteProductSuccess}"></p>
+        </div>
+
+        <div class="message modal" th:if="${deleteAnimeSuccess}">
+          <p class="message__label">System update: Action succeed!</p>
+          <p class="message__text message--success" th:text="${deleteAnimeSuccess}"></p>
+        </div>
+
+        <div class="message modal" th:if="${deletedTypeSuccess}">
+          <p class="message__label">System update: Action succeed!</p>
+          <p class="message__text message--success" th:text="${deletedTypeSuccess}"></p>
+        </div>
+      </div>

@@ -1,0 +1,52 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    list-style: none;
+    line-height: 1.5;
+    transition: 0.2s ease-in-out;
+    vertical-align: baseline;
+    box-sizing: border-box;
+    font-family: var(--ff);
+    background-color: transparent;
+    text-decoration: none;
+}
+
+/* Base styles for a lot of elements */
+article, aside, footer, nav, section {
+    display: block;
+}
+
+.logo {
+    width: 420px;
+    height: auto;
+}
+
+body {
+    scroll-behavior: smooth;
+    max-width: 70vw;
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+    background-color: var(--color-lighter-gray);
+}
+
+.form__input {
+    padding: 0px var(--space-2);
+    width: -webkit-fill-available;
+    border-radius: var(--space-1);
+    border: var(--border-default)
+}
+
+.breadcrumbs a, .breadcrumbs span {
+  font-size: var(--font-base);
+  color: var(--color-dark-gray);
+  text-transform: capitalize;  
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
