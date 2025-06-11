@@ -1,62 +1,44 @@
-<div th:fragment="categories-menu" class="hidden" id="categories-menu">
+<div th:fragment="categories-menu" class="modal hidden" id="categories-menu">
     <!-- Anime -->
-    <button class="categories__button button button--small button--light-pink" data-toggle-modal="anime-title-form" >
+    <button class="categories-menu__button button button--small button--light-pink" data-toggle-modal="anime-title-form" >
         Create Anime Title
     </button>
-    <form class="hidden" id="anime-title-form" th:action="@{/category/anime/new}" method="post" th:object="${anime}" >
-        <input class="form__input" type="text" th:field="*{name}" placeholder="Anime title..." required />
-        <input class="categories__button--submit button button--small button--gray" type="submit" value="Add" />
+    <form class="hidden flex--row" id="anime-title-form" th:action="@{/category/anime/new}" method="post" th:object="${anime}" >
+        <input class="categories-menu__input form__input" type="text" th:field="*{name}" placeholder="Anime title..." required />
+        <input class="categories-menu__button--submit button button--small button--gray" type="submit" value="Add" />
     </form>
 
     <!-- Product type -->
-    <button class="categories__button button button--small button--light-pink" data-toggle-modal="category-type-form" >
+    <button class="categories-menu__button button button--small button--light-pink" data-toggle-modal="category-type-form" >
         Create Category
     </button>
-    <form class="hidden" id="category-type-form" th:action="@{/category/type/new}" method="post" th:object="${category}">
-        <input class="form__input" type="text" th:field="*{name}" placeholder="Category name..." required />
-        <input class="categories__button--submit button button--small button--gray" type="submit" value="Add" />
+    <form class="hidden flex--row" id="category-type-form" th:action="@{/category/type/new}" method="post" th:object="${category}">
+        <input class="categories-menu__input form__input" type="text" th:field="*{name}" placeholder="Category name..." required />
+        <input class="categories-menu__button--submit button button--small button--gray" type="submit" value="Add" />
     </form>
 
-    <!-- Categories lists -->
-    <div class="categories__anime">
-        <h2 class="categories__title">Anime Titles</h2>
-        <ul>
-<<<<<<< HEAD
-        <li
-            class="categories__item flex--row"
-            th:each="anime : ${animes}"
-            th:text="${anime.name}"
-            th:attr="data-id=${anime.id}">
-        </li>
-=======
-            <li class="categories__item flex--row"
+    <!-- Categories-menu lists -->
+    <div>
+        <h2>Anime Titles</h2>
+        <ul class="categories-menu__list">
+            <li class="categories-menu__item flex--row"
                 th:each="anime : ${animes}"
                 th:attr="data-id=${anime.id}">
                 <span th:text="${anime.name}"></span>
                 <form th:action="@{'/anime/' + ${anime.id} + '/delete'}" 
                     method="post"
-                    th:object="${anime}" class="delete-category__form">
+                    th:object="${anime}">
                     <button type="submit" class="delete-category__button">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
                 </form>
             </li>
->>>>>>> cc1b82b (feat: update add category logic and implement delete category feature)
         </ul>
     </div>
-    <div class="categories__type">
-        <h2 class="categories__title">Product Types</h2>
-        <ul>
-<<<<<<< HEAD
-        <li
-            class="categories__item flex--row"
-            th:each="type : ${productTypes}"
-            th:text="${type.name}"
-            th:attr="data-id=${type.id}">
-        </li>
-        </ul>
-=======
-            <li class="categories__item flex--row"
+    <div>
+        <h2>Product Types</h2>
+        <ul class="categories-menu__list">
+            <li class="categories-menu__item flex--row"
             th:each="type : ${productTypes}"
             th:attr="data-id=${type.id}">
             <span th:text="${type.name}"></span>
@@ -68,6 +50,5 @@
                 </button>
             </form>
         </li>
->>>>>>> cc1b82b (feat: update add category logic and implement delete category feature)
     </div>
     </div>

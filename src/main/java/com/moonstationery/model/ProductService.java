@@ -34,7 +34,9 @@ public class ProductService {
     public List<Map<String, Object>> getProductsByAnime(Integer animeId) {
         return productDAO.getProductsByAnime(animeId);
     }
-
+    public Integer getInventoryQuantity() {
+        return productDAO.getInventoryQuantity();
+    }
     //For admin-side view only
     public List<Map<String,Object>> listAll(){
         return productDAO.listAll();

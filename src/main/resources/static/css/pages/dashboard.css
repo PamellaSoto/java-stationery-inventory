@@ -1,18 +1,31 @@
+.dashboard {
+  width: 100%;
+}
+
 .dashboard__nav { 
-    align-items: center;
-    justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .nav-inventory { 
-    display:inline; 
-    font-size: calc(var(--font-lg) * 1.2); 
+  display:inline; 
+  font-size: calc(var(--font-lg) * 1.2); 
 }
+
 .inventory-counter { 
-    display:inline; 
-    font-size: var(--font-base); 
+  display:inline; 
+  font-size: var(--font-base); 
+  margin-left: var(--space-3);
 }
   
 .dashboard__actions {
-    gap: var(--space-4);
-    align-items: center;
+  align-items: center;
+  gap: var(--space-4);
+  position: relative;
 }
+
+.dashboard__actions button, .dashboard__actions a {
+  font-size: var(--font-base);
+}
+
+

@@ -1,7 +1,6 @@
 /* Buttons */
 .button {
     cursor: pointer;
-    text-transform: uppercase;
     border-radius: var(--space-1);
     letter-spacing: 0.06em;
     font-weight: 700;

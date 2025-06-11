@@ -22,7 +22,6 @@ public class CategoryDAO {
     private ProductDAO productDAO;
 
     @PostConstruct    
-    @SuppressWarnings("unused")
     private void initialize() {
         jdbc = new JdbcTemplate(dataSource);
     }

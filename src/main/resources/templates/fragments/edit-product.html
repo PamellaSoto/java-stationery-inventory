@@ -1,0 +1,46 @@
+<form class="hidden modal product-form__container flex--column" id="edit-product-modal" th:action="@{/product/{id}/edit(id=${product.id})}" th:object="${product}" method="post" th:fragment="edit-product">
+    <div>
+        <label for="product_name">Product Name:</label> 
+        <input class="form__input" type="text" id="product_name" th:field="*{product_name}" required maxlength="255"/>
+    </div>
+    <div>
+        <label for="image_url">Product Image (URL):</label>
+        <input class="form__input" type="text" id="image_url" th:field="*{image_url}" maxlength="255"/>
+    </div>
+    <div>
+        <label for="product_description">Description:</label>
+        <textarea class="form__input" rows="4" cols="70" id="product_description" th:field="*{product_description}"></textarea>
+    </div>
+    <div>
+        <label for="price">Price (USD):</label>
+        <input class="form__input" type="number" id="price" th:field="*{price}" step="0.01" min="0" required placeholder="0,00"/>
+    </div>
+    <div>
+        <label for="stock">Stock:</label>
+        <input class="form__input" type="number" id="stock" th:field="*{stock}" min="0" required placeholder="0"/>
+    </div>
+    <div>
+        <label for="anime_id">Select an anime title:</label>
+        <select class="form__input" id="anime_id" th:field="*{anime_id}" required>
+        <option th:each="anime : ${animes}" 
+                th:value="${anime.id}" 
+                th:text="${anime.name}">
+        </option>
+    </select>
+    </div>
+    <div>
+        <label for="product_type_id">Select a product type:</label>
+        <select class="form__input" id="product_type_id" th:field="*{product_type_id}" required>
+        <option th:each="type : ${productTypes}" 
+                th:value="${type.id}" 
+                th:text="${type.name}">
+        </option>
+    </select>
+    </div>
+    <div class="flex--row">
+        <div>
+            <label class="product-form__checkbox">Display product to customers?<input type="checkbox" th:field="*{is_available}" checked/></label>
+        </div>
+        <button class="product-form__submit button button--base button--pink" type="submit"><i class="icon fa-solid fa-plus"></i>Add Product</button>
+    </div>
+</form>

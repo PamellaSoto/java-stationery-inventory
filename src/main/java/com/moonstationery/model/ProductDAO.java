@@ -24,7 +24,6 @@ public class ProductDAO {
     "JOIN product_type pt ON p.product_type_id = pt.id ";
 
     @PostConstruct
-    @SuppressWarnings("unused")
     private void initialize() {
         jdbc = new JdbcTemplate(dataSource);
     }
@@ -116,6 +115,11 @@ public class ProductDAO {
     public List<Map<String, Object>> getProductsByAnime(Integer animeId) {
         String query = PRODUCT_QUERY + "WHERE p.anime_id = ?";
         return jdbc.queryForList(query, animeId);
+    }
+
+    public Integer getInventoryQuantity() {
+        String query = "SELECT COUNT(*) FROM product";
+        return jdbc.queryForObject(query, Integer.class);
     }
 
     public List<Map<String, Object>> listAllAvailable() {

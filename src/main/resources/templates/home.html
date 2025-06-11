@@ -10,27 +10,15 @@
 </head>
 <body>  
     <div th:replace="~{fragments/header :: header}">Header</div>
-<<<<<<< HEAD
-    <main class="home flex--row">
-        <aside th:replace="~{fragments/filter :: filter}">Filter menu</aside>
-        <section class="home__content flex--column">
-            <div class="home--banner">
-                <img class="banner" th:src="@{/images/home-banner.jpg}" alt="">
-                <div class="banner--layout flex--column">
-                    <img class="banner__logo" th:src="@{/images/logo.png}" alt="Moon Stationery's logo">
-                    <p>Discover official anime-inspired stationery that brings magic to your everyday moments. From stickers to pens, we've got your desk covered!</p>
-                    <a class="button button--base button--pink" href="#product-content"><i class="icon fa-solid fa-moon"></i>Order Now!</a>
-=======
     <main class="layout--margin flex--row">
         <aside th:replace="~{fragments/filter :: filter}">Filter menu</aside>
         <section class="flex--column">
             <div class="banner">
                 <img th:src="@{/images/home-banner.jpg}" alt="">
                 <div class="banner--layout flex--column">
-                    <h1>いらっしゃいませ | Welcome to Moon Stationery!</h1>
+                    <h1>Welcome to Moon Stationery!</h1>
                     <p>Official anime-inspired stationery made for fans by fans. Perfect supplies made for school, work, or journaling at home — our <b>anime and kawaii collections</b> will bring color and joy to your everyday routine!</p>
                     <a class="button button--base button--pink" href="#product-content"><i class="icon fa-solid fa-moon"></i>Shop our collection now!</a>
->>>>>>> cc1b82b (feat: update add category logic and implement delete category feature)
                 </div>
             </div>
 
@@ -54,33 +42,12 @@
             
 
             <!-- All available products -->
-<<<<<<< HEAD
-            <section class="products--grid" id="product-content">
-=======
              <h2 class="category-page__title">All Products</h2>
             <section class="border--top--pink products--grid" id="product-content">
->>>>>>> cc1b82b (feat: update add category logic and implement delete category feature)
                 <article class="product"
                             th:each="product : ${products}" 
                             th:attr="data-product-id=${product.id},
                             data-type-id=${product.product_type_id}, data-anime-id=${product.anime_id}">
-<<<<<<< HEAD
-                    <a th:href="@{/product/{id}(id=${product.id})}">
-                        <img class="product__image" th:src="${product.image_url}" />
-                        <div class="flex--row product__categories">
-                            <p th:text="${product.anime_name}"></p>
-                            <p th:text="${product.product_type_name}"></p>
-                        </div>
-                        <h3 class="product__title underline" th:text="${product.product_name}"></h3>
-                    </a>
-                    <div>
-                        <p>In stock</p>
-                        <div class="flex--row">
-                        <p class="product__price">$ <span th:text="${product.price}"></span></p>
-                        <button class="product__button button button--small button--pink">
-                            <i class="fa-solid fa-basket-shopping"></i></button>
-                        </button>
-=======
                     <i class="product__wishlist fa-regular fa-heart"></i>
                     <a th:href="@{/product/{id}(id=${product.id})}">
                         <img class="product__image" 
@@ -90,7 +57,7 @@
                             <p class="underline" th:text="${product.anime_name}"></p>
                             <p class="underline" th:text="${product.product_type_name}"></p>
                         </div>
-                        <h3 class="product__title underline" th:text="${product.product_name}"></h3>
+                        <h3 class="search-title product__title underline" th:text="${product.product_name}"></h3>
                     </a>
                     <p class="product__out-stock" 
                        th:classappend="${product.stock <= 0} ? '' : 'hidden'">OUT OF STOCK</p>
@@ -101,7 +68,6 @@
                            Stock Status
                         </p>
 
->>>>>>> cc1b82b (feat: update add category logic and implement delete category feature)
                     </div>
                     </div>
                     

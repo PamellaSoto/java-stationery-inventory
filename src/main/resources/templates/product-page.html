@@ -11,11 +11,7 @@
 <body>
     <div th:replace="~{fragments/header :: header}">Header</div>
     
-<<<<<<< HEAD
-    <main class="product-page border--top--pink">
-=======
     <main class="layout--margin border--top--pink">
->>>>>>> cc1b82b (feat: update add category logic and implement delete category feature)
         <nav class="breadcrumbs">
             <a th:href="@{/}">Home</a> &#47;
             <a th:href="@{'/anime/' + ${product.anime_slug}}"
@@ -25,24 +21,6 @@
             <span th:text="${product.product_name}">Product</span>
         </nav>
 
-<<<<<<< HEAD
-        <section class="layout">
-            <div class="flex--row">
-                <img class="info__img" th:src="${product.image_url}" alt="Product Image"/>
-                <div class="product-info">
-                    <div class="flex--row info__categories">
-                        <a th:href="@{'/anime/' + ${product.anime_slug}}" th:text="${product.anime_name}"></a>
-                        <a th:href="@{'/category/' + ${product.product_type_slug}}" th:text="${product.product_type_name}"></a>
-                    </div>
-                    <h1 class="info__title" th:text="${product.product_name}">Product Name</h1>
-                    <p class="info__rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half"></i> (4.5/5) <span>21 votes</span></p>
-                    <p class="info__price" th:text="|$ ${product.price}|">$0.00</p>
-                    <p class="info__description" th:text="${product.product_description}">Description</p>
-                    <div class="info__buttons flex--row">
-                        <button class="info__button button button--base button--pink"><i class="icon fa-solid fa-basket-shopping"></i>Add to Cart</button>
-                        <button class="info__button button button--base button--gray"><i class="icon fa-regular fa-heart"></i>Save to Wishlist</button>
-                    </div>
-=======
         <section class="product-page">
             <div class="flex--row">
                 <img class="product-page__img" th:src="${product.image_url}" alt="Product Image"/>
@@ -72,21 +50,14 @@
                             <span class="underline product-page__wishlist"><i class="icon fa-regular fa-heart"></i>Save to Wishlist</span>
                         </div>
                     </form>
->>>>>>> cc1b82b (feat: update add category logic and implement delete category feature)
                 </div>
             </div>
         </section>
 
         <section th:if="${#lists.size(relatedProducts) > 0}"> 
-<<<<<<< HEAD
-            <div class="flex--row category__products">
-                <h2 class="category__title">Related Products</h2>
-                <a class="category__link" th:href="@{'/category/' + ${product.product_type_slug}}"><i class="icon fa-solid fa-angle-right"></i>See more</a>
-=======
             <div class="flex--row related-products">
                 <h2 class="category__title">Related Products</h2>
                 <a class="related-products__link" th:href="@{'/category/' + ${product.product_type_slug}}"><i class="icon fa-solid fa-angle-right"></i>See more</a>
->>>>>>> cc1b82b (feat: update add category logic and implement delete category feature)
             </div>
 
             <section class="border--top--pink related-products__grid">
