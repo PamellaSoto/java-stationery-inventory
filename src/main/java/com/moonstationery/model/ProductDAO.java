@@ -16,25 +16,12 @@ public class ProductDAO {
     @Autowired
     private DataSource dataSource;
     private JdbcTemplate jdbc;
-<<<<<<< HEAD
-    private String PRODUCT_QUERY = """
-                    p.*,
-                    a.name AS anime_name,
-                    a.slug AS anime_slug,
-                    pt.name AS product_type_name,
-                    pt.slug AS product_type_slug
-                FROM product p
-                JOIN anime a ON p.anime_id = a.id
-                JOIN product_type pt ON p.product_type_id = pt.id
-                """;
-=======
     private final String PRODUCT_QUERY = 
     "SELECT p.*, a.name AS anime_name, a.slug AS anime_slug, " +
     "pt.name AS product_type_name, pt.slug AS product_type_slug " +
     "FROM product p " +
     "JOIN anime a ON p.anime_id = a.id " +
     "JOIN product_type pt ON p.product_type_id = pt.id ";
->>>>>>> cc1b82b (feat: update add category logic and implement delete category feature)
 
     @PostConstruct
     @SuppressWarnings("unused")
@@ -101,14 +88,7 @@ public class ProductDAO {
     }
 
     public Product getProductById(Integer id) {
-<<<<<<< HEAD
-        String query = """
-            SELECT """ + PRODUCT_QUERY + """
-            WHERE p.id = ?
-        """;
-=======
         String query = PRODUCT_QUERY + "WHERE p.id = ?";
->>>>>>> cc1b82b (feat: update add category logic and implement delete category feature)
         return jdbc.queryForObject(query, (rs, rowNum) -> {
             Product product = new Product();
             product.setId(rs.getInt("id"));
@@ -129,50 +109,22 @@ public class ProductDAO {
     }
 
     public List<Map<String, Object>> getProductsByCategory(Integer categoryId) {
-<<<<<<< HEAD
-        String query = """
-            SELECT """ + PRODUCT_QUERY + """
-            WHERE p.id = ?
-        """;
-=======
         String query = PRODUCT_QUERY + "WHERE p.product_type_id = ?";
->>>>>>> cc1b82b (feat: update add category logic and implement delete category feature)
         return jdbc.queryForList(query, categoryId);
     }
 
     public List<Map<String, Object>> getProductsByAnime(Integer animeId) {
-<<<<<<< HEAD
-        String query = """
-            SELECT """ + PRODUCT_QUERY + """
-            WHERE p.id = ?
-        """;
-=======
         String query = PRODUCT_QUERY + "WHERE p.anime_id = ?";
->>>>>>> cc1b82b (feat: update add category logic and implement delete category feature)
         return jdbc.queryForList(query, animeId);
     }
 
     public List<Map<String, Object>> listAllAvailable() {
-<<<<<<< HEAD
-        String query = """
-            SELECT """ + PRODUCT_QUERY + """
-            WHERE p.is_available = true
-        """;
-=======
         String query = PRODUCT_QUERY + "WHERE p.is_available = true";
->>>>>>> cc1b82b (feat: update add category logic and implement delete category feature)
         return jdbc.queryForList(query);
     }
 
     public List<Map<String, Object>> listAll() {
-<<<<<<< HEAD
-        String query = """
-            SELECT """ + PRODUCT_QUERY + """
-            WHERE p.id = ?
-        """;
-=======
         String query = PRODUCT_QUERY;
->>>>>>> cc1b82b (feat: update add category logic and implement delete category feature)
         return jdbc.queryForList(query);
     }
 }

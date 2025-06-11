@@ -9,21 +9,6 @@ document.querySelectorAll(`[data-toggle-modal]`).forEach((button) => {
 });
 
 function systemMessages() {
-<<<<<<< HEAD
-    let messages = document.querySelectorAll('.message');
-    
-    messages.forEach(message => {
-        message.classList.add("show");
-        setTimeout(() => {
-            message.classList.remove("show");
-            message.style.display = "none";
-        }, 5000);
-    });
-}
-function emptyContent() {
-    const products = document.querySelectorAll('.product');
-    console.log(products)
-=======
     let message = document.querySelector('.message');
 
     message.classList.add("show");
@@ -39,20 +24,12 @@ function emptyContent() {
 
 function emptyContent() {
     const products = document.querySelectorAll('.product');
->>>>>>> cc1b82b (feat: update add category logic and implement delete category feature)
     const noResultMsg = document.querySelector('#message--noresult');
 
     if (products.length === 0) {
         noResultMsg.classList.remove('hidden');
     }
 }
-<<<<<<< HEAD
-function loadEvents() {
-    systemMessages();
-    emptyContent();
-}
-window.addEventListener('DOMContentLoaded', loadEvents);
-=======
 
 //Number input controller (cant be added inside a function and I don't know why)
 let input = document.querySelector('#quantity');
@@ -82,4 +59,3 @@ document.addEventListener('DOMContentLoaded', () => {
     systemMessages();
     emptyContent();
 });
->>>>>>> cc1b82b (feat: update add category logic and implement delete category feature)

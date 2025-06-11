@@ -13,14 +13,11 @@ public class CategoryService {
     private CategoryDAO categoryDAO;
 
     public boolean insertCategory(Category category) {
-<<<<<<< HEAD
-=======
         // First letter must be always capitalized
         String typeName = category.getName();
         typeName = typeName.substring(0, 1).toUpperCase() + typeName.substring(1).toLowerCase();
         category.setName(typeName);
 
->>>>>>> cc1b82b (feat: update add category logic and implement delete category feature)
         if (categoryDAO.existsByName(category.getName())) {
             return false;
         }
@@ -28,13 +25,10 @@ public class CategoryService {
         return true;
     }
 
-<<<<<<< HEAD
-=======
     public boolean deleteCategoryType(Integer id) {
         return categoryDAO.deleteCategoryType(id);
     }
 
->>>>>>> cc1b82b (feat: update add category logic and implement delete category feature)
     public Category getCategoryById(Integer id) {
         return categoryDAO.getCategoryById(id);
     }
