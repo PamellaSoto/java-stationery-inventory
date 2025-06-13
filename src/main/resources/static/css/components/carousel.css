@@ -1,0 +1,22 @@
+.carousel--wrapper {
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    background-color: var(--color-light-gray);
+    margin: var(--space-4);
+    padding: var(--space-3) var(--space-4);
+}
+.carousel--wrapper > button {
+    cursor: pointer;
+}
+.carousel--overflow  {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* (Home) Featured Categories */
+.nav__featured > button {
+    color: var(--color-gray);
+    font-size: var(--font-md);
+}

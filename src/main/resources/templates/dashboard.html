@@ -11,22 +11,17 @@
       referrerpolicy="no-referrer"/>
     <link rel="stylesheet" th:href="@{/main.css}" />
     <link rel="icon" th:href="@{/images/favicon.png}" />
-    <title>Moon Stationery | 月の文房具 | Inventory Database Management</title>
+    <title>Inventory Database Management | Moon Stationery | 月の文房具</title>
   </head>
   <body>
-    <header class="header--dashboard flex--row">
+    <header class="header--dashboard flex--column">
       <img class="logo" th:src="@{/images/logo.png}" alt="Moon Stationery's logo" />
-      <ul class="flex--row">
-        <li class="underline" data-toggle-modal="button-admin-orders">
-          Orders (0)
-          <!-- th:classappend="${product.stock < 0} ? ' negative'" -->
-          <!-- (<span th:text="${orders-total}"></span>) --></li>
-          | <li class="underline"><a th:href="@{/about}">About this project</a></li>
-          | <li class="underline"><a th:href="@{/}">Go back to home</a></li>
-           
-      </ul>
+      <ul class="nav__menu flex--row">
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/about}">About this project</a></li>
+        </ul>
     </header>
-    <main class="layout--margin flex--row border--top--pink">
+    <main class="layout--margin flex--row">
       <div th:replace="~{fragments/dashboard-alerts :: dashboard-alerts}"></div>
       <aside th:replace="~{fragments/filter :: filter}">Filter menu</aside>
       <section class="dashboard">
@@ -35,11 +30,6 @@
               <h1 class="nav-inventory">Products</h1>
               <p class="inventory-counter"><span th:text="${inventoryCounter}">0</span> registered items</p>
             </div>
-            <form class="searchbar flex--row" onsubmit="searchBar()">
-              <input id="search-bar-input" class="form__input" type="text" placeholder="Search..." />
-              <button class="button button--base button--pink searchbar__button" type="submit">
-                  <i class="fas fa-search"></i>
-              </button>
           </form>
             <div class="flex--row dashboard__actions">
                 <!-- Category -->
@@ -56,6 +46,7 @@
                 </a>
             </div>
           </nav>
+
           <table th:fragment="products-table" class="dashboard--table">
               <thead>
               <tr>
@@ -69,7 +60,11 @@
               </tr>
               </thead>
               <tbody>
-              <tr class="table--row" th:each="product : ${products}">
+              <tr class="product table--row" 
+                  th:each="product : ${products}"
+                  th:attr="data-product-id=${product.id},
+                          data-type-id=${product.product_type_id}, 
+                          data-anime-id=${product.anime_id}">
                   <td th:text="${product.id}"></td>
                   <td>
                   <div class="row--title">
@@ -82,36 +77,47 @@
                   <br>
                   <span th:text="|Anime: ${product.anime_name}|"></span>
                   </td>
-                  <td class="row--stock"><span th:classappend="${product.stock < 0} ? ' negative'" th:text="${product.stock}"></span> units</td>
+                  <td class="row--stock"><span th:text="${product.stock}"></span> units</td>
                   <td>$ <span th:text="${product.price}"></span></td>
                   <td class="row--switch">
-                  <label class="switch">
-                      <input
-                      type="checkbox"
-                      th:attr="data-id=${product.id}"
-                      th:checked="${product.is_available}"/>
-                      <span class="slider"></span>
-                  </label>
+                    <form method="post" th:action="@{/product/{id}/toggle-visibility(id=${product.id})}">
+                      <label class="switch">
+                        <input
+                        type="checkbox"
+                        name="is_available"
+                        th:checked="${product.is_available}"
+                        onchange="this.form.submit()"/>
+                        <span class="slider"></span>
+                      </label>
+                    </form> 
                   </td>
                   <td class="row--actions">
-                  <a th:href="@{/product/{id}/edit(id=${product.id})}"><i class="fa-solid fa-pen-to-square"></i></a>
-
-
-                  <i class="fa-solid fa-trash" data-toggle-modal="delete-product-modal"></i>
-                  <div class="hidden modal" id="delete-product-modal">
-                      <p>Are you sure you want to delete this product? This action cannot be undone.</p>
-                      <form th:action="@{/product/{id}/delete(id=${product.id})}" method="post" th:object="${product}" >
-                      <button class="button button--small button--gray" type="submit">Yes, delete it</button>
-                      <button class="button button--small button--pink" data-toggle-modal="delete-product-modal" type="button">Cancel</button>
-                      </form>
-                  </div>
+                    <a th:href="@{/product/{id}/edit(id=${product.id})}"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <i class="fa-solid fa-trash" data-toggle-modal="delete-product-modal"></i>
+                    <div class="hidden modal" id="delete-product-modal">
+                        <p>Are you sure you want to delete this product? This action cannot be undone.</p>
+                        <form th:action="@{/product/{id}/delete(id=${product.id})}" method="post" th:object="${product}" >
+                        <button class="button button--small button--gray" type="submit">Yes, delete it</button>
+                        <button class="button button--small button--pink" data-toggle-modal="delete-product-modal" type="button">Cancel</button>
+                        </form>
+                    </div>
                   </td>
               </tr>
               </tbody>
           </table>
+          <div id="message--noresult" class="hidden">
+                <p>No matching products found. :(</p>
+                <button class="underline" onclick="window.location.reload()">CLEAR FILTERS</button>
+            </div>
+            <div id="message--result" class="hidden">
+                <button class="underline" onclick="window.location.reload()">CLEAR FILTERS</button>
+            </div>
       </section>
     </main>
-    <script th:src="@{/js/utilities.js}"></script>
+
     <script th:src="@{/js/filter.js}"></script>
+    <script th:src="@{/js/empty-content-alt.js}"></script> <!-- CASO IMPLEMENTAR SCRIPT DO SEARCH BAR, REMOVER -->
+    <script th:src="@{/js/system-messages.js}"></script>    
+    <script th:src="@{/js/toggle-display.js}"></script>
   </body>
 </html>

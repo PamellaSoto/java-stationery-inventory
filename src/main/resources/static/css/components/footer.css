@@ -3,9 +3,9 @@ footer {
     background-color: var(--color-light-pink);
     font-weight: 400;
     text-align: center;
-    color: var(--color-black);
+    color: var(--color-pink);
     font-size: var(--font-sm);
 }
     footer a {
-      color: var(--color-black);
+      color: var(--color-pink);
 }

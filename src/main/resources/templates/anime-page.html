@@ -16,7 +16,7 @@
     <div th:replace="~{fragments/header :: header}">Header</div>
 
     <main class="layout--margin flex--row">
-        <aside th:replace="~{fragments/filter-alt :: filter-alt}">Filter menu</aside>
+        <aside th:replace="~{fragments/aside-menu-links :: aside-menu-links}">Aside menu</aside>
         <div class="category-page">
             <nav class="breadcrumbs">
                 <a th:href="@{/}">Home</a> &#47;
@@ -24,27 +24,25 @@
             </nav>    
             <h2 class="category-page__title" th:text="${anime.name}">Anime Name</h2>
             <section class="border--top--pink products--grid" id="product-content">
-                <article class="product"
-                    th:each="product : ${products}"
-                    th:attr="data-product-id=${product['id']},
-                            data-type-id=${product['product_type_id']},
-                            data-anime-id=${product['anime_id']}">
-                    <a th:href="@{/product/{id}(id=${product['id']})}">
-                        <img class="product__image" th:src="${product['image_url']}" alt="Product image" />
-                        <div class="flex--row product__categories">
-                            <p th:text="${product['anime_name']}"></p>
-                            <p th:text="${product['product_type_name']}"></p>
+                <article class="product product-card"
+                         th:each="product : ${products}" 
+                         th:attr="data-product-id=${product.id},
+                         data-type-id=${product.product_type_id}, 
+                         data-anime-id=${product.anime_id}">
+                    <i class="product-card__wishlist fa-regular fa-heart"></i>
+                    <a th:href="@{/product/{id}(id=${product.id})}">
+                        <img class="product-card__image" 
+                             th:src="${product.image_url}"
+                             th:classappend="${product.stock <= 0} ? 'out'">
+                        <div class="flex--row product-card__categories">
+                            <p class="underline" th:text="${product.anime_name}"></p>
+                            <p class="underline" th:text="${product.product_type_name}"></p>
                         </div>
-                        <h3 class="product__title underline" th:text="${product['product_name']}">Product Name</h3>
+                        <h3 class="search-title product-card__title underline" th:text="${product.product_name}"></h3>
                     </a>
-                    <div>
-                        <p>In stock</p>
-                        <div class="flex--row">
-                            <p class="product__price">$ <span th:text="${product['price']}">0.00</span></p>
-                            <button class="product__button button button--small button--pink">
-                                <i class="fa-solid fa-basket-shopping"></i>
-                            </button>
-                        </div>
+                    <div class="flex--row">
+                        <p class="product-card__price">$ <span th:text="${product.price}"></span></p>
+                        <p th:text="|${product.stock} units|">Stock Status</p>
                     </div>
                 </article>
                 <div id="message--noresult" class="category__message hidden">
@@ -55,6 +53,8 @@
         </div>
     </main>
     <div th:replace="~{fragments/footer :: footer}">Footer</div>
-    <script th:src="@{/js/utilities.js}"></script>
+    <script th:src="@{/js/search-bar.js}"></script>
+    <script th:src="@{/js/empty-content-alt.js}"></script>
+    <script th:src="@{/js/toggle-display.js}"></script>
 </body>
 </html>

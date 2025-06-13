@@ -10,83 +10,66 @@
 </head>
 <body>  
     <div th:replace="~{fragments/header :: header}">Header</div>
-    <main class="layout--margin flex--row">
-        <aside th:replace="~{fragments/filter :: filter}">Filter menu</aside>
-        <section class="flex--column">
-            <div class="banner">
-                <img th:src="@{/images/home-banner.jpg}" alt="">
-                <div class="banner--layout flex--column">
-                    <h1>Welcome to Moon Stationery!</h1>
-                    <p>Official anime-inspired stationery made for fans by fans. Perfect supplies made for school, work, or journaling at home — our <b>anime and kawaii collections</b> will bring color and joy to your everyday routine!</p>
-                    <a class="button button--base button--pink" href="#product-content"><i class="icon fa-solid fa-moon"></i>Shop our collection now!</a>
-                </div>
+    <main class="layout--margin">
+        <div class="banner">
+            <img th:src="@{/images/home-banner.jpg}" alt="">
+            <div class="banner--layout flex--column">
+                <h1>Welcome to Moon Stationery!</h1>
+                <p>Official anime-inspired stationery made for fans by fans. Perfect supplies made for school, work, or journaling at home — our <b>anime and kawaii collections</b> will bring color and joy to your everyday routine!</p>
+                <a class="button button--base button--pink" href="#product-content"><i class="icon fa-solid fa-moon"></i>Shop our collection now!</a>
             </div>
+        </div>
 
-            <!-- Search by Anime Series -->
-            <div class="flex--row carousel--wrapper">
-                <button id="carousel--prev"><i class="fa-solid fa-angle-left"></i></button>
-
-                <div class="carousel--overflow">
-                    <ul class="flex--row featured-categories">
-                        <li th:each="anime : ${animes}">
-                            <button class="featured-categories__item button button-base" 
-                                    th:text="${anime.name}"
-                                    th:attr="data-anime-filter-id=${anime.id}"
-                                    ></button>
-                        </li>
-                    </ul>
-                </div>
-            
-                <button id="carousel--next"><i class="fa-solid fa-angle-right"></i></button>
+        <!-- Search by Anime Series -->
+        <div class="nav__featured flex--row carousel--wrapper">
+            <h2>Our featured Collections</h2>
+            <button class="carousel--prev"><i class="fa-solid fa-angle-left"></i></button>
+            <div class="carousel--overflow">
+                <ul data-carousel-list class="flex--row featured-categories">
+                    <li data-carousel-item th:each="anime : ${animes}">
+                        <a class="featured-categories__item button button-base"
+                            th:text="${anime.name}"
+                            th:href="@{/anime/{slug}(slug=${anime.slug})}">
+                        </a>
+                    </li>
+                </ul>
             </div>
-            
+            <button class="carousel--next"><i class="fa-solid fa-angle-right"></i></button>
+        </div>           
 
-            <!-- All available products -->
-             <h2 class="category-page__title">All Products</h2>
-            <section class="border--top--pink products--grid" id="product-content">
-                <article class="product"
-                            th:each="product : ${products}" 
-                            th:attr="data-product-id=${product.id},
-                            data-type-id=${product.product_type_id}, data-anime-id=${product.anime_id}">
-                    <i class="product__wishlist fa-regular fa-heart"></i>
-                    <a th:href="@{/product/{id}(id=${product.id})}">
-                        <img class="product__image" 
-                             th:src="${product.image_url}"
-                             th:classappend="${product.stock <= 0} ? 'out'">
-                        <div class="flex--row product__categories">
-                            <p class="underline" th:text="${product.anime_name}"></p>
-                            <p class="underline" th:text="${product.product_type_name}"></p>
-                        </div>
-                        <h3 class="search-title product__title underline" th:text="${product.product_name}"></h3>
-                    </a>
-                    <p class="product__out-stock" 
-                       th:classappend="${product.stock <= 0} ? '' : 'hidden'">OUT OF STOCK</p>
-                    <div class="flex--row">
-                        <p class="product__price">$ <span th:text="${product.price}"></span></p>
-                        <p th:text="|${product.stock} units|"
-                           th:classappend="${product.stock <= 0} ? 'hidden'">
-                           Stock Status
-                        </p>
-
+        <!-- All available products -->
+        <div class="home--products flex--row">
+            <h2 class="category-page__title">Products</h2>
+            <a class="view__link underline" th:href="@{/all}">Show All</a>
+        </div>
+             
+        <section class="border--top--pink products--grid" id="product-content">
+            <article class="product product-card"
+                        th:each="product : ${products}" 
+                        th:attr="data-product-id=${product.id},
+                        data-type-id=${product.product_type_id}, 
+                        data-anime-id=${product.anime_id}">
+                <i class="product-card__wishlist fa-regular fa-heart"></i>
+                <a th:href="@{/product/{id}(id=${product.id})}">
+                    <img class="product-card__image" 
+                            th:src="${product.image_url}"
+                            th:classappend="${product.stock <= 0} ? 'out'">
+                    <div class="flex--row product-card__categories">
+                        <p class="underline" th:text="${product.anime_name}"></p>
+                        <p class="underline" th:text="${product.product_type_name}"></p>
                     </div>
-                    </div>
-                    
-                </article>
-            </section>
-            <div id="message--noresult" class="hidden">
-                <p>No matching products found. :(</p>
-                <button class="underline" onclick="window.location.reload()">CLEAR FILTERS</button>
-            </div>
-            <div id="message--result" class="hidden">
-                <button class="underline" onclick="window.location.reload()">CLEAR FILTERS</button>
-            </div>
+                    <h3 class="search-title product-card__title underline" th:text="${product.product_name}"></h3>
+                </a>
+                <div class="flex--row">
+                    <p class="product-card__price">$ <span th:text="${product.price}"></span></p>
+                    <p th:text="|${product.stock} units|">Stock Status</p>
+                </div>
+            </article>
         </section>
-        
-        
     </main>
     <div th:replace="~{fragments/footer :: footer}">Footer</div>
-    <script th:src="@{/js/utilities.js}"></script>
     <script th:src="@{/js/carousel.js}"></script>
-    <script th:src="@{/js/filter.js}"></script>
+    <script th:src="@{/js/search-bar.js}"></script>
+    <script th:src="@{/js/toggle-display.js}"></script>
 </body>
 </html>

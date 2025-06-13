@@ -1,10 +1,13 @@
-package com.moonstationery.model;
+package com.moonstationery.services;
 
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.moonstationery.model.Anime;
+import com.moonstationery.repositories.AnimeDAO;
 
 @Service
 public class AnimeService {
@@ -36,7 +39,7 @@ public class AnimeService {
         return animeDAO.getAnimeBySlug(slug);
     }
 
-    public List<Map<String, Object>> listAll() {
-        return animeDAO.listAll();
+    public List<Map<String, Object>> listAllWithProductCount(Boolean dashboard) {
+        return animeDAO.listAllWithProductCount(dashboard);
     }
 }

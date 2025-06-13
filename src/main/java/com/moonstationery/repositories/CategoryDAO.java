@@ -1,4 +1,4 @@
-package com.moonstationery.model;
+package com.moonstationery.repositories;
 
 import java.util.List;
 import java.util.Map;
@@ -8,6 +8,9 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+
+import com.moonstationery.model.Category;
+import com.moonstationery.model.SlugUrl;
 
 import jakarta.annotation.PostConstruct;
 
@@ -73,7 +76,27 @@ public class CategoryDAO {
         return categories.isEmpty() ? null : categories.get(0);
     }
 
-    public List<Map<String, Object>> listAll() {
-        return jdbc.queryForList("SELECT id, name, slug FROM product_type");
+    public List<Map<String, Object>> listAllWithProductCount(Boolean dashboard) {
+        String query;
+        if (dashboard) {
+            query = """
+                SELECT pt.id, pt.name, pt.slug,
+                    COUNT(p.id) AS product_count
+                FROM product_type pt
+                LEFT JOIN product p ON pt.id = p.product_type_id
+                GROUP BY pt.id, pt.name, pt.slug
+            """;
+        } else {
+            query = """
+                SELECT pt.id, pt.name, pt.slug,
+                    COUNT(p.id) AS product_count
+                FROM product_type pt
+                LEFT JOIN product p ON pt.id = p.product_type_id AND p.is_available = true
+                GROUP BY pt.id, pt.name, pt.slug
+            """;
+        }
+
+        return jdbc.queryForList(query);
     }
+
 }

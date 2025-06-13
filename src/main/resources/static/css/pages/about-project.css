@@ -1,0 +1,37 @@
+.about-project {
+    margin: var(--space-5) auto;
+    padding: 0px 10vw;
+}
+
+.about-project h1, .about-project h2, .about-project h3 {
+    color: var(--color-pink);
+    margin: var(--space-3) 0px var(--space-3) 0px;
+}
+
+.about-project h1 {
+    text-align: center;
+}
+
+.about-project ul, .about-project p {
+    margin-bottom: var(--space-4);
+
+}
+.about-project li {
+    margin-left: var(--space-4);
+    list-style-type: disc;
+}
+
+.about-project__features, .about-project__layout {
+    gap: var(--space-4);
+}
+.about-project__layout {
+    justify-content: space-between;
+}
+
+.about-project__layout div:first-child {
+    max-width: 500px;
+}
+
+.about-project__layout img {
+    max-width: 250px;
+}

@@ -9,7 +9,7 @@
 .category-page__title {
   font-size: var(--font-md);
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   margin-top: var(--space-3);
   padding-top: var(--space-1);
   color: var(--color-pink);

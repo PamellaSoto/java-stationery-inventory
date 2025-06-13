@@ -24,13 +24,14 @@
         background-color: var(--color-white);
         color: var(--color-dark-gray);
         font-size: var(--font-base);
+    text-transform: capitalize;
 }
         .product-page__categories a:hover {
         color: var(--color-pink);
 }
 
     .product-page__title {
-        margin-top: var(--space-4);
+        margin-top: var(--space-2);
         font-weight: 900;
         font-size: 2.6rem;
         line-break: normal;
@@ -89,6 +90,7 @@
             color: var(--color-pink);
 }
     .product-page__input {
+        appearance: none;
         -webkit-appearance: none;
         width: 40px;
         border: none;
@@ -116,10 +118,6 @@
 
 /* Related Products */
 .related-products {
+    justify-content: space-between;
     padding-bottom: var(--space-2);
-}
-.related-products__link {
-    align-self: flex-end;
-    text-decoration: underline;
-    color: var(--color-dark-gray);
 }

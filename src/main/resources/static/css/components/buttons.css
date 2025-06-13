@@ -4,7 +4,7 @@
     border-radius: var(--space-1);
     letter-spacing: 0.06em;
     font-weight: 700;
-    transition: all ease 0.3s;
+    transition: all ease 0.4s;
     font-size: var(--font-xs);
 }
 

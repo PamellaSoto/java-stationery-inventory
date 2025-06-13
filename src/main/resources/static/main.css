@@ -5,12 +5,12 @@
 
 /* Components */
 @import url(./css/components/buttons.css);
+@import url(./css/components/carousel.css);
 @import url(./css/components/dashboard-table.css);
 @import url(./css/components/filters.css);
 @import url(./css/components/footer.css);
 @import url(./css/components/forms.css);
 @import url(./css/components/headers.css);
-@import url(./css/components/modals.css);
 @import url(./css/components/products-grid.css);
 @import url(./css/components/system-messages.css);
 
@@ -21,4 +21,3 @@
 @import url(./css/pages/home.css);
 @import url(./css/pages/product-form.css);
 @import url(./css/pages/product-page.css);
-@import url(./css/pages/project-info.css);

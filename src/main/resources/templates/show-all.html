@@ -11,25 +11,25 @@
         referrerpolicy="no-referrer"/>
     <link rel="stylesheet" th:href="@{/main.css}" />
     <link rel="icon" th:href="@{/images/favicon.png}" />
-    <title th:text="${category.name} + ' | Moon Stationery | 月の文房具'">Category Page</title>
+    <title>All Products | Moon Stationery | 月の文房具</title>
 </head>
 <body>
     <div th:replace="~{fragments/header :: header}">Header</div>
 
     <main class="layout--margin flex--row">
-        <aside th:replace="~{fragments/aside-menu-links :: aside-menu-links}">Aside menu</aside>
+        <aside th:replace="~{fragments/filter :: filter}">Filter menu</aside>
         <div class="category-page">
             <nav class="breadcrumbs">
                 <a th:href="@{/}">Home</a> &#47;
-                <a th:href="@{/category/{id}(id=${category.id})}" th:text="${category.name}">Anime</a>
+                <span>All</span>
             </nav>
-            <h2 class="category-page__title" th:text="${category.name}">Category Name</h2>
+            <h2 class="category-page__title">All Products</h2>
             <section class="border--top--pink products--grid" id="product-content">
                 <article class="product product-card"
-                         th:each="product : ${products}" 
-                         th:attr="data-product-id=${product.id},
-                         data-type-id=${product.product_type_id}, 
-                         data-anime-id=${product.anime_id}">
+                            th:each="product : ${products}" 
+                            th:attr="data-product-id=${product.id},
+                            data-type-id=${product.product_type_id}, 
+                            data-anime-id=${product.anime_id}">
                     <i class="product-card__wishlist fa-regular fa-heart"></i>
                     <a th:href="@{/product/{id}(id=${product.id})}">
                         <img class="product-card__image" 
@@ -46,16 +46,19 @@
                         <p th:text="|${product.stock} units|">Stock Status</p>
                     </div>
                 </article>
-                <div id="message--noresult" class="category__message hidden">
-                    <p>No matching products found. :(</p>
-                    <a class="underline" th:href="@{/}" >GO BACK TO HOME PAGE</a>
-                </div>
             </section>
+            <div id="message--noresult" class="hidden">
+                <p>No matching products found. :(</p>
+                <button class="underline" onclick="window.location.reload()">CLEAR FILTERS</button>
+            </div>
+            <div id="message--result" class="hidden">
+                <button class="underline" onclick="window.location.reload()">CLEAR FILTERS</button>
+            </div>
         </div>
     </main>
     <div th:replace="~{fragments/footer :: footer}">Footer</div>
+    <script th:src="@{/js/filter.js}"></script>
     <script th:src="@{/js/search-bar.js}"></script>
-    <script th:src="@{/js/empty-content-alt.js}"></script>
     <script th:src="@{/js/toggle-display.js}"></script>
 </body>
 </html>

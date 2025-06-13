@@ -47,7 +47,10 @@
   display: flex;
   align-items: center;
 }
-.row--stock.negative { color: var(--color-dark-pink); }
+
+.row--category {
+  text-transform: capitalize;
+}
 
 .row--switch {
   text-align: center;

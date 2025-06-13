@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" th:href="@{/main.css}" />
     <link rel="icon" th:href="@{/images/favicon.png}"/>
-    <title>Create New Product | Moon Stationery | 月の文房具</title>
+    <title>Edit Product | Moon Stationery | 月の文房具</title>
 </head>
 <body>
     <div class="flex--column product-form">
@@ -23,7 +23,7 @@
             </div>
             <div>
                 <label for="image_url">Product Image (URL):</label>
-                <input class="form__input" type="text" id="image_url" th:field="*{image_url}" maxlength="255"/>
+                <input class="form__input" type="text" id="image_url" th:field="*{image_url}" maxlength="500"/>
             </div>
             <div>
                 <label for="product_description">Description:</label>

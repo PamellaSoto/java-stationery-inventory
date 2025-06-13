@@ -7,10 +7,12 @@
     min-width: 240px;
     overflow: hidden;
     padding-right: var(--space-4);
-    margin-left: var(--space-3);
 }
-
 .filter h2 {
+    font-size: var(--font-md);
+    margin-bottom: var(--space-2);
+}
+.filter h3 {
     width: 100%;
     padding: var(--space-2) var(--space-3);
     background-color: var(--color-dark-gray);
@@ -26,8 +28,10 @@
     margin-bottom: var(--space-1);
 }
 
-.filter button, .filter a {
+.filter button, .filter a, .filter a:link {
     font-size: var(--font-base);
+    color: var(--color-dark-gray);
+    text-transform: capitalize;
 }
 
 .filter i {

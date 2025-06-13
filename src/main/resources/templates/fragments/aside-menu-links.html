@@ -1,0 +1,28 @@
+<aside class="filter" th:fragment="aside-menu-links">
+    <h2>Collections</h2>
+    <ul>
+        <li>
+            <i class="icon fa-solid fa-caret-right"></i>
+            <a class="underline" th:href="@{/all}">Show All</a>
+        </li>
+        <li th:each="anime : ${animes}">
+            <i class="icon fa-solid fa-caret-right"></i>
+            <a class="underline filter--alt__link"
+               th:text="${anime.name + ' (' + anime.product_count + ')'}"
+               th:href="@{/anime/{slug}(slug=${anime.slug})}"></a>
+        </li>
+    </ul>
+    <h2>Stationery</h2>
+    <ul>
+        <li>
+            <i class="icon fa-solid fa-caret-right"></i>
+            <a class="underline" th:href="@{/all}">Show All</a>
+        </li>
+        <li th:each="type : ${productTypes}">
+            <i class="icon fa-solid fa-caret-right"></i>
+            <a class="underline filter--alt__link"
+               th:text="${type.name + ' (' + type.product_count + ')'}"
+               th:href="@{/category/{slug}(slug=${type.slug})}"></a>
+        </li>
+    </ul>
+</aside>

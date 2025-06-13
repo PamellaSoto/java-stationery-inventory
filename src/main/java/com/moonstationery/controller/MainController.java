@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.moonstationery.model.Anime;
-import com.moonstationery.model.AnimeService;
 import com.moonstationery.model.Category;
-import com.moonstationery.model.CategoryService;
 import com.moonstationery.model.Product;
-import com.moonstationery.model.ProductService;
+import com.moonstationery.services.AnimeService;
+import com.moonstationery.services.CategoryService;
+import com.moonstationery.services.ProductService;
 
 @Controller
 public class MainController {
@@ -36,8 +36,8 @@ public class MainController {
     @GetMapping("/product/new")
     public String productForm(Model model) {
         model.addAttribute("product", new Product());
-        model.addAttribute("animes", animeService.listAll());
-        model.addAttribute("productTypes", typeService.listAll());
+        model.addAttribute("animes", animeService.listAllWithProductCount(true));
+        model.addAttribute("productTypes", typeService.listAllWithProductCount(true));
 
         return "add-product-form";
     }
@@ -58,8 +58,8 @@ public class MainController {
         model.addAttribute("anime", anime);
         model.addAttribute("products", productService.getProductsByAnime(anime.getId()));
 
-        model.addAttribute("animes", animeService.listAll());
-        model.addAttribute("productTypes", typeService.listAll());
+        model.addAttribute("animes", animeService.listAllWithProductCount(false));
+        model.addAttribute("productTypes", typeService.listAllWithProductCount(false));
 
         return "anime-page";
     }
@@ -72,8 +72,8 @@ public class MainController {
         model.addAttribute("category", category);
         model.addAttribute("products", productService.getProductsByCategory(category.getId()));
         
-        model.addAttribute("animes", animeService.listAll());
-        model.addAttribute("productTypes", typeService.listAll());
+        model.addAttribute("animes", animeService.listAllWithProductCount(false));
+        model.addAttribute("productTypes", typeService.listAllWithProductCount(false));
 
         return "category-page";
     }
@@ -85,10 +85,9 @@ public class MainController {
         model.addAttribute("category", new Category());
         Integer count = productService.getInventoryQuantity();
         model.addAttribute("inventoryCounter", count);
-        
-        System.out.println("Inventory count: " + count);
-        model.addAttribute("animes", animeService.listAll());
-        model.addAttribute("productTypes", typeService.listAll());
+
+        model.addAttribute("animes", animeService.listAllWithProductCount(true));
+        model.addAttribute("productTypes", typeService.listAllWithProductCount(true));
         model.addAttribute("products", productService.listAll());
 
         return "dashboard";
@@ -100,8 +99,8 @@ public class MainController {
         Product product = productService.getProductById(id);
         model.addAttribute("product", product);
 
-        model.addAttribute("animes", animeService.listAll());
-        model.addAttribute("productTypes", typeService.listAll());
+        model.addAttribute("animes", animeService.listAllWithProductCount(true));
+        model.addAttribute("productTypes", typeService.listAllWithProductCount(true));
         return "edit-product-form";
     }
 
@@ -113,6 +112,14 @@ public class MainController {
 
         return "redirect:/dashboard";
     }
+
+    //Switch product view
+    @PostMapping("product/{id}/toggle-visibility")
+    public String switchAvailable(@PathVariable Integer id) {
+        productService.switchAvailable(id);
+
+        return "redirect:/dashboard";
+}
 
     // Delete existing product (dashboard)
     @PostMapping("/product/{id}/delete")
@@ -175,8 +182,8 @@ public class MainController {
     @GetMapping("/")
     public String home(Model model) {
         model.addAttribute("products", productService.listAllAvailable());
-        model.addAttribute("animes", animeService.listAll());
-        model.addAttribute("productTypes", typeService.listAll());
+        model.addAttribute("animes", animeService.listAllWithProductCount(false));
+        model.addAttribute("productTypes", typeService.listAllWithProductCount(false));
 
         return "home";
     }
@@ -184,7 +191,9 @@ public class MainController {
     // Product page
     @GetMapping("/product/{id}")
     public String productPage(@PathVariable Integer id, Model model) {
-        Product product = productService.getProductById(id);
+        model.addAttribute("animes", animeService.listAllWithProductCount(false));
+        model.addAttribute("productTypes", typeService.listAllWithProductCount(false)); 
+        Product product = productService.getAvailableProductById(id);
         model.addAttribute("product", product);
 
         List<Map<String, Object>> relatedProducts = productService.getProductsByCategory(product.getProduct_type_id());
@@ -204,11 +213,21 @@ public class MainController {
     @GetMapping("/search/{input}")
     public String searchPage(@PathVariable String input, Model model) {
         model.addAttribute("searchInput", input);
-        model.addAttribute("animes", animeService.listAll());
-        model.addAttribute("productTypes", typeService.listAll());
-        model.addAttribute("products", productService.listAll());
+        model.addAttribute("animes", animeService.listAllWithProductCount(false));
+        model.addAttribute("productTypes", typeService.listAllWithProductCount(false));
+        model.addAttribute("products", productService.listAllAvailable());
 
         return "search-page-result";
+    }
+
+    // Show all products
+    @GetMapping("/all")
+    public String searchPage(Model model) {
+        model.addAttribute("animes", animeService.listAllWithProductCount(false));
+        model.addAttribute("productTypes", typeService.listAllWithProductCount(false));
+        model.addAttribute("products", productService.listAllAvailable());
+
+        return "show-all";
     }
 }
 

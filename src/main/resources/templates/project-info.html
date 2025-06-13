@@ -1,1 +1,58 @@
-<h1>Hi! Welcome</h1>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" th:href="@{/main.css}" />
+    <link rel="icon" th:href="@{/images/favicon.png}"/>
+    <title>About Moon Stationery | 月の文房具</title>
+</head>
+<body class="about-project">  
+    <h1>About This Project</h1>    
+    <p><b>Moon Stationery | 月の文房具 (Tsuki no Bunbougu)</b> is a fictional online store designed for fans of anime and aesthetically pleasing stationery. Blending the charm of Japanese pop culture with everyday practicality, this platform offers a seamless shopping experience for customers and an intuitive admin panel for managing products.</p>
+    <p>Built as a full-stack web application, Moon Stationery showcases officially licensed anime merchandise and cute stationery items in a visually engaging and user-friendly interface.</p>
+    <div class="about-project__layout flex--row">
+        <div>
+            <h2>My Project Goals</h2>
+            <ul>
+                <li>Create a visually cohesive and accessible storefront</li>
+                <li>Build a robust admin dashboard for easy inventory management</li>
+                <li>Implement intuitive features to enhance the user experience, including search, filters, and product categorization</li>
+            </ul>
+            
+            <h2>Tech Stack</h2>
+            <ul>
+                <li><b>Backend: </b>Java, Spring Boot, JDBC</li>
+                <li><b>Frontend: </b>Thymeleaf, HTML, CSS, JavaScript</li>
+                <li><b>Database: </b>PostgreSQL</li>
+                <li><b>Architecture: </b>MVC (Model-View-Controller)</li>
+            </ul>
+        </div>
+        <div>
+            <img th:src="@{/images/sailormoon-bunny.png}" alt="">
+        </div>
+    </div>
+    <h2>Key Features</h2>
+    <div class="about-project__features flex--row">
+        <div>
+            <h3>Storefront</h3>
+            <ul>
+                <li>Product listings with detailed information on each page</li>
+                <li>Global search bar and dynamic filters by category and anime</li>
+                <li>Breadcrumb navigation for easy browsing</li>
+                <li>Individual product pages with full details and related items</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Admin Dashboard</h3>
+            <ul>
+                <li>Full product management interface</li>
+                <li>Create, edit, or delete products</li>
+                <li>Manage categories</li>
+                <li>Toggle product visibility on the homepage</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

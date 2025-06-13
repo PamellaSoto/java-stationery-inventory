@@ -15,7 +15,7 @@ function filterByCategory(button, itemAttr, prodAttr) {
         allProducts.forEach((product) => {
             const productId = product.getAttribute(prodAttr);
             if (filterId == productId) {
-                product.style.display = "flex" 
+                product.style.display = "";
                 productCounter++;
             } else {
                 product.style.display = "none";

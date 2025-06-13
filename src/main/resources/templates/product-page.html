@@ -40,13 +40,13 @@
                                 <i class="fa-solid fa-minus"></i>
                             </button>
                             <input class="product-page__input" type="number" th:value="1" name="quantity" id="quantity" min="1" th:max="${product.stock}">
-                            <span>unidades</span>
+                            <span>units</span>
                             <button type="button" class="quantity__button quantity-increase">
                                 <i class="fa-solid fa-plus"></i>
                             </button>
                         </div>
                         <div>
-                            <button type="submit" class="product-page__submit button button--base button--pink"><i class="icon fa-solid fa-cart-shopping"></i>Add to Cart</button>
+                            <button type="button" class="product-page__submit button button--base button--pink"><i class="icon fa-solid fa-cart-shopping"></i>Add to Cart</button>
                             <span class="underline product-page__wishlist"><i class="icon fa-regular fa-heart"></i>Save to Wishlist</span>
                         </div>
                     </form>
@@ -57,39 +57,40 @@
         <section th:if="${#lists.size(relatedProducts) > 0}"> 
             <div class="flex--row related-products">
                 <h2 class="category__title">Related Products</h2>
-                <a class="related-products__link" th:href="@{'/category/' + ${product.product_type_slug}}"><i class="icon fa-solid fa-angle-right"></i>See more</a>
+                <a class="view__link underline" th:href="@{'/category/' + ${product.product_type_slug}}">See more</a>
             </div>
 
             <section class="border--top--pink related-products__grid">
-                <article class="product"
-                        th:each="related : ${relatedProducts}" 
-                        th:attr="data-product-id=${related.id},
-                                 data-type-id=${related.product_type_id},
-                                 data-anime-id=${related.anime_id}">
+                <article class="product product-card"
+                            th:each="related : ${relatedProducts}" 
+                            th:attr="data-product-id=${related.id},
+                                    ata-type-id=${related.product_type_id},
+                                    data-anime-id=${related.anime_id}">
+                    <i class="product-card__wishlist fa-regular fa-heart"></i>
                     <a th:href="@{/product/{id}(id=${related.id})}">
-                        <img class="product__image" th:src="${related.image_url}" />
-                        <div class="flex--row product__categories">
-                            <p th:text="${product.anime_name}"></p>
-                            <p th:text="${product.product_type_name}"></p>
+                        <img class="product-card__image" 
+                                th:src="${related.image_url}"
+                                th:classappend="${related.stock <= 0} ? 'out'">
+                        <div class="flex--row product-card__categories">
+                            <p class="underline" th:text="${related.anime_name}"></p>
+                            <p class="underline" th:text="${related.product_type_name}"></p>
                         </div>
-                        <h3 class="product__title underline" th:text="${related.product_name}"></h3>
+                        <h3 class="search-title product-card__title underline" th:text="${related.product_name}"></h3>
                     </a>
-                    <div>
-                        <p>In stock</p>
-                        <div class="flex--row">
-                            <p class="product__price">$ <span th:text="${related.price}"></span></p>
-                            <button class="product__button button button--small button--pink">
-                                <i class="fa-solid fa-basket-shopping"></i>
-                            </button>
-                        </div>
+                    <div class="flex--row">
+                        <p class="product-card__price">$ <span th:text="${related.price}"></span></p>
+                        <p th:text="|${related.stock} units|">Stock Status</p>
                     </div>
-                </article> 
+                </article>
             </section>
         </section>
     </main>
 
     <div th:replace="~{fragments/footer :: footer}">Footer</div>
-    <script th:src="@{/js/utilities.js}"></script>
-    <script th:src="@{/js/filter.js}"></script>
+    <script th:src="@{/js/carousel.js}"></script>
+    <script th:src="@{/js/number-input-controller.js}"></script>
+    <script th:src="@{/js/search-bar.js}"></script>
+    <script th:src="@{/js/toggle-display.js}"></script>
+
 </body>
 </html>

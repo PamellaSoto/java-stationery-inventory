@@ -31,7 +31,7 @@ a:hover {
     flex-direction: row;
 }
     main.flex--row {
-        gap: var(--space-4);
+        gap: var(--space-3);
 }
 
 .layout--margin {
@@ -47,4 +47,9 @@ a:hover {
     border-radius: var(--space-1);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
     transition: all 1s ease-in-out;
+}
+
+.view__link, .view__link:visited, .view__link a:link {
+    font-weight: 600;
+    color: var(--color-pink);
 }

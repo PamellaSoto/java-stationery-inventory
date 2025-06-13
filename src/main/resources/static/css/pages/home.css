@@ -1,91 +1,3 @@
-/* Header */
-.home__header {
-    padding-left: var(--space-3);
-}
-.home__header.flex--row { 
-    align-items: center; 
-}
-.home__header:first-child {
-    position: relative;
-}
-.home__header:last-child { 
-    padding: var(--space-4) 0px;
-}
-.home__header img {
-    width: 420px;
-    height: auto;
-}
-
-.nav.flex--row { 
-    gap: 2px; 
-}
-.nav__item {
-    cursor: pointer;
-    display: inline-block;
-    background-color: var(--color-light-gray);
-    padding: var(--space-1) var(--space-3);
-    color: var(--color-black);
-    text-decoration: none;
-}
-    .nav__item:hover {
-        background-color: var(--color-lighter-gray);
-        color: var(--color-pink);
-}
-/* Login form */
-#login-form {
-    z-index: 10;
-    position: absolute;
-    top: 40px; right: 175px;
-    background-color: var(--color-lighter-gray);
-    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.14);
-    border: var(--border-default);
-    border-radius: var(--space-1);
-    padding: var(--space-4);
-}
-    #login-form.flex--column,
-    #login-form .flex--row {
-        gap: var(--space-3);
-}
-    .login__input {
-        justify-content: flex-start !important;
-        align-items: center;
-        padding: var(--space-1) var(--space-2) !important;
-}
-    #login-email, 
-    #login-password {
-        width: 230px;
-        font-size: var(--font-base);
-        color: var(--color-dark-gray);
-}
-    #login-form i {
-        color: var(--color-gray);
-}
-    .login__submit {
-        align-items: center;
-        font-size: var(--font-lg) !important;
-        width: 100%;
-    }
-    .form__link {
-        font-size: var(--font-sm);
-        color: var(--color-dark-gray);
-}
-
-/* Search bar */
-.searchbar {
-    align-self: flex-end;
-    padding-right: var(--space-3);
-}
-    .searchbar .form__input {
-        border-radius: var(--space-1) 0px 0px var(--space-1) !important;
-        width: 340px !important;
-        min-width: 100px;
-        font-size: var(--font-base);
-}
-    .searchbar__button {
-        border-radius: 0px var(--space-1) var(--space-1) 0px !important;
-        font-size: var(--font-base) !important;
-}
-
 /* Banner */
 .banner {
     position: relative;
@@ -107,7 +19,7 @@
 .banner--layout h1 {
     color: var(--color-pink);
     font-weight: 800;
-    font-size: 1.8rem;
+    font-size: 2.6rem;
 }
 
 .banner--layout p {
@@ -123,38 +35,32 @@
     font-size: calc(var(--font-base) * 1.2) !important;
 }
 
-/* Search by Anime Title */
-.carousel--wrapper {
-    position: relative;
-    gap: var(--space-3);
-    background-color: var(--color-light-gray);
-    margin: var(--space-4);
-    padding: var(--space-3) var(--space-4);
-}
-.carousel--wrapper > button {
-    cursor: pointer;
-    color: var(--color-gray);
-    font-size: var(--font-md);
-}
-.carousel--overflow  {
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-}
 .featured-categories {
     justify-content: center !important;
     gap: var(--space-4);
     width: fit-content;
 }
-  .featured-categories__item {
-    background-color: var(--color-lighter-gray);
-    font-size: var(--font-sm) !important;
-    text-align: center;
+.featured-categories__item {
+    display: block;
     width: 250px;
     padding: 1rem 0px;
+    background-color: var(--color-lighter-gray);
     border-radius: 0px !important;
     border: 2px solid var(--color-lighter-gray);
+    text-transform: uppercase;
+    font-size: var(--font-sm) !important;
+    text-align: center;
 }
-    .featured-categories__item:hover {
-        filter: brightness(105%);
-        border: 2px solid var(--color-pink);
+.featured-categories__item:visited, .featured-categories__item:link {
+    color: var(--color-dark-gray);
+}
+.featured-categories__item:hover {
+    filter: brightness(105%);
+    border: 2px solid var(--color-pink);
+}
+
+
+.home--products {
+    justify-content: space-between;
+    align-items: center;
 }

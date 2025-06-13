@@ -1,10 +1,13 @@
-package com.moonstationery.model;
+package com.moonstationery.services;
 
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.moonstationery.model.Product;
+import com.moonstationery.repositories.ProductDAO;
 
 @Service
 public class ProductService {
@@ -19,8 +22,15 @@ public class ProductService {
         productDAO.editProduct(product);
     }
 
+    public void switchAvailable(Integer id) {
+        productDAO.switchAvailable(id);
+    }
     public void deleteProduct(Integer id) {
         productDAO.deleteProduct(id);
+    }
+
+    public Product getAvailableProductById(Integer id) {
+        return productDAO.getAvailableProductById(id);
     }
 
     public Product getProductById(Integer id) {

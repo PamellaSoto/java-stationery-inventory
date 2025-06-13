@@ -5,7 +5,7 @@ grid-gap: var(--space-3);
 justify-items: center;
 }
 
-.product { 
+.product-card { 
   cursor: pointer;
   position: relative;
   max-width: 230px;
@@ -17,7 +17,7 @@ justify-items: center;
   border: var(--border-default);
 }
 
-  .product__wishlist {
+  .product-card__wishlist {
     z-index: 99;
     position: absolute;
     top: var(--space-2);
@@ -29,32 +29,34 @@ justify-items: center;
     padding: var(--space-2);
     color: #e1e1e1;
 }
-    .product__wishlist:hover {
+    .product-card__wishlist:hover {
+      transform: scale(1.2);
       color: var(--color-pink);
 }
-  .product__image {
+  .product-card__image {
       width: 100%;
       height: auto;
       object-fit: cover;
       margin-bottom: var(--space-3);
 }
-    .product__image:hover, .product__image.out {
+    .product-card__image:hover, .product-card__image.out {
         filter: opacity(0.6);
 }
 
-  .product__categories {
+  .product-card__categories {
       justify-content: flex-start !important;
       gap: var(--space-1);
       margin-bottom: var(--space-2);
+      text-transform: capitalize;
   }
-      .product__categories p {
+      .product-card__categories p {
           padding: 0px var(--space-1);
           border: var(--border-default);
           color: var(--color-dark-gray);
           font-size: var(--space-3);
 }
 
-  .product__title {
+  .product-card__title {
       color: var(--color-dark-gray);
       font-size: var(--font-base);
       display: -webkit-box;
@@ -64,21 +66,13 @@ justify-items: center;
       overflow: hidden;
       text-overflow: ellipsis;
 }
-  .product__out-stock {
-    position: absolute;
-    padding: var(--space-2);
-    width: 100%;
-    background-color: var(--color-gray);
-    text-align: center;
-    color: var(--color-white);
 
-}
-  .product .flex--row:last-child {
+  .product-card .flex--row:last-child {
     justify-content: space-between;
     align-items: center;
     margin-top: var(--space-3);
   }
-  .product__price {
+  .product-card__price {
       font-size: var(--font-lg);
       font-weight: 600;
       color: var(--color-pink);

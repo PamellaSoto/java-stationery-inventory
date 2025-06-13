@@ -1,6 +1,6 @@
 /* (Default Header) Login */
 #login-form {
-    top: 40px; right: 175px;
+    top: 100px; right: 120px;
     padding: var(--space-4) var(--space-3);
     width: 300px;
 }
@@ -39,16 +39,15 @@
 
 
 /* Search bar */
-.searchbar {
-    align-self: flex-end;
-    padding-right: var(--space-3);
-    }
 .searchbar .form__input {
-    border-radius: var(--space-1) 0px 0px var(--space-1) !important;
     width: 340px !important;
     min-width: 100px;
+    background-color: var(--color-lighter-gray);
+    border-radius: var(--space-1) 0px 0px var(--space-1) !important;
+    font-size: var(--font-base) !important;
 }
 .searchbar__button {
+    padding: var(--space-1) var(--space-2) !important;
     border-radius: 0px var(--space-1) var(--space-1) 0px !important;
     font-size: var(--font-base) !important;
 }
@@ -73,20 +72,35 @@
     margin-bottom: var(--space-3);
 }
 
+.categories-menu__title {
+    margin-top: var(--space-3);
+    font-size: var(--font-md);
+    color: var(--color-pink);
+}
+
 .categories-menu__input {
-    width: 75%;
+    width: 75%;    
+    font-size: var(--font-base);
 }
 
 .categories-menu__button--submit {
     margin-left: var(--space-3);
+    font-size: var(--font-sm);
 }
 
 .categories-menu__list {
+    max-height: 120px;
+    overflow-y: scroll;
     margin-top: var(--space-2);
 }
-.categories-menu__list h2 {
-    font-size: var(--font-sm);
-    color: var(--color-pink);
+.categories-menu__list::-webkit-scrollbar {
+    width: 4px;
+}
+.categories-menu__list::-webkit-scrollbar-track {
+    background: transparent;
+}
+.categories-menu__list::-webkit-scrollbar-thumb {
+    background-color: var(--color-pink);
 }
 
 .categories-menu__list ul {
@@ -98,7 +112,8 @@
 .categories-menu__item {
     justify-content: space-between;
     border-top: var(--border-default);
-    padding: var(--space-1);
+    padding: var(--space-1) var(--space-2);
+    text-transform: capitalize;
 }
 .categories-menu__item i {
     cursor: pointer;
@@ -120,6 +135,7 @@
 }
 .form__input#anime_id, .form__input#product_type_id {
     width: 30%;   
+    text-transform: capitalize;
 }
 .product-form__container div.flex--row {
     justify-content: space-between;
@@ -131,11 +147,9 @@
     align-items: center;
 }
 .product-form__container input[type="checkbox"] {
-
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-
     width: 20px;
     height: 20px;
     border: 2px solid #ccc;

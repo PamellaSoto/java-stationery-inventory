@@ -1,10 +1,13 @@
-package com.moonstationery.model;
+package com.moonstationery.services;
 
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.moonstationery.model.Category;
+import com.moonstationery.repositories.CategoryDAO;
 
 @Service
 public class CategoryService {
@@ -37,7 +40,7 @@ public class CategoryService {
         return categoryDAO.getCategoryBySlug(slug);
     }
 
-    public List<Map<String, Object>> listAll() {
-        return categoryDAO.listAll();
+    public List<Map<String, Object>> listAllWithProductCount(Boolean dashboard) {
+        return categoryDAO.listAllWithProductCount(dashboard);
     }
 }

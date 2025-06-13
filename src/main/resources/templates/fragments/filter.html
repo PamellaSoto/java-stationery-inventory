@@ -1,20 +1,29 @@
 <aside class="filter" th:fragment="filter">
-    <h2>Anime Series</h2>
+    <h2>Filter by...</h2>
+    <h3>Anime Series</h3>
     <ul>
+        <li>
+            <i class="icon fa-solid fa-caret-right"></i>
+            <button onclick="window.location.reload()" class="underline filter__item">Show All</button>
+        </li>
         <li th:each="anime : ${animes}">
             <i class="icon fa-solid fa-caret-right"></i>
             <button class="underline filter__item" 
-                    th:text="${anime.name}"
+                    th:text="${anime.name + ' (' + anime.product_count + ')'}"
                     th:attr="data-anime-filter-id=${anime.id}"
                     ></button>
         </li>
     </ul>
-    <h2>Categories</h2>
+    <h3>Categories</h3>
     <ul>
+        <li>
+            <i class="icon fa-solid fa-caret-right"></i>
+            <button onclick="window.location.reload()" class="underline filter__item">Show All</button>
+        </li>
         <li th:each="type : ${productTypes}">
             <i class="icon fa-solid fa-caret-right"></i>
             <button class="underline filter__item" 
-                    th:text="${type.name}"
+                    th:text="${type.name + ' (' + type.product_count + ')'}"
                     th:attr="data-category-filter-id=${type.id}"
                     ></button>
         </li>

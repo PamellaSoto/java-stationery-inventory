@@ -6,13 +6,13 @@
 }
 #message--noresult button, #message--result button {
   width: 100%;
+  margin-top: var(--space-3);
   background-color: var(--color-light-gray);
   padding: var(--space-1);
   font-size: var(--font-base);
 }
 #message--noresult p {
   font-size: var(--font-md);
-  margin-bottom: var(--space-3);
 }
 #message--noresult a {
     color: var(--color-black);

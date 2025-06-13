@@ -1,30 +1,29 @@
 window.addEventListener('DOMContentLoaded', () => {
-    const prevBtn = document.querySelector('#carousel--prev');
-    const nextBtn = document.querySelector('#carousel--next');
-    const viewport = document.querySelector('.carousel--overflow');
-    const list = viewport.querySelector('.featured-categories');
-    const items = list.querySelectorAll('.featured-categories__item');
-  
-    const itemWidth = items[0].offsetWidth + 24;
-    const totalItems = items.length;
-    const visibleItems = 3;
-    const maxScroll = itemWidth * (totalItems - visibleItems);
+    document.querySelectorAll('.carousel--wrapper, .nav__category-carousel').forEach(carousel => {
+        const prevBtn = carousel.querySelector('.carousel--prev');
+        const nextBtn = carousel.querySelector('.carousel--next');
+        const viewport = carousel.querySelector('.carousel--overflow');
+        const list = carousel.querySelector('[data-carousel-list]');
+        const items = carousel.querySelectorAll('[data-carousel-item]');
 
-    viewport.style.width = ((itemWidth * visibleItems) - 24) + 'px';
+        if (!viewport || !list || items.length === 0) return;
 
-    nextBtn.addEventListener('click', () => {
-        if (viewport.scrollLeft >= maxScroll) {
-            viewport.scrollTo({ left: 0, behavior: 'smooth' });
-        } else {
-            viewport.scrollBy({ left: itemWidth, behavior: 'smooth' });
-        }
-    });
+        const itemStyle = getComputedStyle(items[0]);
+        const itemGap = parseInt(itemStyle.marginRight) || 24;
+        const itemWidth = items[0].offsetWidth + itemGap;
+        const scrollStep = itemWidth;
 
-    prevBtn.addEventListener('click', () => {
-        if (viewport.scrollLeft <= 0) {
-            viewport.scrollTo({ left: maxScroll, behavior: 'smooth' });
-        } else {
-            viewport.scrollBy({ left: -itemWidth, behavior: 'smooth' });
-        }
+        // Scroll Right
+        nextBtn?.addEventListener('click', () => {
+            const maxScroll = list.scrollWidth - viewport.clientWidth;
+            const nextPos = Math.min(viewport.scrollLeft + scrollStep, maxScroll);
+            viewport.scrollTo({ left: nextPos, behavior: 'smooth' });
+        });
+
+        // Scroll Left
+        prevBtn?.addEventListener('click', () => {
+            const prevPos = Math.max(viewport.scrollLeft - scrollStep, 0);
+            viewport.scrollTo({ left: prevPos, behavior: 'smooth' });
+        });
     });
 });
