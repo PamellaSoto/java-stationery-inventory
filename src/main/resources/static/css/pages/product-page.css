@@ -120,6 +120,7 @@
 .related-products {
     justify-content: space-between;
     padding-bottom: var(--space-2);
+    margin-top: var(--space-5);
 }
 
 .related-products__grid {
