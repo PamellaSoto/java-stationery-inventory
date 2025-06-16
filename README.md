@@ -4,13 +4,13 @@
 **Moon Stationery** is a fictional online store for lovers of anime culture and beautiful everyday-use stationery.  
 We offer a platform that showcases officially licensed anime merchandise and cute stationery items in a seamless shopping experience. And a admin panel to manage said inventory intuitively. 
 
-## Store
+## Storefront
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![Storefront](storefront.png)
 
 ## Dashboard
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![Dashboard](dashboard.png)
 
 ---
 
@@ -25,14 +25,13 @@ We offer a platform that showcases officially licensed anime merchandise and cut
 
 ## ✨ Features
 ### 🏠 User-Facing (Storefront)
-- **Display all products** with detail on all **pages**
+- **Display all products** with detailed info on all **pages**
 - Navigation menu includes:
   - **Home**
   - **Login** (modal)
   - **FAQ**
-  - **Cart** (modal)
 - **Category menu**
-- **Filter by featured anime** products
+- **Featured anime collections** products
 - **Dynamic search filter**
 - **Breadcrumbs**
 - Global **search bar**
@@ -41,26 +40,17 @@ We offer a platform that showcases officially licensed anime merchandise and cut
 - **Product details** page:
   - Shows full product info in detail
   - Related products from the same category
-  - **Add to Cart** functionality
-- **Cart** modal:
-  - Update product quantity in cart
-  - **Submit order**
-
+  
 ---
 
 ## 🛠 Admin Dashboard
 ### 📦 Product Management
 - Product table with:
-  - Search, filtering, and sorting (by ID or name)
-- Create new categories
-- Delete unused categories
-- Create new products using existing categories
-- Edit or delete existing products
-- Toggle product visibility on the homepage
-- **Real-time order** alerts in dashboard
-- Accept or reject incoming orders
-- Dynamically updates product stock
-- If stock reaches zero, labels product as "Out of stock"
+  - Create new categories
+  - Delete unused categories
+  - Create new products using existing categories
+  - Edit or delete existing products
+  - Toggle product visibility on the homepage
 
 ---
 
