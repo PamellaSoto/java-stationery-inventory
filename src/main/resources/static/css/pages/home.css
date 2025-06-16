@@ -5,6 +5,7 @@
 .banner img {
     width: 100%;
 }
+
 .banner--layout {
     justify-content: center;
     align-items: center;
@@ -58,7 +59,6 @@
     filter: brightness(105%);
     border: 2px solid var(--color-pink);
 }
-
 
 .home--products {
     justify-content: space-between;

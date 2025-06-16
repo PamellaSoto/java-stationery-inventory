@@ -53,3 +53,20 @@ a:hover {
     font-weight: 600;
     color: var(--color-pink);
 }
+
+.category__title {
+    font-size: var(--font-md);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: var(--space-3);
+    padding-top: var(--space-1);
+    color: var(--color-pink);
+}
+
+.page--width {
+  width: 100%;
+}
+
+.message--absolute { /* no result messages */
+  position: absolute;
+}

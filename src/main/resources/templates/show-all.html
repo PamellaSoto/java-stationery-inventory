@@ -18,12 +18,12 @@
 
     <main class="layout--margin flex--row">
         <aside th:replace="~{fragments/filter :: filter}">Filter menu</aside>
-        <div class="category-page">
+        <div class="page--width">
             <nav class="breadcrumbs">
                 <a th:href="@{/}">Home</a> &#47;
                 <span>All</span>
             </nav>
-            <h2 class="category-page__title">All Products</h2>
+            <h2 class="category__title">All Products</h2>
             <section class="border--top--pink products--grid" id="product-content">
                 <article class="product product-card"
                             th:each="product : ${products}" 
@@ -33,8 +33,7 @@
                     <i class="product-card__wishlist fa-regular fa-heart"></i>
                     <a th:href="@{/product/{id}(id=${product.id})}">
                         <img class="product-card__image" 
-                             th:src="${product.image_url}"
-                             th:classappend="${product.stock <= 0} ? 'out'">
+                             th:src="${product.image_url}">
                         <div class="flex--row product-card__categories">
                             <p class="underline" th:text="${product.anime_name}"></p>
                             <p class="underline" th:text="${product.product_type_name}"></p>

@@ -1,8 +1,8 @@
 .products--grid {
-display: grid;
-grid-template-columns: repeat(5, 1fr);
-grid-gap: var(--space-3);
-justify-items: center;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: var(--space-3);
+  justify-items: center;
 }
 
 .product-card { 
@@ -39,7 +39,7 @@ justify-items: center;
       object-fit: cover;
       margin-bottom: var(--space-3);
 }
-    .product-card__image:hover, .product-card__image.out {
+    .product-card__image:hover {
         filter: opacity(0.6);
 }
 

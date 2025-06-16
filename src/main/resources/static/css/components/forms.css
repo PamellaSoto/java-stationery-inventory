@@ -40,7 +40,7 @@
 
 /* Search bar */
 .searchbar .form__input {
-    width: 340px !important;
+    max-width: 340px !important;
     min-width: 100px;
     background-color: var(--color-lighter-gray);
     border-radius: var(--space-1) 0px 0px var(--space-1) !important;
@@ -70,6 +70,7 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: var(--space-3);
+  font-size: var(--font-base); 
 }
 
 .categories-menu__title {
@@ -113,6 +114,7 @@
     justify-content: space-between;
     border-top: var(--border-default);
     padding: var(--space-1) var(--space-2);
+    font-size: var(--font-base);
     text-transform: capitalize;
 }
 .categories-menu__item i {
@@ -177,4 +179,19 @@
 .product-form__submit {
     font-size: var(--font-base);
     padding: var(--space-2) var(--space-4);
+}
+
+/* Dashboard Modals */
+
+.delete-modal {
+    right: 10px;
+    width: 325px;
+    padding: var(--space-3);
+}
+.delete-modal form {
+    margin-top: var(--space-2);
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-2);
+    font-size: var(--font-md);
 }

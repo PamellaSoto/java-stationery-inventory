@@ -41,3 +41,7 @@
 .filter--alt__link {
     color: var(--color-black);
 }
+
+.filter__item--active {
+    color: var(--color-pink) !important;
+}

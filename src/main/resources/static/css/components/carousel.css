@@ -4,7 +4,7 @@
     justify-content: center;
     gap: var(--space-3);
     background-color: var(--color-light-gray);
-    margin: var(--space-4);
+    margin: var(--space-4) 0px;
     padding: var(--space-3) var(--space-4);
 }
 .carousel--wrapper > button {

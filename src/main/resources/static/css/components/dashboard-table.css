@@ -104,16 +104,6 @@
     color: var(--color-dark-pink);
 }
 
-#edit-product-modal, #delete-product-modal {
-  padding: var(--space-3);
-}
-#edit-product-modal form, #delete-product-modal form {
-  margin-top: var(--space-2);
-  display: flex;
-  justify-content: flex-end;
-  gap: var(--space-2);
-  font-size: var(--font-md);
-}
 
 .dashboard--table th:nth-child(2),
 .dashboard--table td:nth-child(2) {

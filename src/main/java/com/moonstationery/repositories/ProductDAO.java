@@ -145,6 +145,16 @@ public class ProductDAO {
         return jdbc.queryForList(query, animeId);
     }
 
+    public List<Map<String, Object>> getAllProductsByCategory(Integer categoryId) {
+        String query = PRODUCT_QUERY + "WHERE p.product_type_id = ?";
+        return jdbc.queryForList(query, categoryId);
+    }
+
+    public List<Map<String, Object>> getAllProductsByAnime(Integer animeId) {
+        String query = PRODUCT_QUERY + "WHERE p.anime_id = ?";
+        return jdbc.queryForList(query, animeId);
+    }
+    
     public Integer getInventoryQuantity() {
         String query = "SELECT COUNT(*) FROM product";
         return jdbc.queryForObject(query, Integer.class);

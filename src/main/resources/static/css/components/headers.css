@@ -5,6 +5,7 @@
     position: relative;
     padding: var(--space-4) var(--space-2);
 }
+
 .header__logo {
     grid-area: 1 / 2 / 1 / 3;
 }
@@ -15,14 +16,17 @@
     align-self: end;
     justify-self: end;
 }
+
     .header__user-actions ul {
         gap: var(--space-4);
 }
+
     .user-actions__item {
         display: inline-block;
         text-decoration: none;
         font-weight: 500;
     }
+
     .user-actions__item i {
         padding: var(--space-2);
         background-color: var(--color-light-pink);
@@ -30,15 +34,17 @@
         border: 1px solid var(--color-light-pink);
         color: var(--color-pink);
     }
+
     .user-actions__item:hover > i{
         background-color: var(--color-lighter-gray);
         border: 1px solid var(--color-pink);
     }
+
     .user-actions__item:hover {
         color: var(--color-pink);
         text-decoration: underline;
-
     }
+
 
 .header__nav {
     justify-content: space-between;
@@ -47,11 +53,13 @@
     padding: var(--space-2) var(--space-4);
     background-color: var(--color-light-pink);
 }
+
 .nav__menu li {
     flex-wrap: nowrap;
     padding: 0px var(--space-4);
     border-right: 1px solid var(--color-pink);
 }
+
     .nav__menu li:last-of-type {
         border-right: none;
     }
@@ -64,21 +72,26 @@
     color: var(--color-pink);
     text-transform: uppercase;
 }
+
     .nav__menu > li:hover, .nav__menu > li a:hover {
         color: var(--color-white);
 }
+
 #anime-dropdown, #type-dropdown {
     position: absolute;
     min-width: 200px;
 }
+
 #anime-dropdown {
     top: 50px;
     left: 200px;
 }
+
 #type-dropdown {
     top: 50px;
     left: 375px;
 }
+
 #anime-dropdown li a, #type-dropdown li a {
     display: block;
     cursor: pointer;
@@ -87,6 +100,7 @@
     font-size: var(--font-base);
     color: var(--color-dark-gray);
 }
+
 #anime-dropdown li a:hover, #type-dropdown li a:hover { 
     background-color: var(--color-light-gray);
     color: var(--color-pink);

@@ -44,7 +44,7 @@ public class AnimeDAO {
     }
 
     public boolean deleteAnime(Integer id) {
-        List<Map<String, Object>> products = productDAO.getProductsByCategory(id);
+        List<Map<String, Object>> products = productDAO.getAllProductsByAnime(id);
 
         if (products.isEmpty()) {
             String query = "DELETE FROM anime WHERE id = ?";

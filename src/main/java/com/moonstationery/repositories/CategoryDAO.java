@@ -36,7 +36,7 @@ public class CategoryDAO {
     }
 
     public boolean deleteCategoryType(Integer id) {
-        List<Map<String, Object>> products = productDAO.getProductsByCategory(id);
+        List<Map<String, Object>> products = productDAO.getAllProductsByCategory(id);
 
         if (products.isEmpty()) {
             String query = "DELETE FROM product_type WHERE id = ?";

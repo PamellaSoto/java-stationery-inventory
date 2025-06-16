@@ -44,6 +44,15 @@ public class ProductService {
     public List<Map<String, Object>> getProductsByAnime(Integer animeId) {
         return productDAO.getProductsByAnime(animeId);
     }
+
+    public List<Map<String, Object>> getAllProductsByCategory(Integer categoryId) {
+        return productDAO.getAllProductsByCategory(categoryId);
+    }
+
+    public List<Map<String, Object>> getAllProductsByAnime(Integer animeId) {
+        return productDAO.getAllProductsByAnime(animeId);
+    }
+
     public Integer getInventoryQuantity() {
         return productDAO.getInventoryQuantity();
     }

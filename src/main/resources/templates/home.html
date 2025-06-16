@@ -39,7 +39,7 @@
 
         <!-- All available products -->
         <div class="home--products flex--row">
-            <h2 class="category-page__title">Products</h2>
+            <h2 class="category__title">Products</h2>
             <a class="view__link underline" th:href="@{/all}">Show All</a>
         </div>
              
@@ -52,8 +52,7 @@
                 <i class="product-card__wishlist fa-regular fa-heart"></i>
                 <a th:href="@{/product/{id}(id=${product.id})}">
                     <img class="product-card__image" 
-                            th:src="${product.image_url}"
-                            th:classappend="${product.stock <= 0} ? 'out'">
+                            th:src="${product.image_url}">
                     <div class="flex--row product-card__categories">
                         <p class="underline" th:text="${product.anime_name}"></p>
                         <p class="underline" th:text="${product.product_type_name}"></p>

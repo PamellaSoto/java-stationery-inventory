@@ -15,7 +15,11 @@
   font-size: var(--font-md);
 }
 #message--noresult a {
-    color: var(--color-black);
+  display: inline-block;
+  margin-top: var(--space-3);
+  padding: var(--space-1) var(--space-4);
+  background-color: var(--color-light-gray);
+  color: var(--color-black);
 }
 
 /* (Dashboard) System Messages */

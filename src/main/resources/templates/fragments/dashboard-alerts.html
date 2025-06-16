@@ -1,19 +1,19 @@
 <div class="message--container" th:fragment="dashboard-alerts">
   <!-- Add product -->
   <div class="message modal" th:if="${addProductSuccess}">
-    <p class="message__label">System update: Action succeed!</p>
+    <p class="message__label">System update: Action successful!</p>
     <p class="message__text message--success" th:text="${addProductSuccess}"></p>
   </div>
 
   <!-- Edit product -->
   <div class="message modal" th:if="${editProductSuccess}">
-    <p class="message__label">System update: Action succeed!</p>
+    <p class="message__label">System update: Action successful!</p>
     <p class="message__text message--success" th:text="${editProductSuccess}"></p>
   </div>
 
   <!-- Delete product -->
   <div class="message modal" th:if="${deleteProductSuccess}">
-    <p class="message__label">System update: Action succeed!</p>
+    <p class="message__label">System update: Action successful!</p>
     <p class="message__text message--success" th:text="${deleteProductSuccess}"></p>
   </div>
 
@@ -23,7 +23,7 @@
     <p class="message__text message--error" th:text="${addAnimeError}"></p>
   </div>
   <div class="message modal" th:if="${addAnimeSuccess}">
-    <p class="message__label">System update: Action succeed!</p>
+    <p class="message__label">System update: Action successful!</p>
     <p class="message__text message--success" th:text="${addAnimeSuccess}"></p>
   </div>
 
@@ -34,7 +34,7 @@
   </div>
 
   <div class="message modal" th:if="${addTypeSuccess}">
-    <p class="message__label">System update: Action succeed!</p>
+    <p class="message__label">System update: Action successful!</p>
     <p class="message__text message--success" th:text="${addTypeSuccess}"></p>
   </div>
 
@@ -45,18 +45,18 @@
   </div>
 
   <div class="message modal" th:if="${deleteAnimeSuccess}">
-    <p class="message__label">System update: Action succeed!</p>
+    <p class="message__label">System update: Action successful!</p>
     <p class="message__text message--success" th:text="${deleteAnimeSuccess}"></p>
   </div>
 
   <!-- Delete category (type) -->
   <div class="message modal" th:if="${deleteTypeError}">
     <p class="message__label">System update: Action failed. Please try again!</p>
-    <p class="message__text message--error" th:text="${deletedTypeError}"></p>
+    <p class="message__text message--error" th:text="${deleteTypeError}"></p>
   </div>
   <div class="message modal" th:if="${deleteTypeSuccess}">
-    <p class="message__label">System update: Action succeed!</p>
-    <p class="message__text message--success" th:text="${deletedTypeSuccess}"></p>
+    <p class="message__label">System update: Action successful!</p>
+    <p class="message__text message--success" th:text="${deleteTypeSuccess}"></p>
   </div>
 
 </div>

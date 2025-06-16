@@ -8,7 +8,8 @@
         </li>
         <li th:each="anime : ${animes}">
             <i class="icon fa-solid fa-caret-right"></i>
-            <button class="underline filter__item" 
+            <button type="button"
+                    class="underline filter__item" 
                     th:text="${anime.name + ' (' + anime.product_count + ')'}"
                     th:attr="data-anime-filter-id=${anime.id}"
                     ></button>
@@ -22,7 +23,8 @@
         </li>
         <li th:each="type : ${productTypes}">
             <i class="icon fa-solid fa-caret-right"></i>
-            <button class="underline filter__item" 
+            <button type="button"
+                    class="underline filter__item" 
                     th:text="${type.name + ' (' + type.product_count + ')'}"
                     th:attr="data-category-filter-id=${type.id}"
                     ></button>

@@ -103,7 +103,6 @@ public class MainController {
         model.addAttribute("productTypes", typeService.listAllWithProductCount(true));
         return "edit-product-form";
     }
-
     @PostMapping("/product/{id}/edit")
     public String editProduct(@PathVariable Integer id, @ModelAttribute Product product, RedirectAttributes redirectMessage) {
         product.setId(id);
@@ -113,7 +112,7 @@ public class MainController {
         return "redirect:/dashboard";
     }
 
-    //Switch product view
+    // Switch product view
     @PostMapping("product/{id}/toggle-visibility")
     public String switchAvailable(@PathVariable Integer id) {
         productService.switchAvailable(id);

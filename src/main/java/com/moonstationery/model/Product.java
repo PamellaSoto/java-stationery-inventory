@@ -160,7 +160,6 @@ public class Product {
         this.anime_slug = anime_slug;
     }
 
-
     public void setProduct_type_slug(String product_type_slug) {
         this.product_type_slug = product_type_slug;
     }

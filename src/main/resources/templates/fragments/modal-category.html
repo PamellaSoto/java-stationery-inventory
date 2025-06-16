@@ -27,7 +27,7 @@
                 <span th:text="${anime.name}"></span>
                 <form th:action="@{'/anime/' + ${anime.id} + '/delete'}" 
                     method="post"
-                    th:object="${anime}">
+                    class="delete-category__form">
                     <button type="submit" class="delete-category__button">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
@@ -39,16 +39,17 @@
         <h2 class="categories-menu__title">Product Types</h2>
         <ul class="categories-menu__list">
             <li class="categories-menu__item flex--row"
-            th:each="type : ${productTypes}"
-            th:attr="data-id=${type.id}">
-            <span th:text="${type.name}"></span>
-            <form th:action="@{'/category/' + ${type.id} + '/delete'}" 
-                  method="post"
-                  th:object="${category}" class="delete-category__form">
-                <button type="submit" class="delete-category__button">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </form>
-        </li>
+                th:each="type : ${productTypes}"
+                th:attr="data-id=${type.id}">
+                <span th:text="${type.name}"></span>
+                <form th:action="@{'/category/' + ${type.id} + '/delete'}" 
+                    method="post"
+                    class="delete-category__form">
+                    <button type="submit" class="delete-category__button">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </form>
+            </li>
+        </ul>
     </div>
-    </div>
+</div>

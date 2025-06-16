@@ -32,6 +32,11 @@ body {
     background-color: var(--color-lighter-gray);
 }
 
+@media (max-width: 1200px) {
+  body {
+    max-width: 90vw;
+  }
+}
 .form__input {
     padding: 0px var(--space-2);
     width: -webkit-fill-available;
