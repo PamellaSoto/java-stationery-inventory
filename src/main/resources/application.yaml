@@ -1,17 +1,17 @@
 server:
-    port: 612
+  port: 5432
 
 spring:
-    datasource:
-        platform: postgres
-        url: jdbc:postgresql://localhost:5432/moon_stationery_db
-        username: postgres
-        password: 191204
-        driver-class-name: org.postgresql.Driver
-        initialize: true
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+    platform: postgres
 
-    sql:
-        init:
-            schema-locations: classpath:/schema-postgresql.sql
-            mode: always
-            platform: postgres
+  sql:
+    init:
+      schema-locations: classpath:/schema-postgresql.sql
+      data-locations: classpath:/data-postgresql.sql
+      mode: always
+      platform: postgres
