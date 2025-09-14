@@ -1,5 +1,4 @@
 INSERT INTO anime (name, slug) VALUES 
-('Sailor Moon', 'sailor-moon'),
 ('One Piece', 'one-piece'),
 ('Pokémon', 'pokemon'),
 ('Naruto', 'naruto'),
