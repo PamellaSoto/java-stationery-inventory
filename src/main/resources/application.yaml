@@ -8,7 +8,6 @@ spring:
 
   sql:
     init:
-      schema-locations: classpath:/schema-postgresql.sql      
-      data-locations: classpath:/data-postgresql.sql
+      schema-locations: classpath:/schema-postgresql.sql
       mode: always
       platform: postgres
