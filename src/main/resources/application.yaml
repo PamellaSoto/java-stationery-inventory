@@ -1,17 +1,14 @@
 server:
-  port: 5432
+  port: 612
 
 spring:
   datasource:
-    url: ${DB_URL}
-    username: ${DB_USER}
-    password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
     platform: postgres
 
   sql:
     init:
-      schema-locations: classpath:/schema-postgresql.sql
+      schema-locations: classpath:/schema-postgresql.sql      
       data-locations: classpath:/data-postgresql.sql
       mode: always
       platform: postgres
